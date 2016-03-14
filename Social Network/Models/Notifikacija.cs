@@ -8,7 +8,7 @@ namespace Social_Network.Models
     public class Notifikacija
     {
         int id;
-        int profilId;
+        int ProfilId;
         string poruka;
         DateTime vrijeme;
         string urlObjave;

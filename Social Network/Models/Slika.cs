@@ -8,7 +8,7 @@ namespace Social_Network.Models
     public class Slika
     {
         int id;
-        int albumId;
+        int AlbumId;
         string url;
         string opis;
         DateTime datum;

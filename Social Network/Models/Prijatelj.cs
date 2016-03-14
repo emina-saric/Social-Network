@@ -8,7 +8,7 @@ namespace Social_Network.Models
     public class Prijatelj
     {
         int id;
-        int profilId;
+        int ProfilId;
         DateTime prijateljiOd;
     }
 }

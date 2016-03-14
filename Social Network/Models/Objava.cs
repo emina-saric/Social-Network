@@ -14,6 +14,6 @@ namespace Social_Network.Models
         int pozGlasovi;
         int negGlasovi;
         string oznake;
-        int profilId;
+        int ProfilId;
     }
 }

@@ -8,7 +8,7 @@ namespace Social_Network.Models
     public class Komentar
     {
         int id;
-        int objavaId;
+        int ObjavaId;
         string tekst;
         DateTime datum;
     }

@@ -8,7 +8,7 @@ namespace Social_Network.Models
     public class Poruka
     {
         int id;
-        int razgovorId;
+        int RazgovorId;
         string tekst;
         DateTime vrijeme;
         int napisao;
