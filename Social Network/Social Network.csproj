@@ -215,9 +215,19 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AlbumsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KomentariController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MeController.cs" />
+    <Compile Include="Controllers\NotifikacijeController.cs" />
+    <Compile Include="Controllers\ObjaveController.cs" />
+    <Compile Include="Controllers\OsobeController.cs" />
+    <Compile Include="Controllers\PorukeController.cs" />
+    <Compile Include="Controllers\PrijateljiController.cs" />
+    <Compile Include="Controllers\ProfiliController.cs" />
+    <Compile Include="Controllers\RazgovoriController.cs" />
+    <Compile Include="Controllers\SlikeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -330,6 +340,56 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
+    <Content Include="Views\Albums\Create.cshtml" />
+    <Content Include="Views\Albums\Delete.cshtml" />
+    <Content Include="Views\Albums\Details.cshtml" />
+    <Content Include="Views\Albums\Edit.cshtml" />
+    <Content Include="Views\Albums\Index.cshtml" />
+    <Content Include="Views\Komentari\Create.cshtml" />
+    <Content Include="Views\Komentari\Delete.cshtml" />
+    <Content Include="Views\Komentari\Details.cshtml" />
+    <Content Include="Views\Komentari\Edit.cshtml" />
+    <Content Include="Views\Komentari\Index.cshtml" />
+    <Content Include="Views\Notifikacije\Create.cshtml" />
+    <Content Include="Views\Notifikacije\Delete.cshtml" />
+    <Content Include="Views\Notifikacije\Details.cshtml" />
+    <Content Include="Views\Notifikacije\Edit.cshtml" />
+    <Content Include="Views\Notifikacije\Index.cshtml" />
+    <Content Include="Views\Objave\Create.cshtml" />
+    <Content Include="Views\Objave\Delete.cshtml" />
+    <Content Include="Views\Objave\Details.cshtml" />
+    <Content Include="Views\Objave\Edit.cshtml" />
+    <Content Include="Views\Objave\Index.cshtml" />
+    <Content Include="Views\Osobe\Create.cshtml" />
+    <Content Include="Views\Osobe\Delete.cshtml" />
+    <Content Include="Views\Osobe\Details.cshtml" />
+    <Content Include="Views\Osobe\Edit.cshtml" />
+    <Content Include="Views\Osobe\Index.cshtml" />
+    <Content Include="Views\Poruke\Create.cshtml" />
+    <Content Include="Views\Poruke\Delete.cshtml" />
+    <Content Include="Views\Poruke\Details.cshtml" />
+    <Content Include="Views\Poruke\Edit.cshtml" />
+    <Content Include="Views\Poruke\Index.cshtml" />
+    <Content Include="Views\Prijatelji\Create.cshtml" />
+    <Content Include="Views\Prijatelji\Delete.cshtml" />
+    <Content Include="Views\Prijatelji\Details.cshtml" />
+    <Content Include="Views\Prijatelji\Edit.cshtml" />
+    <Content Include="Views\Prijatelji\Index.cshtml" />
+    <Content Include="Views\Profili\Create.cshtml" />
+    <Content Include="Views\Profili\Delete.cshtml" />
+    <Content Include="Views\Profili\Details.cshtml" />
+    <Content Include="Views\Profili\Edit.cshtml" />
+    <Content Include="Views\Profili\Index.cshtml" />
+    <Content Include="Views\Razgovori\Create.cshtml" />
+    <Content Include="Views\Razgovori\Delete.cshtml" />
+    <Content Include="Views\Razgovori\Details.cshtml" />
+    <Content Include="Views\Razgovori\Edit.cshtml" />
+    <Content Include="Views\Razgovori\Index.cshtml" />
+    <Content Include="Views\Slike\Create.cshtml" />
+    <Content Include="Views\Slike\Delete.cshtml" />
+    <Content Include="Views\Slike\Details.cshtml" />
+    <Content Include="Views\Slike\Edit.cshtml" />
+    <Content Include="Views\Slike\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
