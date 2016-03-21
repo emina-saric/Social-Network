@@ -7,7 +7,6 @@ namespace Social_Network.Models
 {
     public class Album
     {
-        // Proba //
         public int Id { get; set; }
         public string Naziv { get; set; }
         public DateTime Datum { get; set; }
