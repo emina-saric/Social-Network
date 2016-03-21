@@ -7,7 +7,7 @@ namespace Social_Network.Models
 {
     public class Komentar
     {
-        int id;
+        public int Id { get; set; }
         int ObjavaId;
         string tekst;
         DateTime datum;

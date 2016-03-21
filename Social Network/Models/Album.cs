@@ -7,11 +7,11 @@ namespace Social_Network.Models
 {
     public class Album
     {
-        int id;
-        string naziv;
-        DateTime datum;
-        bool privatni;
-        string albumCol;
-        int profilId;
+        public int Id { get; set; }
+        public string Naziv { get; set; }
+        public DateTime Datum { get; set; }
+        public bool Privatni { get; set; }
+        public string AlbumCol { get; set; }
+        public int ProfilId { get; set; }
     }
 }

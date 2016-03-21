@@ -7,7 +7,7 @@ namespace Social_Network.Models
 {
     public class Prijatelj
     {
-        int id;
+        public int Id { get; set; }
         int ProfilId;
         DateTime prijateljiOd;
     }

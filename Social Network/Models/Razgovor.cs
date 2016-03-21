@@ -7,7 +7,7 @@ namespace Social_Network.Models
 {
     public class Razgovor
     {
-        int id;
+        public int Id { get; set; }
         int ucesnik1;
         int ucesnik2;
     }

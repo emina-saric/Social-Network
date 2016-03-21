@@ -7,7 +7,7 @@ namespace Social_Network.Models
 {
     public class Osoba
     {
-        int id;
+        public int Id { get; set; }
         string ime;
         string prezime;
         DateTime datumRodjenja;

@@ -7,7 +7,7 @@ namespace Social_Network.Models
 {
     public class Objava
     {
-        int id;
+        public int Id { get; set; }
         string tekst;
         string urlSlike;
         DateTime datumObjave;

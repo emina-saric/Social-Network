@@ -7,7 +7,7 @@ namespace Social_Network.Models
 {
     public class Slika
     {
-        int id;
+        public int Id { get; set; }
         int AlbumId;
         string url;
         string opis;

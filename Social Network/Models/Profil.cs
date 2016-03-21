@@ -7,7 +7,7 @@ namespace Social_Network.Models
 {
     public class Profil
     {
-        int id;
+        public int Id { get; set; }
         int OsobaId;
         string username;
         string password;
