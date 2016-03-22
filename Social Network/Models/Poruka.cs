@@ -8,9 +8,9 @@ namespace Social_Network.Models
     public class Poruka
     {
         public int Id { get; set; }
-        int RazgovorId;
-        string tekst;
-        DateTime vrijeme;
-        int napisao;
+        public int RazgovorId { get; set; }
+        public string tekst { get; set; }
+        public DateTime vrijeme { get; set; }
+        public int napisao { get; set; }
     }
 }
