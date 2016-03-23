@@ -11,17 +11,17 @@ using Social_Network.Models;
 
 namespace Social_Network.Controllers
 {
-    public class AlbumsController : Controller
+    public class AlbumiController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private Social_NetworkContext db = new Social_NetworkContext();
 
-        // GET: Albums
+        // GET: Albumi
         public async Task<ActionResult> Index()
         {
             return View(await db.Albums.ToListAsync());
         }
 
-        // GET: Albums/Details/5
+        // GET: Albumi/Details/5
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
@@ -36,13 +36,13 @@ namespace Social_Network.Controllers
             return View(album);
         }
 
-        // GET: Albums/Create
+        // GET: Albumi/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Albums/Create
+        // POST: Albumi/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -59,7 +59,7 @@ namespace Social_Network.Controllers
             return View(album);
         }
 
-        // GET: Albums/Edit/5
+        // GET: Albumi/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
@@ -74,7 +74,7 @@ namespace Social_Network.Controllers
             return View(album);
         }
 
-        // POST: Albums/Edit/5
+        // POST: Albumi/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -90,7 +90,7 @@ namespace Social_Network.Controllers
             return View(album);
         }
 
-        // GET: Albums/Delete/5
+        // GET: Albumi/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
@@ -105,7 +105,7 @@ namespace Social_Network.Controllers
             return View(album);
         }
 
-        // POST: Albums/Delete/5
+        // POST: Albumi/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)

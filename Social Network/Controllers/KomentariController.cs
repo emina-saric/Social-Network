@@ -13,7 +13,7 @@ namespace Social_Network.Controllers
 {
     public class KomentariController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private Social_NetworkContext db = new Social_NetworkContext();
 
         // GET: Komentari
         public async Task<ActionResult> Index()

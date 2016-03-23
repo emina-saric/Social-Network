@@ -215,7 +215,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AlbumsController.cs" />
+    <Compile Include="Controllers\AlbumiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KomentariController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -231,11 +231,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201603142130310_initial.cs" />
-    <Compile Include="Migrations\201603142130310_initial.Designer.cs">
-      <DependentUpon>201603142130310_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Album.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -250,6 +245,7 @@
     <Compile Include="Models\Profil.cs" />
     <Compile Include="Models\Razgovor.cs" />
     <Compile Include="Models\Slika.cs" />
+    <Compile Include="Models\Social_NetworkContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
@@ -340,11 +336,6 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Albums\Create.cshtml" />
-    <Content Include="Views\Albums\Delete.cshtml" />
-    <Content Include="Views\Albums\Details.cshtml" />
-    <Content Include="Views\Albums\Edit.cshtml" />
-    <Content Include="Views\Albums\Index.cshtml" />
     <Content Include="Views\Komentari\Create.cshtml" />
     <Content Include="Views\Komentari\Delete.cshtml" />
     <Content Include="Views\Komentari\Details.cshtml" />
@@ -390,6 +381,11 @@
     <Content Include="Views\Slike\Details.cshtml" />
     <Content Include="Views\Slike\Edit.cshtml" />
     <Content Include="Views\Slike\Index.cshtml" />
+    <Content Include="Views\Albumi\Create.cshtml" />
+    <Content Include="Views\Albumi\Delete.cshtml" />
+    <Content Include="Views\Albumi\Details.cshtml" />
+    <Content Include="Views\Albumi\Edit.cshtml" />
+    <Content Include="Views\Albumi\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -401,11 +397,6 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201603142130310_initial.resx">
-      <DependentUpon>201603142130310_initial.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

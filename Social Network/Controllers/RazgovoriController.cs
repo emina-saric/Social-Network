@@ -13,7 +13,7 @@ namespace Social_Network.Controllers
 {
     public class RazgovoriController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private Social_NetworkContext db = new Social_NetworkContext();
 
         // GET: Razgovori
         public async Task<ActionResult> Index()

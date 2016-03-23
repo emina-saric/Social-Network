@@ -1,0 +1,66 @@
+﻿@model Social_Network.Models.Album
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Album</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Naziv)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Naziv)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Datum)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Datum)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Privatni)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Privatni)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.AlbumCol)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.AlbumCol)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ProfilId)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ProfilId)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>
