@@ -1,26 +1,50 @@
 ﻿@model Social_Network.Models.Slika
 
 @{
-    Layout = null;
+    ViewBag.Title = "Details";
 }
 
-<!DOCTYPE html>
+<h2>Details</h2>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
-</head>
-<body>
-    <div>
-        <h4>Slika</h4>
-        <hr />
-        <dl class="dl-horizontal">
-        </dl>
-    </div>
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
-</body>
-</html>
+<div>
+    <h4>Slika</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AlbumId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AlbumId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.url)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.url)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.opis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.opis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.datum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.datum)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,32 +1,40 @@
 ﻿@model Social_Network.Models.Razgovor
 
 @{
-    Layout = null;
+    ViewBag.Title = "Delete";
 }
 
-<!DOCTYPE html>
+<h2>Delete</h2>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Delete</title>
-</head>
-<body>
-    <h3>Are you sure you want to delete this?</h3>
-    <div>
-        <h4>Razgovor</h4>
-        <hr />
-        <dl class="dl-horizontal">
-        </dl>
-    
-        @using (Html.BeginForm()) {
-            @Html.AntiForgeryToken()
-    
-            <div class="form-actions no-color">
-                <input type="submit" value="Delete" class="btn btn-default" /> |
-                @Html.ActionLink("Back to List", "Index")
-            </div>
-        }
-    </div>
-</body>
-</html>
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Razgovor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ucesnik1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ucesnik1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ucesnik2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ucesnik2)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

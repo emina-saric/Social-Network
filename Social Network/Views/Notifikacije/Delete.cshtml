@@ -1,32 +1,56 @@
 ﻿@model Social_Network.Models.Notifikacija
 
 @{
-    Layout = null;
+    ViewBag.Title = "Delete";
 }
 
-<!DOCTYPE html>
+<h2>Delete</h2>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Delete</title>
-</head>
-<body>
-    <h3>Are you sure you want to delete this?</h3>
-    <div>
-        <h4>Notifikacija</h4>
-        <hr />
-        <dl class="dl-horizontal">
-        </dl>
-    
-        @using (Html.BeginForm()) {
-            @Html.AntiForgeryToken()
-    
-            <div class="form-actions no-color">
-                <input type="submit" value="Delete" class="btn btn-default" /> |
-                @Html.ActionLink("Back to List", "Index")
-            </div>
-        }
-    </div>
-</body>
-</html>
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Notifikacija</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProfilId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProfilId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.poruka)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.poruka)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.vrijeme)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.vrijeme)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.urlObjave)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.urlObjave)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

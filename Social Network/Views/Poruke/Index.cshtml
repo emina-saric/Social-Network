@@ -1,35 +1,51 @@
 ﻿@model IEnumerable<Social_Network.Models.Poruka>
 
 @{
-    Layout = null;
+    ViewBag.Title = "Index";
 }
 
-<!DOCTYPE html>
+<h2>Index</h2>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th></th>
-        </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-            </td>
-        </tr>
-    }
-    
-    </table>
-</body>
-</html>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RazgovorId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tekst)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.vrijeme)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.napisao)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RazgovorId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tekst)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.vrijeme)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.napisao)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

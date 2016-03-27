@@ -1,26 +1,50 @@
 ﻿@model Social_Network.Models.Poruka
 
 @{
-    Layout = null;
+    ViewBag.Title = "Details";
 }
 
-<!DOCTYPE html>
+<h2>Details</h2>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
-</head>
-<body>
-    <div>
-        <h4>Poruka</h4>
-        <hr />
-        <dl class="dl-horizontal">
-        </dl>
-    </div>
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
-</body>
-</html>
+<div>
+    <h4>Poruka</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RazgovorId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RazgovorId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tekst)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tekst)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.vrijeme)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.vrijeme)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.napisao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.napisao)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
