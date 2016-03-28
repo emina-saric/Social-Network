@@ -11,6 +11,7 @@ using Social_Network.Models;
 
 namespace Social_Network.Controllers
 {
+    [Authorize]
     public class ObjaveController : Controller
     {
         private Social_NetworkContext db = new Social_NetworkContext();
