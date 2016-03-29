@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Web;
 
 namespace Social_Network.Models
 {
-    public class Social_NetworkContext : DbContext
+    public class Social_NetworkContext : IdentityDbContext<ApplicationUser>
     {
         // You can add custom code to this file. Changes will not be overwritten.
         // 
@@ -15,8 +16,13 @@ namespace Social_Network.Models
         // For more information refer to the documentation:
         // http://msdn.microsoft.com/en-us/data/jj591621.aspx
     
-        public Social_NetworkContext() : base("name=Social_NetworkContext")
+        public Social_NetworkContext() : base("name=Social_NetworkContext", throwIfV1Schema: false)
         {
+        }
+
+        public static Social_NetworkContext Create()
+        {
+            return new Social_NetworkContext();
         }
 
         public System.Data.Entity.DbSet<Social_Network.Models.Album> Albums { get; set; }

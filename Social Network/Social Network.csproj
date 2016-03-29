@@ -235,6 +235,10 @@
     <Compile Include="Migrations\201603232029214_init.Designer.cs">
       <DependentUpon>201603232029214_init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603291925398_login.cs" />
+    <Compile Include="Migrations\201603291925398_login.Designer.cs">
+      <DependentUpon>201603291925398_login.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Album.cs" />
@@ -406,6 +410,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201603232029214_init.resx">
       <DependentUpon>201603232029214_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603291925398_login.resx">
+      <DependentUpon>201603291925398_login.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

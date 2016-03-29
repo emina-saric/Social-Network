@@ -8,6 +8,7 @@ namespace Social_Network.Models
 {
     public class Komentar
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public int ObjavaId { get; set; }
         [Required]
