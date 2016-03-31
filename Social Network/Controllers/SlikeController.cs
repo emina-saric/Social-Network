@@ -19,7 +19,9 @@ namespace Social_Network.Controllers
         // GET: Slike
         public async Task<ActionResult> Index()
         {
-            return View(await db.Slikas.ToListAsync());
+            var slike = await db.Slikas.ToListAsync();
+            return Json(slike, JsonRequestBehavior.AllowGet);
+            //return View(await db.Slikas.ToListAsync());
         }
 
         // GET: Slike/Details/5

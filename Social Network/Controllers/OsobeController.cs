@@ -19,7 +19,8 @@ namespace Social_Network.Controllers
         // GET: Osobe
         public async Task<ActionResult> Index()
         {
-            return View(await db.Osobas.ToListAsync());
+            var osobe = await db.Osobas.ToListAsync();
+            return Json(osobe, JsonRequestBehavior.AllowGet);
         }
 
         // GET: Osobe/Details/5

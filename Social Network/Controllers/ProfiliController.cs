@@ -19,7 +19,9 @@ namespace Social_Network.Controllers
         // GET: Profili
         public async Task<ActionResult> Index()
         {
-            return View(await db.Profils.ToListAsync());
+            var profili = await db.Profils.ToListAsync();
+            return Json(profili, JsonRequestBehavior.AllowGet);
+            //return View(await db.Profils.ToListAsync());
         }
 
         // GET: Profili/Details/5

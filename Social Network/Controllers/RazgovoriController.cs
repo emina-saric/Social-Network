@@ -19,7 +19,9 @@ namespace Social_Network.Controllers
         // GET: Razgovori
         public async Task<ActionResult> Index()
         {
-            return View(await db.Razgovors.ToListAsync());
+            var razgovori = await db.Razgovors.ToListAsync();
+            return Json(razgovori, JsonRequestBehavior.AllowGet);
+            //return View(await db.Razgovors.ToListAsync());
         }
 
         // GET: Razgovori/Details/5

@@ -19,7 +19,8 @@ namespace Social_Network.Controllers
         // GET: Albumi
         public async Task<ActionResult> Index()
         {
-            return View(await db.Albums.ToListAsync());
+            var albumi = await db.Albums.ToListAsync();
+            return Json(albumi, JsonRequestBehavior.AllowGet);
         }
 
         // GET: Albumi/Details/5

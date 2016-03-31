@@ -19,8 +19,10 @@ namespace Social_Network.Controllers
         // GET: Notifikacije
         public async Task<ActionResult> Index()
         {
-            return View(await db.Notifikacijas.ToListAsync());
+            var notifikacije = await db.Notifikacijas.ToListAsync();
+            return Json(notifikacije, JsonRequestBehavior.AllowGet);
         }
+
 
         // GET: Notifikacije/Details/5
         public async Task<ActionResult> Details(int? id)

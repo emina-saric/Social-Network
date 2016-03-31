@@ -19,7 +19,8 @@ namespace Social_Network.Controllers
         // GET: Objave
         public async Task<ActionResult> Index()
         {
-            return View(await db.Objavas.ToListAsync());
+            var objave = await db.Objavas.ToListAsync();
+            return Json(objave, JsonRequestBehavior.AllowGet);
         }
 
         // GET: Objave/Details/5

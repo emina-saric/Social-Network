@@ -19,7 +19,8 @@ namespace Social_Network.Controllers
         // GET: Komentari
         public async Task<ActionResult> Index()
         {
-            return View(await db.Komentars.ToListAsync());
+            var komentari = await db.Komentars.ToListAsync();
+            return Json(komentari, JsonRequestBehavior.AllowGet);
         }
 
         // GET: Komentari/Details/5

@@ -19,7 +19,8 @@ namespace Social_Network.Controllers
         // GET: Prijatelji
         public async Task<ActionResult> Index()
         {
-            return View(await db.Prijateljs.ToListAsync());
+            var prijatelji = await db.Prijateljs.ToListAsync();
+            return Json(prijatelji, JsonRequestBehavior.AllowGet);
         }
 
         // GET: Prijatelji/Details/5

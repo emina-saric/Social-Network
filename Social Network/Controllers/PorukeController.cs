@@ -19,7 +19,8 @@ namespace Social_Network.Controllers
         // GET: Poruke
         public async Task<ActionResult> Index()
         {
-            return View(await db.Porukas.ToListAsync());
+            var poruke = await db.Porukas.ToListAsync();
+            return Json(poruke, JsonRequestBehavior.AllowGet);
         }
 
         // GET: Poruke/Details/5
