@@ -197,6 +197,16 @@ namespace Social_Network.Controllers
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Hometown = model.Hometown };
+                var osoba = new Osoba();
+                osoba.ime = model.ime;
+                osoba.prezime = model.prezime;
+                osoba.spol = model.spol;
+                osoba.telefon = model.telefon;
+                osoba.grad = model.Hometown;
+                osoba.drzava = model.drzava;
+                osoba.datumRodjenja = model.datumRodjenja;
+                OsobeController ctrl = new OsobeController();
+                await ctrl.Create(osoba);
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

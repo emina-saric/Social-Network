@@ -21,7 +21,7 @@ namespace Social_Network.Models
         public string drzava { get; set; }
         public string grad { get; set; }
         public string spol { get; set; }
-        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Entered phone format is not valid.")]
+        //[RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Entered phone format is not valid.")]
         public string telefon { get; set; }
     }
 }
