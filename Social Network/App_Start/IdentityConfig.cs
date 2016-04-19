@@ -11,15 +11,51 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using Social_Network.Models;
+using SendGrid;
+using System.Net;
+using System.Configuration;
+using System.Diagnostics;
 
 namespace Social_Network
 {
     public class EmailService : IIdentityMessageService
     {
-        public Task SendAsync(IdentityMessage message)
+        public async Task SendAsync(IdentityMessage message)
         {
-            // Plug in your email service here to send an email.
-            return Task.FromResult(0);
+            await configSendGridasync(message);
+        }
+
+        private async Task configSendGridasync(IdentityMessage message)
+        {
+            var myMessage = new SendGridMessage();
+            myMessage.AddTo(message.Destination);
+            myMessage.From = new System.Net.Mail.MailAddress(
+                                "aklacar1@etf.unsa.ba", "Armin Klacar");
+
+            message.Subject = "this is the subject";
+            myMessage.Subject = message.Subject;
+            myMessage.Text = message.Body;
+            myMessage.Html = message.Body;
+
+            /*var credentials = new NetworkCredential(
+                       ConfigurationManager.AppSettings["mailAccount"],
+                       ConfigurationManager.AppSettings["mailPassword"]
+                       );
+            */
+            var credentials = new NetworkCredential("aeternusignis", "piedayaireim2309");
+            // Create a Web transport for sending email.
+            var transportWeb = new Web(credentials);
+
+            // Send the email.
+            if (transportWeb != null)
+            {
+                await transportWeb.DeliverAsync(myMessage);
+            }
+            else
+            {
+                Trace.TraceError("Failed to create Web transport.");
+                await Task.FromResult(0);
+            }
         }
     }
 
@@ -34,7 +70,7 @@ namespace Social_Network
 
     // Configure the application user manager which is used in this application.
     public class ApplicationUserManager : UserManager<ApplicationUser>
-    {
+    {   
         public ApplicationUserManager(IUserStore<ApplicationUser> store)
             : base(store)
         {
