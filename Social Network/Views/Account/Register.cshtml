@@ -12,8 +12,6 @@
 @{ MvcCaptcha exampleCaptcha = new MvcCaptcha("ExampleCaptcha"); }
 
 
-
-
 @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()

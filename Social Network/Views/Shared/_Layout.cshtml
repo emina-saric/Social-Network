@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en" ng-app="myApp">
+<html lang="en" ng-app="MyApp">
 <head>
     <meta charset="utf-8" />
     <title>@ViewBag.Title - My ASP.NET Application</title>
@@ -39,8 +39,10 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    <script src="~/Scripts/angular.min.js"></script>
+    @Scripts.Render("~/bundles/angular")
     @RenderSection("Scripts", required: false)
+
+    <script src="~/ScriptsJS/MyApp.js"></script>
 
 </body>
 </html>
