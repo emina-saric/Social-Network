@@ -86,7 +86,7 @@ namespace Social_Network.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(profil).State = EntityState.Modified;
+                db.Entry(profil).State = System.Data.Entity.EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }

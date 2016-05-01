@@ -86,7 +86,7 @@ namespace Social_Network.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(notifikacija).State = EntityState.Modified;
+                db.Entry(notifikacija).State = System.Data.Entity.EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }

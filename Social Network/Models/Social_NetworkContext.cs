@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
+using Social_Network.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -7,7 +8,7 @@ using System.Web;
 
 namespace Social_Network.Models
 {
-    public class Social_NetworkContext : IdentityDbContext<ApplicationUser>
+    public class Social_NetworkContext: IdentityDbContext<ApplicationUser>
     {
         // You can add custom code to this file. Changes will not be overwritten.
         // 

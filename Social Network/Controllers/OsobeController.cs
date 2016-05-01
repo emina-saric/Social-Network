@@ -35,7 +35,7 @@ namespace Social_Network.Controllers
             {
                 return HttpNotFound();
             }
-            return View(osoba);
+            return Json(osoba, JsonRequestBehavior.AllowGet);
         }
 
         // GET: Osobe/Create
@@ -85,7 +85,7 @@ namespace Social_Network.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(osoba).State = EntityState.Modified;
+                db.Entry(osoba).State = System.Data.Entity.EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
