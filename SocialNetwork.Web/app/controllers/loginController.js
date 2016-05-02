@@ -6,8 +6,11 @@ app.controller('loginController', ['$scope', '$location', 'authService', 'ngAuth
         password: "",
         useRefreshTokens: false
     };
+    $scope.authentication = authService.authentication;
 
     $scope.message = "";
+    if ($scope.authentication.isAuth == true)
+        $location.path('/profile');
 
     $scope.login = function () {
 
