@@ -15,13 +15,13 @@ namespace Social_Network
 
     public class AuthRepository : IDisposable
     {
-        private AuthContext _ctx;
+        private Social_NetworkContext _ctx;
 
         private UserManager<IdentityUser> _userManager;
 
         public AuthRepository()
         {
-            _ctx = new AuthContext();
+            _ctx = new Social_NetworkContext();
             _userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>(_ctx));
         }
 

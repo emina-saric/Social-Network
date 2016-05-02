@@ -1,12 +1,25 @@
-namespace Social_Network.AuthContextNamespace
+namespace Social_Network.Migrations.Social_NetworkContext
 {
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class init : DbMigration
+    public partial class InitialDatabaseCreation : DbMigration
     {
         public override void Up()
         {
+            CreateTable(
+                "dbo.Albums",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Naziv = c.String(nullable: false, maxLength: 100),
+                        Datum = c.DateTime(nullable: false),
+                        Privatni = c.Boolean(nullable: false),
+                        AlbumCol = c.String(),
+                        ProfilId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
             CreateTable(
                 "dbo.Clients",
                 c => new
@@ -18,6 +31,107 @@ namespace Social_Network.AuthContextNamespace
                         Active = c.Boolean(nullable: false),
                         RefreshTokenLifeTime = c.Int(nullable: false),
                         AllowedOrigin = c.String(maxLength: 100),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Komentars",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        ObjavaId = c.Int(nullable: false),
+                        tekst = c.String(nullable: false, maxLength: 100),
+                        datum = c.DateTime(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Notifikacijas",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        ProfilId = c.Int(nullable: false),
+                        poruka = c.String(),
+                        vrijeme = c.DateTime(nullable: false),
+                        urlObjave = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Objavas",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        tekst = c.String(nullable: false, maxLength: 100),
+                        urlSlike = c.String(),
+                        datumObjave = c.DateTime(nullable: false),
+                        pozGlasovi = c.Int(nullable: false),
+                        negGlasovi = c.Int(nullable: false),
+                        oznake = c.String(),
+                        ProfilId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Osobas",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        ime = c.String(nullable: false, maxLength: 100),
+                        prezime = c.String(nullable: false, maxLength: 100),
+                        datumRodjenja = c.DateTime(nullable: false),
+                        drzava = c.String(),
+                        grad = c.String(),
+                        spol = c.String(),
+                        telefon = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Porukas",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        RazgovorId = c.Int(nullable: false),
+                        tekst = c.String(nullable: false, maxLength: 100),
+                        vrijeme = c.DateTime(nullable: false),
+                        napisao = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Prijateljs",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        ProfilId = c.Int(nullable: false),
+                        prijateljiOd = c.DateTime(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Profils",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        OsobaId = c.Int(nullable: false),
+                        username = c.String(nullable: false, maxLength: 100),
+                        password = c.String(nullable: false, maxLength: 100),
+                        email = c.String(nullable: false),
+                        slika = c.String(),
+                        aktivan = c.Boolean(nullable: false),
+                        registrovan = c.DateTime(nullable: false),
+                        administrator = c.Boolean(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Razgovors",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        ucesnik1 = c.Int(nullable: false),
+                        ucesnik2 = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -56,6 +170,18 @@ namespace Social_Network.AuthContextNamespace
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId)
                 .Index(t => t.RoleId);
+            
+            CreateTable(
+                "dbo.Slikas",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        AlbumId = c.Int(nullable: false),
+                        url = c.String(),
+                        opis = c.String(),
+                        datum = c.DateTime(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.AspNetUsers",
@@ -124,10 +250,20 @@ namespace Social_Network.AuthContextNamespace
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
+            DropTable("dbo.Slikas");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.RefreshTokens");
+            DropTable("dbo.Razgovors");
+            DropTable("dbo.Profils");
+            DropTable("dbo.Prijateljs");
+            DropTable("dbo.Porukas");
+            DropTable("dbo.Osobas");
+            DropTable("dbo.Objavas");
+            DropTable("dbo.Notifikacijas");
+            DropTable("dbo.Komentars");
             DropTable("dbo.Clients");
+            DropTable("dbo.Albums");
         }
     }
 }
