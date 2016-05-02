@@ -11,7 +11,7 @@ namespace Social_Network
     public class AuthContext : IdentityDbContext<IdentityUser>
     {
         public AuthContext()
-            : base("AuthContext")
+            : base("AngularJSAuth")
         {
      
         }
