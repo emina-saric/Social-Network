@@ -269,11 +269,16 @@
     <Compile Include="Infractructure\ClaimsAuthorizationAttribute.cs" />
     <Compile Include="Infractructure\ExtendedClaimsProvider.cs" />
     <Compile Include="Infractructure\RolesFromClaims.cs" />
-    <Compile Include="Migrations\201605010055533_init.cs" />
-    <Compile Include="Migrations\201605010055533_init.Designer.cs">
-      <DependentUpon>201605010055533_init.cs</DependentUpon>
+    <Compile Include="Migrations\201605011538507_init.cs" />
+    <Compile Include="Migrations\201605011538507_init.Designer.cs">
+      <DependentUpon>201605011538507_init.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Migrations\201605021151151_init.cs" />
+    <Compile Include="Migrations\201605021151151_init.Designer.cs">
+      <DependentUpon>201605021151151_init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration_AuthContext.cs" />
+    <Compile Include="Migrations\Configuration_SocialNetwork.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Album.cs" />
@@ -302,6 +307,7 @@
     <Compile Include="Providers\SimpleAuthorizationServerProvider.cs" />
     <Compile Include="Providers\SimpleRefreshTokenProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
+    <Compile Include="RouteConfig.cs" />
     <Compile Include="Services\EmailService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -333,8 +339,11 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201605010055533_init.resx">
-      <DependentUpon>201605010055533_init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201605011538507_init.resx">
+      <DependentUpon>201605011538507_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605021151151_init.resx">
+      <DependentUpon>201605021151151_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

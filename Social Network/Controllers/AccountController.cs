@@ -17,10 +17,10 @@ using System.Web.Http;
 
 namespace Social_Network.Controllers
 {
-    [RoutePrefix("api/Account")]
+    //[RoutePrefix("api/Account")]
     public class AccountController : ApiController
     {
-        private AuthRepository _repo = null;
+        private AuthRepository _repo = new AuthRepository();
 
         private IAuthenticationManager Authentication
         {
@@ -34,7 +34,8 @@ namespace Social_Network.Controllers
 
         // POST api/Account/Register
         [AllowAnonymous]
-        [Route("Register")]
+        [HttpPost]
+        //[Route("Register")]
         public async Task<IHttpActionResult> Register(UserModel userModel)
         {
             if (!ModelState.IsValid)
@@ -110,6 +111,7 @@ namespace Social_Network.Controllers
 
         // POST api/Account/RegisterExternal
         [AllowAnonymous]
+        [HttpPost]
         [Route("RegisterExternal")]
         public async Task<IHttpActionResult> RegisterExternal(RegisterExternalBindingModel model)
         {
@@ -162,7 +164,7 @@ namespace Social_Network.Controllers
 
         [AllowAnonymous]
         [HttpGet]
-        [Route("ObtainLocalAccessToken")]
+        //[Route("ObtainLocalAccessToken")]
         public async Task<IHttpActionResult> ObtainLocalAccessToken(string provider, string externalAccessToken)
         {
 

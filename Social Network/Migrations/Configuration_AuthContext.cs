@@ -1,18 +1,18 @@
-namespace Social_Network.Migrations
+namespace Social_Network.AuthContextNamespace
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Social_Network.Models.Social_NetworkContext>
+    internal sealed class Configuration_AuthContext : DbMigrationsConfiguration<Social_Network.AuthContext>
     {
-        public Configuration()
+        public Configuration_AuthContext()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(Social_Network.Models.Social_NetworkContext context)
+        protected override void Seed(Social_Network.AuthContext context)
         {
             //  This method will be called after migrating to the latest version.
 
