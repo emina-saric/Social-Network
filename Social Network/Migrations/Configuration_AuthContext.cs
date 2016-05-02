@@ -14,6 +14,17 @@ namespace Social_Network.AuthContextNamespace
 
         protected override void Seed(Social_Network.AuthContext context)
         {
+            context.Clients.AddOrUpdate(
+                new Entities.Client {
+                    Active = true,
+                    AllowedOrigin = "http://localhost:51622",
+                    ApplicationType = 0,
+                    Id = "ngAuthApp",
+                    Name = "AngularJS Front-End Application",
+                    RefreshTokenLifeTime = 7200,
+                    Secret = Helper.GetHash("secret")
+                    }
+                );
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
