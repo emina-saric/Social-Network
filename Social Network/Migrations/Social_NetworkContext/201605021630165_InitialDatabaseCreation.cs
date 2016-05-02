@@ -73,21 +73,6 @@ namespace Social_Network.Migrations.Social_NetworkContext
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.Osobas",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        ime = c.String(nullable: false, maxLength: 100),
-                        prezime = c.String(nullable: false, maxLength: 100),
-                        datumRodjenja = c.DateTime(nullable: false),
-                        drzava = c.String(),
-                        grad = c.String(),
-                        spol = c.String(),
-                        telefon = c.String(),
-                    })
-                .PrimaryKey(t => t.Id);
-            
-            CreateTable(
                 "dbo.Porukas",
                 c => new
                     {
@@ -106,22 +91,6 @@ namespace Social_Network.Migrations.Social_NetworkContext
                         Id = c.Int(nullable: false, identity: true),
                         ProfilId = c.Int(nullable: false),
                         prijateljiOd = c.DateTime(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id);
-            
-            CreateTable(
-                "dbo.Profils",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        OsobaId = c.Int(nullable: false),
-                        username = c.String(nullable: false, maxLength: 100),
-                        password = c.String(nullable: false, maxLength: 100),
-                        email = c.String(nullable: false),
-                        slika = c.String(),
-                        aktivan = c.Boolean(nullable: false),
-                        registrovan = c.DateTime(nullable: false),
-                        administrator = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -188,6 +157,8 @@ namespace Social_Network.Migrations.Social_NetworkContext
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
+                        FirstName = c.String(nullable: false, maxLength: 100),
+                        LastName = c.String(nullable: false, maxLength: 100),
                         Email = c.String(maxLength: 256),
                         EmailConfirmed = c.Boolean(nullable: false),
                         PasswordHash = c.String(),
@@ -199,11 +170,6 @@ namespace Social_Network.Migrations.Social_NetworkContext
                         LockoutEnabled = c.Boolean(nullable: false),
                         AccessFailedCount = c.Int(nullable: false),
                         UserName = c.String(nullable: false, maxLength: 256),
-                        FirstName = c.String(maxLength: 100),
-                        LastName = c.String(maxLength: 100),
-                        Level = c.Byte(),
-                        JoinDate = c.DateTime(),
-                        Discriminator = c.String(nullable: false, maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id)
                 .Index(t => t.UserName, unique: true, name: "UserNameIndex");
@@ -255,10 +221,8 @@ namespace Social_Network.Migrations.Social_NetworkContext
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.RefreshTokens");
             DropTable("dbo.Razgovors");
-            DropTable("dbo.Profils");
             DropTable("dbo.Prijateljs");
             DropTable("dbo.Porukas");
-            DropTable("dbo.Osobas");
             DropTable("dbo.Objavas");
             DropTable("dbo.Notifikacijas");
             DropTable("dbo.Komentars");

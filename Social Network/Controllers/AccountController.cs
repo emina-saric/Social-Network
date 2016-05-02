@@ -1,4 +1,5 @@
-﻿using Social_Network.Models;
+﻿
+using Social_Network.Models;
 using Social_Network.Results;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -138,7 +139,7 @@ namespace Social_Network.Controllers
 
             user = new IdentityUser() { UserName = model.UserName };
 
-            IdentityResult result = await _repo.CreateAsync(user);
+            IdentityResult result = await _repo.CreateAsync(user as SNUser);
             if (!result.Succeeded)
             {
                 return GetErrorResult(result);

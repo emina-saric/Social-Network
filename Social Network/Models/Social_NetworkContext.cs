@@ -9,7 +9,7 @@ using System.Web;
 
 namespace Social_Network.Models
 {
-    public class Social_NetworkContext: IdentityDbContext<IdentityUser>
+    public class Social_NetworkContext: IdentityDbContext<SNUser>
     {
         // You can add custom code to this file. Changes will not be overwritten.
         // 
@@ -37,10 +37,8 @@ namespace Social_Network.Models
         public System.Data.Entity.DbSet<Social_Network.Models.Komentar> Komentars { get; set; }
         public System.Data.Entity.DbSet<Social_Network.Models.Notifikacija> Notifikacijas { get; set; }
         public System.Data.Entity.DbSet<Social_Network.Models.Objava> Objavas { get; set; }
-        public System.Data.Entity.DbSet<Social_Network.Models.Osoba> Osobas { get; set; }
         public System.Data.Entity.DbSet<Social_Network.Models.Poruka> Porukas { get; set; }
         public System.Data.Entity.DbSet<Social_Network.Models.Prijatelj> Prijateljs { get; set; }
-        public System.Data.Entity.DbSet<Social_Network.Models.Profil> Profils { get; set; }
         public System.Data.Entity.DbSet<Social_Network.Models.Razgovor> Razgovors { get; set; }
         public System.Data.Entity.DbSet<Social_Network.Models.Slika> Slikas { get; set; }
     }

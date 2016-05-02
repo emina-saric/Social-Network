@@ -246,10 +246,8 @@
     <Compile Include="Controllers\KomentariController.cs" />
     <Compile Include="Controllers\NotifikacijeController.cs" />
     <Compile Include="Controllers\ObjaveController.cs" />
-    <Compile Include="Controllers\OsobeController.cs" />
     <Compile Include="Controllers\PorukeController.cs" />
     <Compile Include="Controllers\PrijateljiController.cs" />
-    <Compile Include="Controllers\ProfiliController.cs" />
     <Compile Include="Controllers\RazgovoriController.cs" />
     <Compile Include="Controllers\RefreshTokensController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
@@ -268,9 +266,9 @@
     <Compile Include="Infractructure\ClaimsAuthorizationAttribute.cs" />
     <Compile Include="Infractructure\ExtendedClaimsProvider.cs" />
     <Compile Include="Infractructure\RolesFromClaims.cs" />
-    <Compile Include="Migrations\Social_NetworkContext\201605021611401_InitialDatabaseCreation.cs" />
-    <Compile Include="Migrations\Social_NetworkContext\201605021611401_InitialDatabaseCreation.Designer.cs">
-      <DependentUpon>201605021611401_InitialDatabaseCreation.cs</DependentUpon>
+    <Compile Include="Migrations\Social_NetworkContext\201605021630165_InitialDatabaseCreation.cs" />
+    <Compile Include="Migrations\Social_NetworkContext\201605021630165_InitialDatabaseCreation.Designer.cs">
+      <DependentUpon>201605021630165_InitialDatabaseCreation.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Social_NetworkContext\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -283,13 +281,12 @@
     <Compile Include="Models\ModelFactory.cs" />
     <Compile Include="Models\Notifikacija.cs" />
     <Compile Include="Models\Objava.cs" />
-    <Compile Include="Models\Osoba.cs" />
     <Compile Include="Models\Poruka.cs" />
     <Compile Include="Models\Prijatelj.cs" />
-    <Compile Include="Models\Profil.cs" />
     <Compile Include="Models\Razgovor.cs" />
     <Compile Include="Models\RoleBindingModels.cs" />
     <Compile Include="Models\Slika.cs" />
+    <Compile Include="Models\SNUser.cs" />
     <Compile Include="Models\Social_NetworkContext.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -333,8 +330,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\Social_NetworkContext\201605021611401_InitialDatabaseCreation.resx">
-      <DependentUpon>201605021611401_InitialDatabaseCreation.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\Social_NetworkContext\201605021630165_InitialDatabaseCreation.resx">
+      <DependentUpon>201605021630165_InitialDatabaseCreation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
