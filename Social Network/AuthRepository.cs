@@ -31,7 +31,8 @@ namespace Social_Network
             {
                 UserName = userModel.UserName,
                 FirstName = userModel.FirstName,
-                LastName = userModel.LastName
+                LastName = userModel.LastName,
+                Email = userModel.EMail
 
             };
 
