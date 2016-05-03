@@ -10,7 +10,8 @@ namespace Social_Network.Models
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public int ProfilId { get; set; }
+        public int Osoba1 { get; set; }
+        public int Osoba2 { get; set; }
         public DateTime prijateljiOd { get; set; }
     }
 }

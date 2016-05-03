@@ -123,6 +123,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\controllers\profileController.js" />
+    <Content Include="app\views\friends.html" />
     <Content Include="app\views\profile.html" />
     <Content Include="Content\Template\css\animate.min.css" />
     <Content Include="Content\Template\css\bootstrap.min.css" />
