@@ -23,13 +23,20 @@ namespace Social_Network.Controllers
     {
         private AuthRepository _repo = new AuthRepository();
 
+        private Social_NetworkContext _ctx;
+
+        private ApplicationUserManager _userManager;
+
         private IAuthenticationManager Authentication
         {
             get { return Request.GetOwinContext().Authentication; }
         }
 
+
         public AccountController()
         {
+            _ctx = new Social_NetworkContext();
+            _userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(_ctx));
 
         }
 
@@ -45,14 +52,14 @@ namespace Social_Network.Controllers
             }
             var user = new ApplicationUser()
             {
-                UserName = userModel.Username,
+                UserName = userModel.UserName,
                 Email = userModel.Email,
                 FirstName = userModel.FirstName,
                 LastName = userModel.LastName
             };
 
 
-            IdentityResult result = await this.AppUserManager.CreateAsync(user, userModel.Password);
+            IdentityResult result = await _userManager.CreateAsync(user, userModel.Password);
             //IdentityResult result = await _repo.RegisterUser(userModel);
 
             //IHttpActionResult errorResult = GetErrorResult(result);

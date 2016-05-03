@@ -10,7 +10,7 @@ namespace Social_Network.Infrastructure
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("AngularJSAuth", throwIfV1Schema: false)
+            : base("Social_NetworkContext", throwIfV1Schema: false)
         {
             Configuration.ProxyCreationEnabled = false;
             Configuration.LazyLoadingEnabled = false;

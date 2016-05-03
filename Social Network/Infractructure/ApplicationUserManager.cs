@@ -38,8 +38,8 @@ namespace Social_Network.Infrastructure
                 RequireUppercase = false,
             };
             
-            appUserManager.EmailService = new Services.EmailService();
-
+           //appUserManager.EmailService = new Services.EmailService();
+           /*
             var dataProtectionProvider = options.DataProtectionProvider;
             if (dataProtectionProvider != null)
             {
@@ -49,7 +49,7 @@ namespace Social_Network.Infrastructure
                     TokenLifespan = TimeSpan.FromHours(6)
                 };
             }
-           
+           */
             return appUserManager;
         }
     }

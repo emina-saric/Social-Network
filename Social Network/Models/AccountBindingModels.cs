@@ -15,7 +15,7 @@ namespace Social_Network.Models
 
         [Required]
         [Display(Name = "Username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [Required]
         [Display(Name = "First Name")]
