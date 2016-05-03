@@ -31,8 +31,8 @@ namespace Social_Network.Models
                 FullName = string.Format("{0} {1}", appUser.FirstName, appUser.LastName),
                 Email = appUser.Email,
                 EmailConfirmed = appUser.EmailConfirmed,
-                Level = appUser.Level,
-                JoinDate = appUser.JoinDate,
+               // Level = appUser.Level,
+                //JoinDate = appUser.JoinDate,
                 Roles = _AppUserManager.GetRolesAsync(appUser.Id).Result,
                 Claims = _AppUserManager.GetClaimsAsync(appUser.Id).Result
             };
