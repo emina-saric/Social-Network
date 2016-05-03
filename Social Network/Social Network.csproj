@@ -265,9 +265,9 @@
     <Compile Include="Infractructure\ClaimsAuthorizationAttribute.cs" />
     <Compile Include="Infractructure\ExtendedClaimsProvider.cs" />
     <Compile Include="Infractructure\RolesFromClaims.cs" />
-    <Compile Include="Migrations\Social_NetworkContext\201605031835272_InitialDatabaseCreation.cs" />
-    <Compile Include="Migrations\Social_NetworkContext\201605031835272_InitialDatabaseCreation.Designer.cs">
-      <DependentUpon>201605031835272_InitialDatabaseCreation.cs</DependentUpon>
+    <Compile Include="Migrations\Social_NetworkContext\201605031855262_InitialDatabaseCreation.cs" />
+    <Compile Include="Migrations\Social_NetworkContext\201605031855262_InitialDatabaseCreation.Designer.cs">
+      <DependentUpon>201605031855262_InitialDatabaseCreation.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Social_NetworkContext\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -330,8 +330,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\Social_NetworkContext\201605031835272_InitialDatabaseCreation.resx">
-      <DependentUpon>201605031835272_InitialDatabaseCreation.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\Social_NetworkContext\201605031855262_InitialDatabaseCreation.resx">
+      <DependentUpon>201605031855262_InitialDatabaseCreation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

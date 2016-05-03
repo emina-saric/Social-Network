@@ -27,6 +27,18 @@ namespace Social_Network.Migrations.Social_NetworkContext
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+            context.Clients.AddOrUpdate(
+            new Entities.Client
+            {
+                Active = true,
+                AllowedOrigin = "http://localhost:51622",
+                ApplicationType = 0,
+                Id = "ngAuthApp",
+                Name = "AngularJS Front-End Application",
+                RefreshTokenLifeTime = 7200,
+                Secret = Helper.GetHash("secret")
+            }
+);
         }
     }
 }

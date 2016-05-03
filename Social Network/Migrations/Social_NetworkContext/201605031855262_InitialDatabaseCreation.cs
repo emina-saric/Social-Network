@@ -89,7 +89,8 @@ namespace Social_Network.Migrations.Social_NetworkContext
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        ProfilId = c.Int(nullable: false),
+                        Osoba1 = c.Int(nullable: false),
+                        Osoba2 = c.Int(nullable: false),
                         prijateljiOd = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
