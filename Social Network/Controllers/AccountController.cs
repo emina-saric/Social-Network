@@ -59,8 +59,9 @@ namespace Social_Network.Controllers
         [OverrideAuthentication]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalCookie)]
         [AllowAnonymous]
-        [Route("ExternalLogin", Name = "ExternalLogin")]
-        public async Task<IHttpActionResult> GetExternalLogin(string provider, string error = null)
+        [HttpGet]
+      //  [Route("ExternalLogin", Name = "ExternalLogin")]
+        public async Task<IHttpActionResult> ExternalLogin(string provider, string error = null)
         {
             string redirectUri = string.Empty;
 
