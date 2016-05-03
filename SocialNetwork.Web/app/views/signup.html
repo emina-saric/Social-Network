@@ -6,13 +6,13 @@
             <input type="text" class="form-control" placeholder="Username" data-ng-model="registration.userName" required autofocus>
         </div>        
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="FirstName" data-ng-model="registration.firstName" required autofocus>
+            <input type="text" class="form-control" placeholder="First Name" data-ng-model="registration.firstName" required autofocus>
         </div>
         <div class="form-group">
             <input type="text" class="form-control" placeholder="E-Mail" data-ng-model="registration.email" required>
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="LastName" data-ng-model="registration.lastName" required autofocus>
+            <input type="text" class="form-control" placeholder="Last Name" data-ng-model="registration.lastName" required autofocus>
         </div>
         <div class="form-group">
             <input type="password" class="form-control" placeholder="Password" data-ng-model="registration.password" required>
@@ -20,8 +20,14 @@
         <div class="form-group">
             <input type="password" class="form-control" placeholder="Confirm Password" data-ng-model="registration.confirmPassword" required>
         </div>
-        <div class="form-group">
-            <button class="btn btn-primary" type="submit" data-ng-click="signUp()">Submit</button>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <button class="btn btn-primary btn-block" type="submit" data-ng-click="signUp()">Submit</button>
+                </div>
+            </div>
+            <div class="col-md-4"></div>
         </div>
         <div data-ng-hide="message == ''" data-ng-class="(savedSuccessfully) ? 'alert alert-success' : 'alert alert-danger'">
             {{message}}
