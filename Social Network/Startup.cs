@@ -62,8 +62,8 @@ namespace Social_Network
             //Configure Google External Login
             googleAuthOptions = new GoogleOAuth2AuthenticationOptions()
             {
-                ClientId = "xxxxxx",
-                ClientSecret = "xxxxxx",
+                ClientId = "406708724429-ihbts1l7k1r0oovev5d82jcn46gs2ko9.apps.googleusercontent.com",
+                ClientSecret = "7MGpwN_Mn5DecehFqBxhOep-",
                 Provider = new GoogleAuthProvider()
             };
             app.UseGoogleAuthentication(googleAuthOptions);
