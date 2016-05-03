@@ -1,4 +1,4 @@
-﻿using AspNetIdentity.WebApi.Infrastructure;
+﻿    using AspNetIdentity.WebApi.Infrastructure;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
 using System;
@@ -45,7 +45,7 @@ namespace Social_Site.Providers
             }
 
             ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(userManager, "JWT");
-            oAuthIdentity.AddClaims(ExtendedClaimsProvider.GetClaims(user));
+           // oAuthIdentity.AddClaims(ExtendedClaimsProvider.GetClaims(user));
             oAuthIdentity.AddClaims(RolesFromClaims.CreateRolesBasedOnClaims(oAuthIdentity));
            
             var ticket = new AuthenticationTicket(oAuthIdentity, null);

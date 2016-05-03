@@ -17,23 +17,20 @@ namespace Social_Network
     {
         private Social_NetworkContext _ctx;
 
-        private UserManager<SNUser> _userManager;
+        private UserManager<IdentityUser> _userManager;
 
         public AuthRepository()
         {
             _ctx = new Social_NetworkContext();
-            _userManager = new UserManager<SNUser>(new UserStore<SNUser>(_ctx));
+            _userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>(_ctx));
         }
 
         public async Task<IdentityResult> RegisterUser(UserModel userModel)
         {
-            var user = new SNUser()
+            IdentityUser user = new IdentityUser
             {
-                UserName = userModel.UserName,
-                FirstName = userModel.FirstName,
-                LastName = userModel.LastName,
-                Email = userModel.EMail
-
+                UserName = userModel.Username,
+                Email = userModel.Email
             };
 
             var result = await _userManager.CreateAsync(user, userModel.Password);
@@ -41,9 +38,9 @@ namespace Social_Network
             return result;
         }
 
-        public async Task<SNUser> FindUser(string userName, string password)
+        public async Task<IdentityUser> FindUser(string userName, string password)
         {
-            SNUser user = await _userManager.FindAsync(userName, password);
+            IdentityUser user = await _userManager.FindAsync(userName, password);
 
             return user;
         }
@@ -58,13 +55,13 @@ namespace Social_Network
         public async Task<bool> AddRefreshToken(RefreshToken token)
         {
 
-           var existingToken = _ctx.RefreshTokens.Where(r => r.Subject == token.Subject && r.ClientId == token.ClientId).SingleOrDefault();
+            var existingToken = _ctx.RefreshTokens.Where(r => r.Subject == token.Subject && r.ClientId == token.ClientId).SingleOrDefault();
 
-           if (existingToken != null)
-           {
-             var result = await RemoveRefreshToken(existingToken);
-           }
-          
+            if (existingToken != null)
+            {
+                var result = await RemoveRefreshToken(existingToken);
+            }
+
             _ctx.RefreshTokens.Add(token);
 
             return await _ctx.SaveChangesAsync() > 0;
@@ -72,20 +69,21 @@ namespace Social_Network
 
         public async Task<bool> RemoveRefreshToken(string refreshTokenId)
         {
-           var refreshToken = await _ctx.RefreshTokens.FindAsync(refreshTokenId);
+            var refreshToken = await _ctx.RefreshTokens.FindAsync(refreshTokenId);
 
-           if (refreshToken != null) {
-               _ctx.RefreshTokens.Remove(refreshToken);
-               return await _ctx.SaveChangesAsync() > 0;
-           }
+            if (refreshToken != null)
+            {
+                _ctx.RefreshTokens.Remove(refreshToken);
+                return await _ctx.SaveChangesAsync() > 0;
+            }
 
-           return false;
+            return false;
         }
 
         public async Task<bool> RemoveRefreshToken(RefreshToken refreshToken)
         {
             _ctx.RefreshTokens.Remove(refreshToken);
-             return await _ctx.SaveChangesAsync() > 0;
+            return await _ctx.SaveChangesAsync() > 0;
         }
 
         public async Task<RefreshToken> FindRefreshToken(string refreshTokenId)
@@ -97,17 +95,17 @@ namespace Social_Network
 
         public List<RefreshToken> GetAllRefreshTokens()
         {
-             return  _ctx.RefreshTokens.ToList();
+            return _ctx.RefreshTokens.ToList();
         }
 
-        public async Task<SNUser> FindAsync(UserLoginInfo loginInfo)
+        public async Task<IdentityUser> FindAsync(UserLoginInfo loginInfo)
         {
-            SNUser user = await _userManager.FindAsync(loginInfo);
+            IdentityUser user = await _userManager.FindAsync(loginInfo);
 
             return user;
         }
 
-        public async Task<IdentityResult> CreateAsync(SNUser user)
+        public async Task<IdentityResult> CreateAsync(IdentityUser user)
         {
             var result = await _userManager.CreateAsync(user);
 

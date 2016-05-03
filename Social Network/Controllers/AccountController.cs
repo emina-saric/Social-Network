@@ -14,11 +14,12 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
+using Social_Network.Infrastructure;
 
 namespace Social_Network.Controllers
 {
     //[RoutePrefix("api/Account")]
-    public class AccountController : ApiController
+    public class AccountController : BaseApiController
     {
         private AuthRepository _repo = new AuthRepository();
 
@@ -36,22 +37,37 @@ namespace Social_Network.Controllers
         [AllowAnonymous]
         [HttpPost]
         //[Route("Register")]
-        public async Task<IHttpActionResult> Register(UserModel userModel)
+        public async Task<IHttpActionResult> Register(CreateUserBindingModel userModel)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-
-            IdentityResult result = await _repo.RegisterUser(userModel);
-
-            IHttpActionResult errorResult = GetErrorResult(result);
-
-            if (errorResult != null)
+            var user = new ApplicationUser()
             {
-                return errorResult;
+                UserName = userModel.Username,
+                Email = userModel.Email,
+                FirstName = userModel.FirstName,
+                LastName = userModel.LastName
+            };
+
+
+            IdentityResult result = await this.AppUserManager.CreateAsync(user, userModel.Password);
+            //IdentityResult result = await _repo.RegisterUser(userModel);
+
+            //IHttpActionResult errorResult = GetErrorResult(result);
+
+            // if (errorResult != null)
+            // {
+            //   return errorResult;
+            // }
+            if (!result.Succeeded)
+            {
+                return GetErrorResult(result);
             }
 
+
+            //string callbackUrl = await SendEmailConfirmationTokenAsync(user.Id, "Account confirmation");
             return Ok();
         }
 
@@ -206,9 +222,28 @@ namespace Social_Network.Controllers
             base.Dispose(disposing);
         }
 
+        private async Task<string> SendEmailConfirmationTokenAsync(string userID, string subject)
+        {
+            // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
+            // Send an email with this link:
+            var applicationLink = System.Configuration.ConfigurationManager.AppSettings["as:applicationLink"];
+            applicationLink += "#/confirmEmail/";
+            string code = await AppUserManager.GenerateEmailConfirmationTokenAsync(userID);
+
+            code = HttpServerUtility.UrlTokenEncode(System.Text.Encoding.ASCII.GetBytes(code));
+            userID = HttpContext.Current.Server.UrlEncode(userID);
+
+            var url = applicationLink + userID + "/" + code;
+            Uri locationHeader = new Uri(Url.Link("GetUserById", new { id = userID }));
+            await AppUserManager.SendEmailAsync(userID, subject, "Please confirm your account by <a href=\"" + url + "\">clicking here</a>");
+
+
+            return url.ToString();
+        }
+
         #region Helpers
 
-        private IHttpActionResult GetErrorResult(IdentityResult result)
+        private new IHttpActionResult GetErrorResult(IdentityResult result)
         {
             if (result == null)
             {
