@@ -144,10 +144,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\controllers\confirmEmailController.js" />
+    <Content Include="app\controllers\forgotPasswordController.js" />
     <Content Include="app\controllers\profileController.js" />
+    <Content Include="app\controllers\resetPasswordController.js" />
     <Content Include="app\views\confirmEmail.html" />
+    <Content Include="app\views\forgotPassword.html" />
     <Content Include="app\views\friends.html" />
     <Content Include="app\views\profile.html" />
+    <Content Include="app\views\resetPassword.html" />
     <Content Include="Content\Template\css\animate.min.css" />
     <Content Include="Content\Template\css\bootstrap.min.css" />
     <Content Include="Content\Template\css\font-awesome.css" />

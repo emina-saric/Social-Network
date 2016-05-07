@@ -4,7 +4,7 @@ app.controller('confirmEmailController', ['$scope', '$location', '$timeout', 'au
     authService.confirmEmail(String($routeParams.userId),String($routeParams.code)).then(function (response) {
 
         $scope.savedSuccessfully = true;
-        $scope.message = "Email has been confirmed successfully, you will be redicted to login page in 5 seconds.";
+        $scope.message = "Email has been confirmed successfully, you will be redicted to login page in 3 seconds.";
         startTimer();
 
     },
@@ -23,6 +23,6 @@ app.controller('confirmEmailController', ['$scope', '$location', '$timeout', 'au
         var timer = $timeout(function () {
             $timeout.cancel(timer);
             $location.path('/login');
-        }, 5000);
+        }, 3000);
     }
 }]);

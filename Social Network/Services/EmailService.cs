@@ -86,7 +86,7 @@ namespace Social_Network.Services
             // var credentials = new NetworkCredential(ConfigurationManager.AppSettings["emailService:Account"],
             //                                        ConfigurationManager.AppSettings["emailService:Password"]);
 
-            var credentials = new NetworkCredential("","");
+            var credentials = new NetworkCredential("Wolverine2309", "piedayaireim2309");
             // Create a Web transport for sending email.
             var transportWeb = new Web(credentials);
 

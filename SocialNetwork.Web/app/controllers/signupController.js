@@ -19,7 +19,7 @@ app.controller('signupController', ['$scope', '$location', '$timeout', 'authServ
             authService.saveRegistration($scope.registration).then(function (response) {
 
                 $scope.savedSuccessfully = true;
-                $scope.message = "Open your mail and confirm registration.";
+                $scope.message = "Email with the confirmation link has been sent to your email address. You must conirm your email before signing in!";
                 startTimer();
 
             },
@@ -41,7 +41,7 @@ app.controller('signupController', ['$scope', '$location', '$timeout', 'authServ
         var timer = $timeout(function () {
             $timeout.cancel(timer);
             $location.path('/login');
-        }, 2000);
+        }, 5000);
     }
 
 }]);

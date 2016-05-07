@@ -43,7 +43,7 @@ namespace Social_Network.Controllers
         public async Task<IHttpActionResult> GetUser(string Id)
         {
             var user = await this.AppUserManager.FindByIdAsync(Id);
-
+            
             if (user != null)
             {
                 return Ok(this.TheModelFactory.Create(user));
@@ -259,7 +259,7 @@ namespace Social_Network.Controllers
             // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
             // Send an email with this link:
             var applicationLink = System.Configuration.ConfigurationManager.AppSettings["as:applicationLink"];
-            applicationLink += "#/resetPassword/";
+            applicationLink += "http://localhost:51622/#/resetPassword/";
             string code = await AppUserManager.GeneratePasswordResetTokenAsync(userID);
             //   var callbackUrl = new Uri(Url.Link(applicationLink, new { userId = userID, code = code }));
             code = HttpServerUtility.UrlTokenEncode(System.Text.Encoding.ASCII.GetBytes(code));
@@ -301,8 +301,55 @@ namespace Social_Network.Controllers
                 return GetErrorResult(result);
             }
         }
+        [AllowAnonymous]
+        //[Route("ResetPassword")]
+        public async Task<IHttpActionResult> ResetPassword(ResetPasswordViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var user = await AppUserManager.FindByEmailAsync(model.Email);
+            if (user == null)
+            {
+                // Don't reveal that the user does not exist
+                return BadRequest(ModelState);
+            }
+            var codeB = HttpServerUtility.UrlTokenDecode(model.Code);
+            string code = null;
+            if (codeB != null)
+                code = System.Text.Encoding.Default.GetString(codeB);
 
-       // [Route("ChangePassword")]
+            var result = await AppUserManager.ResetPasswordAsync(user.Id, code, model.Password);
+            if (result.Succeeded)
+            {
+                return Ok("Success");
+            }
+
+            return BadRequest("Error. Sorry for inconvenience.");
+        }
+
+        [AllowAnonymous]
+           //[Route("ForgotPassword")]
+        public async Task<IHttpActionResult> ForgotPassword(ForgotPasswordViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await AppUserManager.FindByEmailAsync(model.Email);
+                if (user == null || !(await AppUserManager.IsEmailConfirmedAsync(user.Id)))
+                {
+                    // Don't reveal that the user does not exist or is not confirmed
+                    return BadRequest(ModelState);
+                }
+
+                string callbackUrl = await SendPasswordResetTokenAsync(user.Id, "Password reset");
+                return Ok(callbackUrl);
+            }
+
+            return BadRequest("Error. Sorry for inconvenience.");
+        }
+
+        // [Route("ChangePassword")]
         public async Task<IHttpActionResult> ChangePassword(ChangePasswordBindingModel model)
         {
             if (!ModelState.IsValid)

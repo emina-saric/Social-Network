@@ -34,7 +34,23 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
             return response;
         });
     };
+    var _forgotPassword = function (model) {
 
+        console.log(model);
+        return $http.post(serviceBase + 'api/account/ForgotPassword',model).then(function (response) {
+
+            return response;
+        });
+    };
+    var _resetPassword = function (resetPassword) {
+
+        console.log(model);
+
+        return $http.post(serviceBase + 'api/account/ResetPassword', model).then(function (response) {
+
+            return response;
+        });
+    };
     var _login = function (loginData) {
 
         var data = "grant_type=password&username=" + loginData.userName + "&password=" + loginData.password;
@@ -166,6 +182,7 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
 
     authServiceFactory.saveRegistration = _saveRegistration;
     authServiceFactory.confirmEmail = _confirmEmail;
+    authServiceFactory.forgotPassword = _forgotPassword;
 
     authServiceFactory.login = _login;
     authServiceFactory.logOut = _logOut;

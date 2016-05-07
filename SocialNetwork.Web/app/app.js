@@ -42,6 +42,14 @@ app.config(function ($routeProvider) {
         controller: "confirmEmailController",
         templateUrl: "/app/views/confirmEmail.html"
     });
+    $routeProvider.when("/forgotPassword", {
+        controller: "forgotPasswordController",
+        templateUrl: "/app/views/forgotPassword.html"
+    });
+    $routeProvider.when("/resetPassword/:userId/:code", {
+        controller: "resetPasswordController",
+        templateUrl: "/app/views/resetPassword.html"
+    });
 
     $routeProvider.otherwise({ redirectTo: "/home" });
 
