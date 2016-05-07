@@ -39,7 +39,19 @@ namespace Social_Network.Controllers
             _userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(_ctx));
 
         }
+        [Route("user/{id:guid}", Name = "GetUserById")]
+        public async Task<IHttpActionResult> GetUser(string Id)
+        {
+            var user = await this.AppUserManager.FindByIdAsync(Id);
 
+            if (user != null)
+            {
+                return Ok(this.TheModelFactory.Create(user));
+            }
+
+            return NotFound();
+
+        }
         // POST api/Account/Register
         [AllowAnonymous]
         [HttpPost]

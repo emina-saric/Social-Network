@@ -1,9 +1,9 @@
-namespace Social_Network.Migrations.Social_NetworkContext
+namespace Social_Network.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialDatabaseCreation : DbMigration
+    public partial class init : DbMigration
     {
         public override void Up()
         {

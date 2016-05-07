@@ -265,9 +265,9 @@
     <Compile Include="Infractructure\ClaimsAuthorizationAttribute.cs" />
     <Compile Include="Infractructure\ExtendedClaimsProvider.cs" />
     <Compile Include="Infractructure\RolesFromClaims.cs" />
-    <Compile Include="Migrations\201605071338209_initial.cs" />
-    <Compile Include="Migrations\201605071338209_initial.Designer.cs">
-      <DependentUpon>201605071338209_initial.cs</DependentUpon>
+    <Compile Include="Migrations\201605071537435_init.cs" />
+    <Compile Include="Migrations\201605071537435_init.Designer.cs">
+      <DependentUpon>201605071537435_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -332,8 +332,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201605071338209_initial.resx">
-      <DependentUpon>201605071338209_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201605071537435_init.resx">
+      <DependentUpon>201605071537435_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
