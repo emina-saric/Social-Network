@@ -38,6 +38,10 @@ app.config(function ($routeProvider) {
         controller: "profileController",
         templateUrl: "/app/views/profile.html"
     });
+    $routeProvider.when("/confirmEmail/:userId/:code", {
+        controller: "confirmEmailController",
+        templateUrl: "/app/views/confirmEmail.html"
+    });
 
     $routeProvider.otherwise({ redirectTo: "/home" });
 

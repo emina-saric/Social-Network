@@ -239,7 +239,7 @@ namespace Social_Network.Controllers
             // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
             // Send an email with this link:
             var applicationLink = System.Configuration.ConfigurationManager.AppSettings["as:applicationLink"];
-            applicationLink += "#/confirmEmail/";
+            applicationLink += "http://localhost:51622/#/confirmEmail/";
             string code = await AppUserManager.GenerateEmailConfirmationTokenAsync(userID);
 
             code = HttpServerUtility.UrlTokenEncode(System.Text.Encoding.ASCII.GetBytes(code));
