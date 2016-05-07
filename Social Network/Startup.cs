@@ -42,6 +42,9 @@ namespace Social_Network
         public void ConfigureOAuth(IAppBuilder app)
         {
             //use a cookie to temporarily store information about a user logging in with a third party login provider
+            app.CreatePerOwinContext(ApplicationDbContext.Create);
+            app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
+            app.CreatePerOwinContext<ApplicationRoleManager>(ApplicationRoleManager.Create);
             app.UseExternalSignInCookie(Microsoft.AspNet.Identity.DefaultAuthenticationTypes.ExternalCookie);
             OAuthBearerOptions = new OAuthBearerAuthenticationOptions();
 
