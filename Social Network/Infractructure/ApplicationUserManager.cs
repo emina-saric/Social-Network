@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
+using Social_Network.Validators;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,14 +23,14 @@ namespace Social_Network.Infrastructure
             var appUserManager = new ApplicationUserManager(new UserStore<ApplicationUser>(appDbContext));
 
             // Configure validation logic for usernames
-            appUserManager.UserValidator = new UserValidator<ApplicationUser>(appUserManager)
+            appUserManager.UserValidator = new MyCustomUserValidator(appUserManager)
             {
                 AllowOnlyAlphanumericUserNames = true,
                 RequireUniqueEmail = true
             };
 
             // Configure validation logic for passwords
-            appUserManager.PasswordValidator = new PasswordValidator
+            appUserManager.PasswordValidator = new MyCustomPasswordValidator
             {
                 RequiredLength = 6,
                 RequireNonLetterOrDigit = false,
@@ -37,9 +38,9 @@ namespace Social_Network.Infrastructure
                 RequireLowercase = true,
                 RequireUppercase = false,
             };
-            
-           //appUserManager.EmailService = new Services.EmailService();
-           /*
+
+            appUserManager.EmailService = new Services.EmailService();
+
             var dataProtectionProvider = options.DataProtectionProvider;
             if (dataProtectionProvider != null)
             {
@@ -49,7 +50,7 @@ namespace Social_Network.Infrastructure
                     TokenLifespan = TimeSpan.FromHours(6)
                 };
             }
-           */
+
             return appUserManager;
         }
     }

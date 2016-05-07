@@ -26,6 +26,15 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
 
     };
 
+    var _confirmEmail = function (userId, code) {
+
+
+        return $http.get(serviceBase + 'api/account/ConfirmEmail', { params: { "userId": userId, "code": code } }).then(function (response) {
+
+            return response;
+        });
+    };
+
     var _login = function (loginData) {
 
         var data = "grant_type=password&username=" + loginData.userName + "&password=" + loginData.password;
@@ -93,7 +102,7 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
 
                 localStorageService.remove('authorizationData');
 
-                $http.post("http://localhost:57409/" + 'token', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }).success(function (response) {
+                $http.post("http://localhost:57409/"+ 'token', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }).success(function (response) {
 
                     localStorageService.set('authorizationData', { token: response.access_token, userName: response.userName, refreshToken: response.refresh_token, useRefreshTokens: true });
 
@@ -156,6 +165,8 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
     };
 
     authServiceFactory.saveRegistration = _saveRegistration;
+    authServiceFactory.confirmEmail = _confirmEmail;
+
     authServiceFactory.login = _login;
     authServiceFactory.logOut = _logOut;
     authServiceFactory.fillAuthData = _fillAuthData;

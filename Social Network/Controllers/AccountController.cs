@@ -18,7 +18,7 @@ using Social_Network.Infrastructure;
 
 namespace Social_Network.Controllers
 {
-    //[RoutePrefix("api/Account")]
+    [RoutePrefix("api/Account")]
     public class AccountController : BaseApiController
     {
         private AuthRepository _repo = new AuthRepository();
@@ -43,7 +43,7 @@ namespace Social_Network.Controllers
         // POST api/Account/Register
         [AllowAnonymous]
         [HttpPost]
-        //[Route("Register")]
+        [Route("Register")]
         public async Task<IHttpActionResult> Register(CreateUserBindingModel userModel)
         {
             if (!ModelState.IsValid)
@@ -59,23 +59,16 @@ namespace Social_Network.Controllers
             };
 
 
-            IdentityResult result = await _userManager.CreateAsync(user, userModel.Password);
-            //IdentityResult result = await _repo.RegisterUser(userModel);
+            //IdentityResult result = await _userManager.CreateAsync(user, userModel.Password);
+            IdentityResult addUserResult = await this.AppUserManager.CreateAsync(user, userModel.Password);
 
-            //IHttpActionResult errorResult = GetErrorResult(result);
-
-            // if (errorResult != null)
-            // {
-            //   return errorResult;
-            // }
-            if (!result.Succeeded)
+            if (!addUserResult.Succeeded)
             {
-                return GetErrorResult(result);
+                return GetErrorResult(addUserResult);
             }
 
-
-            //string callbackUrl = await SendEmailConfirmationTokenAsync(user.Id, "Account confirmation");
-            return Ok();
+            string callbackUrl = await SendEmailConfirmationTokenAsync(user.Id, "Account confirmation");
+            return Ok(callbackUrl);
         }
 
         // GET api/Account/ExternalLogin
@@ -246,6 +239,73 @@ namespace Social_Network.Controllers
 
 
             return url.ToString();
+        }
+
+
+        private async Task<string> SendPasswordResetTokenAsync(string userID, string subject)
+        {
+            // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
+            // Send an email with this link:
+            var applicationLink = System.Configuration.ConfigurationManager.AppSettings["as:applicationLink"];
+            applicationLink += "#/resetPassword/";
+            string code = await AppUserManager.GeneratePasswordResetTokenAsync(userID);
+            //   var callbackUrl = new Uri(Url.Link(applicationLink, new { userId = userID, code = code }));
+            code = HttpServerUtility.UrlTokenEncode(System.Text.Encoding.ASCII.GetBytes(code));
+            userID = HttpContext.Current.Server.UrlEncode(userID);
+
+            var url = applicationLink + userID + "/" + code;
+            // Uri locationHeader = new Uri(Url.Link("GetUserById", new { id = userID }));
+            await AppUserManager.SendEmailAsync(userID, subject, "Reset your password by <a href=\"" + url + "\">clicking here</a>");
+
+
+            return url.ToString();
+        }
+        [AllowAnonymous]
+        [HttpGet]
+       // [Route("ConfirmEmail", Name = "ConfirmEmailRoute")]
+        public async Task<IHttpActionResult> ConfirmEmail(string userId, string code)
+        {
+            if (userId == null || code == null)
+            {
+                ModelState.AddModelError("", "User Id and Code are required");
+                return BadRequest(ModelState);
+            }
+
+            var codeB = HttpServerUtility.UrlTokenDecode(code);
+            if (codeB != null)
+                code = System.Text.Encoding.Default.GetString(codeB);
+            var userIdB = HttpServerUtility.UrlTokenDecode(userId);
+            if (userIdB != null)
+                userId = System.Text.Encoding.Default.GetString(userIdB);
+
+            IdentityResult result = await this.AppUserManager.ConfirmEmailAsync(userId, code);
+
+            if (result.Succeeded)
+            {
+                return Ok();
+            }
+            else
+            {
+                return GetErrorResult(result);
+            }
+        }
+
+       // [Route("ChangePassword")]
+        public async Task<IHttpActionResult> ChangePassword(ChangePasswordBindingModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            IdentityResult result = await this.AppUserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword, model.NewPassword);
+
+            if (!result.Succeeded)
+            {
+                return GetErrorResult(result);
+            }
+
+            return Ok();
         }
 
         #region Helpers

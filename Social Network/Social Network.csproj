@@ -265,11 +265,11 @@
     <Compile Include="Infractructure\ClaimsAuthorizationAttribute.cs" />
     <Compile Include="Infractructure\ExtendedClaimsProvider.cs" />
     <Compile Include="Infractructure\RolesFromClaims.cs" />
-    <Compile Include="Migrations\Social_NetworkContext\201605031855262_InitialDatabaseCreation.cs" />
-    <Compile Include="Migrations\Social_NetworkContext\201605031855262_InitialDatabaseCreation.Designer.cs">
-      <DependentUpon>201605031855262_InitialDatabaseCreation.cs</DependentUpon>
+    <Compile Include="Migrations\201605071338209_initial.cs" />
+    <Compile Include="Migrations\201605071338209_initial.Designer.cs">
+      <DependentUpon>201605071338209_initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\Social_NetworkContext\Configuration.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Album.cs" />
@@ -300,6 +300,8 @@
     <Compile Include="RouteConfig.cs" />
     <Compile Include="Services\EmailService.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Validators\MyCustomPasswordValidator.cs" />
+    <Compile Include="Validators\MyCustomUserValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
@@ -330,8 +332,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\Social_NetworkContext\201605031855262_InitialDatabaseCreation.resx">
-      <DependentUpon>201605031855262_InitialDatabaseCreation.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201605071338209_initial.resx">
+      <DependentUpon>201605071338209_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

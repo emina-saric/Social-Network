@@ -10,7 +10,7 @@ app.controller('associateController', ['$scope', '$location','$timeout','authSer
         externalAccessToken: authService.externalAuthData.externalAccessToken
     };
 
-    $scope.registerExternal = function () {
+    $scope.registerExternal = function () {  
 
         authService.registerExternal($scope.registerData).then(function (response) {
 
