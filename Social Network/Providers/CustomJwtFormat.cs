@@ -27,10 +27,10 @@ namespace Social_Network.Providers
                 throw new ArgumentNullException("data");
             }
 
-            string audienceId = ConfigurationManager.AppSettings["as:AudienceId"];
-
-            string symmetricKeyAsBase64 = ConfigurationManager.AppSettings["as:AudienceSecret"];
-
+            //string audienceId = ConfigurationManager.AppSettings["as:AudienceId"];
+            string audienceId = "414e1927a3884f68abc79f7283837fd1";
+            //string symmetricKeyAsBase64 = ConfigurationManager.AppSettings["as:AudienceSecret"];
+            string symmetricKeyAsBase64 = "qMCdFDQuF23RV1Y-1Gq9L3cF3VmuFwVbam4fMTdAfpo";
             var keyByteArray = TextEncodings.Base64Url.Decode(symmetricKeyAsBase64);
 
             var signingKey = new HmacSigningCredentials(keyByteArray);
