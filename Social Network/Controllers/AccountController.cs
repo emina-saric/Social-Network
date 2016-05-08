@@ -165,9 +165,9 @@ namespace Social_Network.Controllers
                 return BadRequest("External user is already registered");
             }
 
-            user = new IdentityUser() { UserName = model.UserName };
+            user = new ApplicationUser() { UserName = model.UserName };
 
-            IdentityResult result = await _repo.CreateAsync(user as SNUser);
+            IdentityResult result = await _repo.CreateAsync(user as ApplicationUser);
             if (!result.Succeeded)
             {
                 return GetErrorResult(result);

@@ -9,11 +9,13 @@
 
     <!-- core CSS -->
     <link href="/Content/Template/css/bootstrap.min.css" rel="stylesheet">
+    <link href="Content/bootswatch/yeti/bootstrap.min.css" rel="stylesheet" />
     <link href="/Content/Template/css/font-awesome.min.css" rel="stylesheet">
     <link href="/Content/Template/css/animate.min.css" rel="stylesheet">
     <link href="/Content/Template/css/prettyPhoto.css" rel="stylesheet">
     <link href="/Content/Template/css/main.css" rel="stylesheet">
     <link href="/Content/Template/css/responsive.css" rel="stylesheet">
+    <link href="app/css/site.css" rel="stylesheet" />
     <!--[if lt IE 9]>
     <script src="~/Scripts/html5shiv.js"></script>
     <script src="~/Scripts/respond.min.js"></script>
@@ -30,51 +32,17 @@
 </head><!--/head-->
 
 <body class="homepage">
-    <header id="header">
-        <div class="top-bar">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-6 col-xs-4">
-                        <div class="top-number"><p><i class="fa fa-phone-square"></i>  +0123 456 70 90</p></div>
-                    </div>
-                    <div class="col-sm-6 col-xs-8">
-                        <div class="social">
-                            <ul class="social-share">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                                <li><a href="#"><i class="fa fa-skype"></i></a></li>
+        <!--New-->
 
-                            </ul>
-                            <div class="search">
-                                <form role="form">
-                                    <input type="text" class="search-form" autocomplete="off" placeholder="Search">
-                                    <i class="fa fa-search"></i>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div><!--/.container-->
-        </div><!--/.top-bar-->
 
-        <div class="navbar navbar-inverse" role="banner" data-ng-controller="indexController">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="index.html"><img src="/Content/Template/images/service/logo.png" alt="logo"></a>
-                </div>
 
-                <div class="collapse navbar-collapse navbar-right">
-                    <ul class="nav navbar-nav">
-                        <li data-ng-hide="!authentication.isAuth"><a href="#">Welcome {{authentication.userName}}</a></li>
-                        <li data-ng-hide="!authentication.isAuth"><a href="" data-ng-click="logOut()">ODJAVA</a></li>
+        <div id="sidebar" class="navbar navbar-inverse hide-sidebar" role="banner" data-ng-controller="indexController" >
+            <div class="collapse navbar-collapse navbar-left">
+                <ul class="nav navbar-nav ">
+                    <li data-ng-hide="!authentication.isAuth"><a href="#">Welcome {{authentication.userName}}</a></li>
+                    <!--Ovdje Idu Stranice-->
+                    <li data-ng-hide="!authentication.isAuth"><a href="" data-ng-click="logOut()">ODJAVA</a></li>
+                    <!--
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
@@ -84,127 +52,81 @@
                                 <li><a href="shortcodes.html">Shortcodes</a></li>
                             </ul>
                         </li>
+                    -->
+                </ul>
+            </div>
+
+        </div><!--Sidebar-->
 
 
 
-                    </ul>
+    <div id="wrapper" class="hide-sidebar">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <ul class="nav navbar-left" >
+                    <li>
+                        <button id="sidebarToggle" class="btn btn-info">
+                            <i class="fa fa-angle-right"></i>
+                        </button>
+                    </li>
+                </ul>
+                <a href="index.html" class="navbar-brand" id="titleSocialNetwork">Social Network</a>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <div class="search">
+                            <form role="form">
+                                <input type="text" class="search-form" autocomplete="off" placeholder="Search">
+                                <i class="fa fa-search"></i>
+                            </form>
+                        </div>
+                    </li>
+                    <li><!--Do Not Remove--></li>
+                </ul>
+            </div>
+        </nav><!--Top-->
+
+
+
+
+
+
+
+        <div class="main">
+            <div class="container-fluid">
+                <div data-ng-view="">
                 </div>
-            </div><!--/.container-->
-        </div><!--/nav-->
+            </div>
+        </div><!--/#main-->
 
-    </header><!--/header-->
+
+
+
+
+        <footer id="footer" class="midnight-blue">
+            <div class="container-fluid">
+                <div class="navbar navbar-inverse navbar-fixed-bottom">
+                    <h4 class="text-info text-center">&copy; 2015 World Domination Pizza Delivery, Ltd.</h4>
+                </div>
+            </div>
+        </footer><!--/#footer-->
+    </div>
+
+    <!--End-->
+
+
+
+
+
+
+
+
+
+
+
+
     
-    <div class="main">
-        <div class="container">
-            <div data-ng-view="">
-            </div>
-        </div>
-    </div><!--/#main-->
 
 
-
-
-    <section id="conatcat-info">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-8">
-                    <div class="media contact-info wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
-                        <div class="pull-left">
-                            <i class="fa fa-phone"></i>
-                        </div>
-                        <div class="media-body">
-                            <h2>Have a question or need a custom quote?</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation +0123 456 70 80</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div><!--/.container-->
-    </section><!--/#conatcat-info-->
-
-    <section id="bottom">
-        <div class="container wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
-            <div class="row">
-                <div class="col-md-3 col-sm-6">
-                    <div class="widget">
-                        <h3>Company</h3>
-                        <ul>
-                            <li><a href="#">About us</a></li>
-                            <li><a href="#">We are hiring</a></li>
-                            <li><a href="#">Meet the team</a></li>
-                            <li><a href="#">Copyright</a></li>
-                            <li><a href="#">Terms of use</a></li>
-                            <li><a href="#">Privacy policy</a></li>
-                            <li><a href="#">Contact us</a></li>
-                        </ul>
-                    </div>
-                </div><!--/.col-md-3-->
-
-                <div class="col-md-3 col-sm-6">
-                    <div class="widget">
-                        <h3>Support</h3>
-                        <ul>
-                            <li><a href="#">Faq</a></li>
-                            <li><a href="#">Blog</a></li>
-                            <li><a href="#">Forum</a></li>
-                            <li><a href="#">Documentation</a></li>
-                            <li><a href="#">Refund policy</a></li>
-                            <li><a href="#">Ticket system</a></li>
-                            <li><a href="#">Billing system</a></li>
-                        </ul>
-                    </div>
-                </div><!--/.col-md-3-->
-
-                <div class="col-md-3 col-sm-6">
-                    <div class="widget">
-                        <h3>Developers</h3>
-                        <ul>
-                            <li><a href="#">Web Development</a></li>
-                            <li><a href="#">SEO Marketing</a></li>
-                            <li><a href="#">Theme</a></li>
-                            <li><a href="#">Development</a></li>
-                            <li><a href="#">Email Marketing</a></li>
-                            <li><a href="#">Plugin Development</a></li>
-                            <li><a href="#">Article Writing</a></li>
-                        </ul>
-                    </div>
-                </div><!--/.col-md-3-->
-
-                <div class="col-md-3 col-sm-6">
-                    <div class="widget">
-                        <h3>Our Partners</h3>
-                        <ul>
-                            <li><a href="#">Adipisicing Elit</a></li>
-                            <li><a href="#">Eiusmod</a></li>
-                            <li><a href="#">Tempor</a></li>
-                            <li><a href="#">Veniam</a></li>
-                            <li><a href="#">Exercitation</a></li>
-                            <li><a href="#">Ullamco</a></li>
-                            <li><a href="#">Laboris</a></li>
-                        </ul>
-                    </div>
-                </div><!--/.col-md-3-->
-            </div>
-        </div>
-    </section><!--/#bottom-->
-
-    <footer id="footer" class="midnight-blue">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6">
-                    &copy; 2013 <a target="_blank" href="http://shapebootstrap.net/" title="Free Twitter Bootstrap WordPress Themes and HTML templates">ShapeBootstrap</a>. All Rights Reserved.
-                </div>
-                <div class="col-sm-6">
-                    <ul class="pull-right">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Faq</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </footer><!--/#footer-->
 
     <script src="/Scripts/jquery-2.2.3.min.js"></script>
     <script src="/Scripts/bootstrap.min.js"></script>
@@ -214,7 +136,7 @@
     <script src="/Scripts/wow.min.js"></script>
 
     <!-- 3rd party libraries -->
-
+    <script src="app/js/site.js"></script>
 
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.min.js"></script>
@@ -238,7 +160,7 @@
     <script src="app/controllers/confirmEmailController.js"></script>
     <script src="app/controllers/forgotPasswordController.js"></script>
 
-    <a href="app/views/profile.html">app/views/profile.html</a>
+    <!--<a href="app/views/profile.html">app/views/profile.html</a>-->
     <!-- Load custom filters -->
     <!-- Load custom directives -->
 
