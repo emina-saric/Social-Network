@@ -1,5 +1,4 @@
-﻿using Social_Network.Entities;
-using Social_Network.Models;
+﻿using Social_Network.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;

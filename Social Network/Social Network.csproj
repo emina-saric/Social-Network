@@ -251,13 +251,16 @@
     <Compile Include="Controllers\RefreshTokensController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\SlikeController.cs" />
-    <Compile Include="Entities\Client.cs" />
-    <Compile Include="Entities\RefreshToken.cs" />
+    <Compile Include="Migrations\201605081402538_noPluralization.cs" />
+    <Compile Include="Migrations\201605081402538_noPluralization.Designer.cs">
+      <DependentUpon>201605081402538_noPluralization.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Client.cs" />
+    <Compile Include="Models\RefreshToken.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helper.cs" />
-    <Compile Include="Infractructure\ApplicationDbContext.cs" />
     <Compile Include="Infractructure\ApplicationRole.cs" />
     <Compile Include="Infractructure\ApplicationRoleManager.cs" />
     <Compile Include="Infractructure\ApplicationUser.cs" />
@@ -334,6 +337,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201605071537435_init.resx">
       <DependentUpon>201605071537435_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605081402538_noPluralization.resx">
+      <DependentUpon>201605081402538_noPluralization.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

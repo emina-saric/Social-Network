@@ -7,7 +7,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 
-namespace AngularJSAuthentication.API.Controllers
+namespace Social_Network.Controllers
 {
     [RoutePrefix("api/RefreshTokens")]
     public class RefreshTokensController : ApiController

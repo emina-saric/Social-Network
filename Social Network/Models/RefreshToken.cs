@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace Social_Network.Entities
+namespace Social_Network.Models
 {
     public class RefreshToken
     {

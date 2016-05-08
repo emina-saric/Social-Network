@@ -1,7 +1,7 @@
 ﻿using Social_Network.Models;
 using System.ComponentModel.DataAnnotations;
 
-namespace Social_Network.Entities
+namespace Social_Network.Models
 {
     public class Client
     {

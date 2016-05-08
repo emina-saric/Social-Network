@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
+using Social_Network.Models;
 using Social_Network.Validators;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace Social_Network.Infrastructure
 
         public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context)
         {
-            var appDbContext = context.Get<ApplicationDbContext>();
+            var appDbContext = context.Get<Social_NetworkContext>();
             var appUserManager = new ApplicationUserManager(new UserStore<ApplicationUser>(appDbContext));
 
             // Configure validation logic for usernames

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
-using Social_Network.Entities;
+using Social_Network.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;

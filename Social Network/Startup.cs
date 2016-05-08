@@ -18,6 +18,7 @@ using System.Net.Http.Formatting;
 using System.Web;
 using System.Web.Http;
 using Social_Site.Providers;
+using Social_Network.Models;
 
 [assembly: OwinStartup(typeof(Social_Network.Startup))]
 
@@ -43,7 +44,7 @@ namespace Social_Network
         {
             //use a cookie to temporarily store information about a user logging in with a third party login provider
 
-            app.CreatePerOwinContext(ApplicationDbContext.Create);
+            app.CreatePerOwinContext(Social_NetworkContext.Create);
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
             app.CreatePerOwinContext<ApplicationRoleManager>(ApplicationRoleManager.Create);
             app.UseExternalSignInCookie(Microsoft.AspNet.Identity.DefaultAuthenticationTypes.ExternalCookie);
@@ -86,7 +87,7 @@ namespace Social_Network
         private void ConfigureOAuthTokenGeneration(IAppBuilder app)
         {
             // Configure the db context and user manager to use a single instance per request
-            app.CreatePerOwinContext(ApplicationDbContext.Create);
+            app.CreatePerOwinContext(Social_NetworkContext.Create);
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
             app.CreatePerOwinContext<ApplicationRoleManager>(ApplicationRoleManager.Create);
 

@@ -1,6 +1,6 @@
-﻿using Social_Network.Entities;
-using Microsoft.Owin.Security;
+﻿using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Infrastructure;
+using Social_Network.Models;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;

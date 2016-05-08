@@ -1,11 +1,7 @@
-﻿using Social_Network.Entities;
-using Microsoft.AspNet.Identity.EntityFramework;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Web;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
 using Social_Network.Infrastructure;
+using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace Social_Network.Models
 {
@@ -19,9 +15,10 @@ namespace Social_Network.Models
         // http://msdn.microsoft.com/en-us/data/jj591621.aspx
 
         public Social_NetworkContext()
-            : base("Social_NetworkContext")
+            : base("Social_NetworkContext", throwIfV1Schema: false)
         {
-
+            Configuration.ProxyCreationEnabled = false;
+            Configuration.LazyLoadingEnabled = false;            
         }
 
         public static Social_NetworkContext Create()
@@ -29,6 +26,11 @@ namespace Social_Network.Models
             return new Social_NetworkContext();
         }
 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            base.OnModelCreating(modelBuilder);
+        }
 
         public DbSet<Client> Clients { get; set; }
         public DbSet<RefreshToken> RefreshTokens { get; set; }
