@@ -35,13 +35,13 @@
         <!--New-->
 
 
-
-        <div id="sidebar" class="navbar navbar-inverse hide-sidebar" role="banner" data-ng-controller="indexController" >
+    <div data-ng-controller="indexController">
+        <div id="sidebar" class="navbar navbar-inverse hide-sidebar" role="banner">
             <div class="collapse navbar-collapse navbar-left">
                 <ul class="nav navbar-nav ">
                     <li data-ng-hide="!authentication.isAuth"><a href="#">Welcome {{authentication.userName}}</a></li>
                     <!--Ovdje Idu Stranice-->
-                    <li data-ng-hide="!authentication.isAuth"><a href="" data-ng-click="logOut()">ODJAVA</a></li>
+                    <li data-ng-hide="!authentication.isAuth"><a href="" onclick="sideBarKill(true);" data-ng-click="logOut()">ODJAVA</a></li>
                     <!--
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <i class="fa fa-angle-down"></i></a>
@@ -60,32 +60,33 @@
 
 
 
-    <div id="wrapper" class="hide-sidebar">
-        <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
-                <ul class="nav navbar-left" >
-                    <li>
-                        <button id="sidebarToggle" class="btn btn-info">
-                            <i class="fa fa-angle-right"></i>
-                        </button>
-                    </li>
-                </ul>
-                <a href="index.html" class="navbar-brand" id="titleSocialNetwork">Social Network</a>
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <div class="search">
-                            <form role="form">
-                                <input type="text" class="search-form" autocomplete="off" placeholder="Search">
-                                <i class="fa fa-search"></i>
-                            </form>
-                        </div>
-                    </li>
-                    <li><!--Do Not Remove--></li>
-                </ul>
-            </div>
-        </nav><!--Top-->
+        <div id="wrapper" class="hide-sidebar">
+            <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                    <ul class="nav navbar-left" data-ng-hide="!authentication.isAuth">
+                        <li>
+                            <button id="sidebarToggle" class="btn btn-info">
+                                <i class="fa fa-angle-right"></i>
+                            </button>
+                        </li>
+                    </ul>
+                    <a href="#/profile" class="navbar-brand" id="titleSocialNetwork1" data-ng-hide="!authentication.isAuth">Social Network</a>
+                    <a href="index.html" class="navbar-brand" id="titleSocialNetwork2" data-ng-hide="authentication.isAuth">Social Network</a>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <div class="search">
+                                <form role="form">
+                                    <input type="text" class="search-form" autocomplete="off" placeholder="Search">
+                                    <i class="fa fa-search"></i>
+                                </form>
+                            </div>
+                        </li>
+                        <li><!--Do Not Remove--></li>
+                    </ul>
+                </div>
+            </nav><!--Top-->
 
-
+        </div>
 
 
 
