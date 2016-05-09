@@ -41,7 +41,22 @@
                 <ul class="nav navbar-link">
                     <li data-ng-hide="!authentication.isAuth">Welcome {{authentication.userName}}</li>
                     <!--Ovdje Idu Stranice-->
-                    <li data-ng-hide="!authentication.isAuth"><a href="#/profile">Profile</a></li>
+                    <li data-ng-hide="!authentication.isAuth" class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Profile<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#/profile">My Profile</a></li>
+                            <li><a href="#/profile/edit">Edit Profile</a></li>
+                            <li><a href="#/profile/delete">Delete Profile</a></li>
+                        </ul>
+                    </li><!--Profil View,Edit i Delete-->
+
+
+
+
+
+
+
+
                     <li data-ng-hide="!authentication.isAuth"><a href="" onclick="sideBarKill(true);" data-ng-click="logOut()">ODJAVA</a></li>
                     <!--
                         <li class="dropdown">

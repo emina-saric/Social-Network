@@ -36,6 +36,15 @@ app.config(function ($routeProvider) {
         controller: "profileController",
         templateUrl: "/app/views/profile.html"
     });
+    $routeProvider.when("/profile/edit", {
+        controller: "profileController",
+        templateUrl: "/app/views/profileEdit.html"
+    });
+    $routeProvider.when("/profile/delete", {
+        controller: "profileController",
+        templateUrl: "/app/views/profileDelete.html"
+    });
+
     $routeProvider.when("/confirmEmail/:userId/:code", {
         controller: "confirmEmailController",
         templateUrl: "/app/views/confirmEmail.html"
