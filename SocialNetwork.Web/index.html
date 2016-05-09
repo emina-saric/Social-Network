@@ -38,9 +38,10 @@
     <div data-ng-controller="indexController">
         <div id="sidebar" class="navbar navbar-inverse hide-sidebar" role="banner">
             <div class="collapse navbar-collapse navbar-left">
-                <ul class="nav navbar-nav ">
-                    <li data-ng-hide="!authentication.isAuth"><a href="#">Welcome {{authentication.userName}}</a></li>
+                <ul class="nav navbar-link">
+                    <li data-ng-hide="!authentication.isAuth">Welcome {{authentication.userName}}</li>
                     <!--Ovdje Idu Stranice-->
+                    <li data-ng-hide="!authentication.isAuth"><a href="#/profile">Profile</a></li>
                     <li data-ng-hide="!authentication.isAuth"><a href="" onclick="sideBarKill(true);" data-ng-click="logOut()">ODJAVA</a></li>
                     <!--
                         <li class="dropdown">
@@ -86,19 +87,18 @@
                 </div>
             </nav><!--Top-->
 
-        </div>
 
 
 
 
 
-        <div class="main">
-            <div class="container-fluid">
-                <div data-ng-view="">
+            <div id="main" class="main">
+                <div class="container-fluid">
+                    <div data-ng-view="">
+                    </div>
                 </div>
-            </div>
-        </div><!--/#main-->
-
+            </div><!--/#main-->
+        </div>
 
 
 

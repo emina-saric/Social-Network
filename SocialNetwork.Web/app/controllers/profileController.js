@@ -5,7 +5,7 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
     $scope.message = "";
     $scope.authentication = authService.authentication;
 
-    var currentUser = {
+    $scope.currentUser = {
         userName: "",
         userId: "",
         eMail: "",
@@ -13,16 +13,16 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
         lastName: ""
     };
     
-    currentUser.userName = authService.authentication.userName;
+    $scope.currentUser.userName = authService.authentication.userName;
     
     $scope.getCurrentUser = function () {
-        userService.getCurrentUser(currentUser.userName).then(function (response) {
+        userService.getCurrentUser($scope.currentUser.userName).then(function (response) {
                 $scope.savedSuccessfully = true;
                 $scope.message = "User found !";
-                currentUser.userId = response.data['id'];
-                currentUser.eMail = response.data['email'];
-                currentUser.firstName = response.data['firstName'];
-                currentUser.lastName = response.data['lastName'];
+                $scope.currentUser.userId = response.data['id'];
+                $scope.currentUser.eMail = response.data['email'];
+                $scope.currentUser.firstName = response.data['firstName'];
+                $scope.currentUser.lastName = response.data['lastName'];
             });
     };
 
