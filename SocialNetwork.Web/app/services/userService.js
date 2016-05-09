@@ -17,10 +17,9 @@ app.factory('userService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
         });
 
     };
-    var serviceBaseX = 'http://localhost:57409/';
+
     var _deleteCurrentUser = function () {
-        return $http.delete(serviceBase + 'api/Profile/DeleteCurrentUser/' + currentUser.userId).then(function (response) {
-            alert(response.data['id'])
+        return $http.delete(serviceBase + 'api/Profile/DeleteCurrentUser/').then(function (response) {
             return response;
         });
     }

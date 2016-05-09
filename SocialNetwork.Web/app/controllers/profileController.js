@@ -30,8 +30,9 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
 
     $scope.deleteCurrentUser = function () {
         userService.deleteCurrentUser().then(function (response) {
-            $scope.message = "User Deleted !";
-            alert($scope.message)
+            authService.logOut();
+            $scope.goHome();
+            $window.location.reload();
         });
     };
 

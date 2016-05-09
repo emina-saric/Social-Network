@@ -23,7 +23,7 @@ using System.Data.Entity;
 
 namespace Social_Network.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [RoutePrefix("api/Profile")]
     public class ProfileController : BaseApiController
     {
@@ -52,11 +52,12 @@ namespace Social_Network.Controllers
         }
 
         [HttpDelete]
-        [Route("DeleteCurrentUser/{id}")]
-        public async Task<IHttpActionResult> DeleteCurrentUser(string id)
+        [Route("DeleteCurrentUser")]
+        public async Task<IHttpActionResult> DeleteCurrentUser()
         {
+            var id = HttpContext.Current.User.Identity.GetUserId();
             var user = await db.Users.Where(u => u.Id==id ).FirstOrDefaultAsync();
-            return Ok(user);
+
             if (user == null)
             {
                 return NotFound();
