@@ -64,7 +64,7 @@ namespace Social_Network
                 TokenEndpointPath = new PathString("/oauth/token"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromDays(1),
                 Provider = new CustomOAuthProvider(),
-                AccessTokenFormat = new CustomJwtFormat("http://localhost:57409")
+                AccessTokenFormat = new CustomJwtFormat("http://localhost:26264")
 
             };
 
