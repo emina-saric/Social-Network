@@ -29,6 +29,8 @@ namespace Social_Network.Models
                 Id = appUser.Id,
                 UserName = appUser.UserName,
                 FullName = string.Format("{0} {1}", appUser.FirstName, appUser.LastName),
+                FirstName = appUser.FirstName,
+                LastName = appUser.LastName,
                 Email = appUser.Email,
                 EmailConfirmed = appUser.EmailConfirmed,
                // Level = appUser.Level,
@@ -57,6 +59,8 @@ namespace Social_Network.Models
         public string Url { get; set; }
         public string Id { get; set; }
         public string UserName { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public string FullName { get; set; }
         public string Email { get; set; }
         public bool EmailConfirmed { get; set; }

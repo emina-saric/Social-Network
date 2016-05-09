@@ -10,9 +10,9 @@ app.factory('userService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
     };
 
     var _getCurrentUser = function (user) {
-        return $http.get('http://localhost:57409/api/Profile/GetUserByUserName/' + currentUser.userName).then(function (response) {
-            alert(response);
-            return true;
+        currentUser.userName = user;
+        return $http.get(serviceBase + 'api/Profile/GetUserByUserName/' + currentUser.userName).then(function (response) {
+            return response;
         });
 
     };

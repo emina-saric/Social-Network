@@ -1,9 +1,12 @@
-﻿using Social_Network.Models;
+﻿using Social_Network.Infrastructure;
+using Social_Network.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
-using System.Web.Mvc;
+using System.Web.Http;
 
 namespace Social_Network.Controllers
 {
@@ -14,18 +17,19 @@ namespace Social_Network.Controllers
 
         private Social_NetworkContext db = new Social_NetworkContext();
 
+        [HttpGet]
         [Route("GetUserByUserName/{userName}")]
-        public string GetUserByUserName(string userName)
+        public async Task<IHttpActionResult> GetUserByUserName(string userName)
         {
-            var jsonResult = db.Users.Select(x => new {
-                id = x.Id,
-                ime = x.FirstName,
-                prezime = x.LastName,
-                userName = x.UserName,
-                email = x.Email
-            }).Where(x => x.userName == userName).ToList();
-            string json = Newtonsoft.Json.JsonConvert.SerializeObject(jsonResult);
-            return json;
+            var user = await db.Users.Where(u => u.UserName.ToLower() == userName.ToLower()).FirstOrDefaultAsync();
+
+            if (user != null)
+            {
+                return Ok(this.TheModelFactory.Create(user));
+            }
+
+            return NotFound();
         }
+
     }
 }
