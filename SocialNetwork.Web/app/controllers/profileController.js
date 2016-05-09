@@ -10,7 +10,8 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
         userId: "",
         eMail: "",
         firstName: "",
-        lastName: ""
+        lastName: "",
+        fullName: ""
     };
     
     $scope.currentUser.userName = authService.authentication.userName;
@@ -23,6 +24,7 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
                 $scope.currentUser.eMail = response.data['email'];
                 $scope.currentUser.firstName = response.data['firstName'];
                 $scope.currentUser.lastName = response.data['lastName'];
+                $scope.currentUser.fullName = response.data['fullName'];
             });
     };
 
