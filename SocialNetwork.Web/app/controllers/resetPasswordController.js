@@ -4,7 +4,7 @@ app.controller('resetPasswordController', ['$scope', '$location', '$timeout', 'a
     $scope.savedSuccessfully = false;
     $scope.message = "";
 
-    $scope.resetPassword = {
+    $scope.userData = {
         Email: "",
         Password: "",
         ConfirmPassword: "",
@@ -14,9 +14,9 @@ app.controller('resetPasswordController', ['$scope', '$location', '$timeout', 'a
 
     $scope.resetPassword = function () {
 
-        $scope.resetPassword.Code = String($routeParams.code);
+        $scope.userData.Code = String($routeParams.code);
 
-        authService.resetPassword($scope.resetPassword).then(function (response) {
+        authService.resetPassword($scope.userData).then(function (response) {
 
             $scope.savedSuccessfully = true;
             $scope.message = "Password has been reset, you will be redicted to login page in 5 seconds.";
