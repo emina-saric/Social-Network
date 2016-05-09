@@ -247,6 +247,7 @@
     <Compile Include="Controllers\ObjaveController.cs" />
     <Compile Include="Controllers\PorukeController.cs" />
     <Compile Include="Controllers\PrijateljiController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\RazgovoriController.cs" />
     <Compile Include="Controllers\RefreshTokensController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
@@ -323,6 +324,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Default\" />
+    <Folder Include="Views\Profile\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

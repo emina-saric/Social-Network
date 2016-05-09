@@ -149,6 +149,7 @@
     <Content Include="app\controllers\resetPasswordController.js" />
     <Content Include="app\css\site.css" />
     <Content Include="app\js\site.js" />
+    <Content Include="app\services\userService.js" />
     <Content Include="app\views\confirmEmail.html" />
     <Content Include="app\views\forgotPassword.html" />
     <Content Include="app\views\friends.html" />

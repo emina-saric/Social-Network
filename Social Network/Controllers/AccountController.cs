@@ -50,7 +50,6 @@ namespace Social_Network.Controllers
             }
 
             return NotFound();
-
         }
         // POST api/Account/Register
         [AllowAnonymous]

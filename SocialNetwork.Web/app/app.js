@@ -18,8 +18,6 @@ app.config(function ($routeProvider) {
         templateUrl: "/app/views/signup.html"
     });
 
-   
-
     $routeProvider.when("/refresh", {
         controller: "refreshController",
         templateUrl: "/app/views/refresh.html"
