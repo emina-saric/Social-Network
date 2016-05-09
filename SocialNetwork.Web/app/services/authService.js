@@ -37,14 +37,14 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
     var _forgotPassword = function (model) {
 
         console.log(model);
-        return $http.post(serviceBase + 'api/account/ForgotPassword',model).then(function (response) {
+        return $http.post(serviceBase + 'api/account/ForgotPassword', model).then(function (response) {
 
             return response;
         });
     };
-    var _resetPassword = function (resetPassword) {
+    var _resetPassword = function (model) {
 
-        console.log(model);
+        
 
         return $http.post(serviceBase + 'api/account/ResetPassword', model).then(function (response) {
 
@@ -182,7 +182,7 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
     authServiceFactory.saveRegistration = _saveRegistration;
     authServiceFactory.confirmEmail = _confirmEmail;
     authServiceFactory.forgotPassword = _forgotPassword;
-
+    authServiceFactory.resetPassword = _resetPassword;
     authServiceFactory.login = _login;
     authServiceFactory.logOut = _logOut;
     authServiceFactory.fillAuthData = _fillAuthData;
