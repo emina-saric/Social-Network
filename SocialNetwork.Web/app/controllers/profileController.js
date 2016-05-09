@@ -28,6 +28,23 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
             });
     };
 
+    $scope.deleteCurrentUser = function () {
+        /*
+        userService.getCurrentUser($scope.currentUser.userName).then(function (response) {
+            $scope.savedSuccessfully = true;
+            $scope.message = "User found !";
+            $scope.currentUser.userId = response.data['id'];
+            $scope.currentUser.eMail = response.data['email'];
+            $scope.currentUser.firstName = response.data['firstName'];
+            $scope.currentUser.lastName = response.data['lastName'];
+            $scope.currentUser.fullName = response.data['fullName'];
+        });*/
+    };
+
+
+    $scope.goHome = function() {
+        $location.url(serviceBase);
+    };
 
     $scope.getCurrentUser();
 
