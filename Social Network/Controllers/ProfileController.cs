@@ -30,6 +30,14 @@ namespace Social_Network.Controllers
 
             return NotFound();
         }
-
+        [HttpGet]
+        [Route("GetUsers")]
+        public async Task<IHttpActionResult> GetUsers()
+        {
+            var users = await db.Users.ToListAsync();
+            if (users != null)
+                return Ok(users);
+            return NotFound();
+        }
     }
 }
