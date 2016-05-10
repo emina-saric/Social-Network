@@ -1,7 +1,7 @@
 ﻿app.controller('profileOtherController', ['$scope', '$location', '$timeout', 'authService', 'userService', '$routeParams','searchService', function ($scope, $location, $timeout, authService, userService, $routeParams,searchService) {
     
-    alert(searchService.otherUser.userName);  
-   /* $scope.otherUser = {
+    //alert(searchService.otherUser.userName);  
+    $scope.otherUser = {
         userName: "",
         userId: "",
         eMail: "",
@@ -13,7 +13,7 @@
         confirmNewPassword: ""
     };
     $scope.getOtherUser = function () {
-        userService.getCurrentUser('amar').then(function (response) {
+        userService.getCurrentUser(searchService.otherUser.userName).then(function (response) {
 
             $scope.savedSuccessfully = true;
             $scope.message = "User found !";
@@ -25,6 +25,6 @@
         });
     };
 
-    $scope.getOtherUser();*/
+    $scope.getOtherUser();
 
 }]);

@@ -3,7 +3,13 @@ app.factory('searchService', ['$http', '$q', 'localStorageService', 'ngAuthSetti
 
     var serviceBase = ngAuthSettings.apiServiceBaseUri;
     var authServiceFactory = {};
-    var otherUser;
+    var _otherUser = {
+        FirstName: "",
+        LastName: "",
+        picture: "",
+        userName: "",
+        userId: ""
+    };
 
      var _getAllUsers = function () {
             return $http.get(serviceBase + 'api/Profile/GetUsers/').then(function (response) {
@@ -13,7 +19,7 @@ app.factory('searchService', ['$http', '$q', 'localStorageService', 'ngAuthSetti
     };
 
      var _takeData = function (data) {
-         otherUser = data;
+         _otherUser.userName = data.userName;
          //alert(otherUser.userName)
      }
     
@@ -22,7 +28,7 @@ app.factory('searchService', ['$http', '$q', 'localStorageService', 'ngAuthSetti
 
      authServiceFactory.getAllUsers = _getAllUsers;
      authServiceFactory.takeData = _takeData;
-    
+     authServiceFactory.otherUser = _otherUser;
 
     return authServiceFactory;
 }]);
