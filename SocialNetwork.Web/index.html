@@ -91,7 +91,7 @@
                             <div class="container-fluid" ng-controller="searchController">
 
                                <!--<p>Selected person: {{ person | json }}</p>-->
-                                <div custom-select="t as t.FirstName for t in people | filter: { FirstName: $searchTerm }" ng-model="person">
+                                <div custom-select="t as t.FirstName for t in people | filter: { FirstName: $searchTerm }" ng-model="person" data-ng-click="goToProfile()">
                                     <div class="pull-left" style="width: 40px">
                                        <!-- <img ng-src="{{ t.picture }}" style="width: 30px" />-->
                                     </div>

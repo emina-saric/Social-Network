@@ -3,6 +3,7 @@ app.controller('searchController', ['$scope', '$location', '$timeout', 'authServ
 
     $scope.people = new Array();
     var profili = new Array();
+    $scope.person = new Array();    
        /*
 $scope.people = [
     { FirstName: 'John ', LastName: 'Doe', picture: 'http://www.saintsfc.co.uk/images/common/bg_player_profile_default_big.png' },
@@ -23,14 +24,23 @@ $scope.people = [
                 var profil = {
                     FirstName: "",
                     LastName: "",
-                    picture: ""
+                    picture: "",
+                    userName: "",
+                    userId: ""
                 };
                 profil.FirstName = profili[i].firstName;
                 profil.LastName = profili[i].lastName;
+                profil.userId = profili[i].id;
+                profil.userName = profili[i].userName;
                 profil.picture = "http://upstreamideas.org/wp-content/uploads/2013/10/ww.jpg";
                 $scope.people.push(profil);
             }
         });
     };
+
+    $scope.goToProfile = function () {
+        var user = $scope.person;
+        alert(user.userName);
+    }
     $scope.getAllUsers();             
 }]);
