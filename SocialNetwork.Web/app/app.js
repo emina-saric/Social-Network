@@ -45,6 +45,11 @@ app.config(function ($routeProvider) {
         templateUrl: "/app/views/profileDelete.html"
     });
 
+    $routeProvider.when("/profile/changepassword", {
+        controller: "profileController",
+        templateUrl: "/app/views/profileChangePassword.html"
+    });
+
     $routeProvider.when("/confirmEmail/:userId/:code", {
         controller: "confirmEmailController",
         templateUrl: "/app/views/confirmEmail.html"
@@ -82,12 +87,13 @@ app.config(['$httpProvider', function ($httpProvider) {
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
 }
 ]);
-/*
-app.config(function ($httpProvider) {
-    $httpProvider.defaults.headers.common = {};
-    $httpProvider.defaults.headers.post = {};
-    $httpProvider.defaults.headers.put = {};
-    $httpProvider.defaults.headers.patch = {};
-});
 
-*/
+
+app.config(function ($translateProvider) {
+    $translateProvider.translations('en', {
+        test: 'ENG',
+    }).translations('ba', {
+        test: 'BA',
+    });
+    $translateProvider.preferredLanguage('ba');
+});
