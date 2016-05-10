@@ -1,5 +1,5 @@
-﻿
-var app = angular.module("AngularApp", ['ngRoute', 'LocalStorageModule', 'angular-loading-bar','pascalprecht.translate']);
+﻿var app = angular.module("AngularApp", ['ngRoute', 'LocalStorageModule', 'angular-loading-bar','pascalprecht.translate','AxelSoft']);
+
 
 app.config(function ($routeProvider) {
 
