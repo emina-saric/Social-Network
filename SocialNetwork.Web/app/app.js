@@ -107,12 +107,21 @@ app.config(function ($translateProvider) {
         currentPassword: 'Current Password',
         password: 'Password',
         newPassword: 'New Password',
+        username: 'Username',
         confirmNewPassword: 'Confirm New Password',
+        confirmPassword: 'Confirm Pasword',
         changeYourPassword: 'Change your Password',
         submit: 'Submit',
         yes: 'Yes',
         no: 'No',
-        confirmMSGDeleteProfile: 'Are you sure, you want to delete your profile'
+        confirmMSGDeleteProfile: 'Are you sure, you want to delete your profile',
+        lostPassword: 'Lost password?',
+        socialLogins: 'Social Logins',
+        socialLoginsText: 'Or you can login using one of the social logins below!',
+        login: 'Login',
+        loginText: 'If you have account, you can use the button below to access the page.',
+        signupText: 'Use the button below to create account.',
+        signup: 'Create Account'
     }).translations('ba', {
         welcomeHome: 'Dobrodosli na Social Network !',
         profileIndex: 'Profil',
@@ -129,12 +138,21 @@ app.config(function ($translateProvider) {
         currentPassword: 'Sadasnja Sifra',
         password: 'Sifra',
         newPassword: 'Nova Sifra',
+        username: 'Korisnicko Ime',
         confirmNewPassword: 'Potvrda za Novu Sifru',
+        confirmPassword: 'Potvrdi Sifru',
         changeYourPassword: 'Izmjeni svoju Sifru',
         submit: 'Potvrdi',
         yes: 'Da',
         no: 'Ne',
-        confirmMSGDeleteProfile: 'Da li ste sigurni da zelite da izbrisete svoj profil'
+        confirmMSGDeleteProfile: 'Da li ste sigurni da zelite da izbrisete svoj profil',
+        lostPassword: 'Izgubljena Sifra?',
+        socialLogins: 'Socijalne Prijave',
+        socialLoginsText: 'Ili se mozete prijaviti sa jednom od mreza ispod !',
+        login: 'Prijava',
+        loginText: 'Ako imate korisnicki nalog, mozete iskoristiti dugme ispod za prijavu.',
+        signupText: 'Iskoristite dugme ispod za pravljenje korisnickog naloga.',
+        signup: 'Napravi nalog'
 
     });
     $translateProvider.preferredLanguage('ba');
