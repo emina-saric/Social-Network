@@ -1,7 +1,7 @@
-﻿app.controller('profileOtherController', ['$scope', '$location', '$timeout', 'authService', 'userService', '$routeParams', function ($scope, $location, $timeout, authService, userService, $routeParams) {
+﻿app.controller('profileOtherController', ['$scope', '$location', '$timeout', 'authService', 'userService', '$routeParams','searchService', function ($scope, $location, $timeout, authService, userService, $routeParams,searchService) {
     
-    //alert($scope.person.userName);
-    $scope.otherUser = {
+    alert(searchService.otherUser.userName);  
+   /* $scope.otherUser = {
         userName: "",
         userId: "",
         eMail: "",
@@ -25,6 +25,6 @@
         });
     };
 
-    $scope.getOtherUser();
+    $scope.getOtherUser();*/
 
 }]);

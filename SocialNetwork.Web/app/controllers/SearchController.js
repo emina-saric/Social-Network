@@ -40,7 +40,8 @@ $scope.people = [
 
     $scope.goToProfile = function () {
         //var user = $scope.person.userName;
-       // alert(user);
+        // alert(user);
+        searchService.takeData($scope.person);
        $location.path('/profileOther');
     }
     $scope.getAllUsers();             
