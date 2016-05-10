@@ -147,6 +147,7 @@
     <Content Include="app\controllers\forgotPasswordController.js" />
     <Content Include="app\controllers\profileController.js" />
     <Content Include="app\controllers\resetPasswordController.js" />
+    <Content Include="app\controllers\translationsController.js" />
     <Content Include="app\css\site.css" />
     <Content Include="app\js\site.js" />
     <Content Include="app\services\userService.js" />
