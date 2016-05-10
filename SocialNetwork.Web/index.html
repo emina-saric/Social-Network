@@ -50,14 +50,6 @@
                             <li><a href="#/profile/delete">Delete Profile</a></li>
                         </ul>
                     </li><!--Profil View,Edit i Delete-->
-
-
-
-
-
-
-
-
                     <li data-ng-hide="!authentication.isAuth"><a href="" onclick="sideBarKill(true);" data-ng-click="logOut()">ODJAVA</a></li>
                     <!--
                         <li class="dropdown">
@@ -140,19 +132,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-    
-
-
-
     <script src="/Scripts/jquery-2.2.3.min.js"></script>
     <script src="/Scripts/bootstrap.min.js"></script>
     <script src="/Scripts/jquery.prettyPhoto.js"></script>
@@ -165,6 +144,8 @@
 
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.min.js"></script>
+    <script src="Scripts/angular-translate.min.js"></script>
+    <script src="Scripts/angular-translate-loader-url.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-sanitize.js"></script>
     <script src="Scripts/angular-local-storage.min.js"></script>
     <script src="Scripts/loading-bar.min.js"></script>
@@ -189,8 +170,11 @@
     <script src="app/controllers/forgotPasswordController.js"></script>
     <script src="app/controllers/profileController.js"></script>
     <script src="app/controllers/resetPasswordController.js"></script>
+    <script src="app/controllers/translationsController.js"></script>
     <script src="app/controllers/SearchController.js"></script>
-    <script src="app/js/customSelect.js"></script>
+
+        <script src="app/js/customSelect.js"></script>
+
     <!--<a href="app/views/profile.html">app/views/profile.html</a>-->
     <!-- Load custom filters -->
     <!-- Load custom directives -->

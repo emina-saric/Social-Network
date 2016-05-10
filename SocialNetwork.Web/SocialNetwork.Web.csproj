@@ -336,6 +336,10 @@
     <Content Include="Scripts\angular-route.min.js.map" />
     <Content Include="Scripts\angular-sanitize.min.js.map" />
     <Content Include="Scripts\angular-touch.min.js.map" />
+    <Content Include="Scripts\angular-translate-loader-url.js" />
+    <Content Include="Scripts\angular-translate-loader-url.min.js" />
+    <Content Include="Scripts\angular-translate.js" />
+    <Content Include="Scripts\angular-translate.min.js" />
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Scripts\errors.json" />
     <Content Include="Content\Template\images\fontawesome-webfont.eot" />

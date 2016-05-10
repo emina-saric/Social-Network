@@ -1,5 +1,5 @@
-﻿
-var app = angular.module("AngularApp", ['ngRoute', 'LocalStorageModule', 'angular-loading-bar','AxelSoft']);
+﻿var app = angular.module("AngularApp", ['ngRoute', 'LocalStorageModule', 'angular-loading-bar','pascalprecht.translate','AxelSoft']);
+
 
 app.config(function ($routeProvider) {
 
@@ -91,9 +91,9 @@ app.config(['$httpProvider', function ($httpProvider) {
 
 app.config(function ($translateProvider) {
     $translateProvider.translations('en', {
-        test: 'ENG',
+        testHOME: 'ENG',
     }).translations('ba', {
-        test: 'BA',
+        testHOME: 'BA',
     });
     $translateProvider.preferredLanguage('ba');
 });
