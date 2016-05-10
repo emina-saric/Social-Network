@@ -16,7 +16,6 @@ namespace Social_Network.Migrations
             AlterColumn("dbo.Prijatelj", "Osoba2", c => c.String(maxLength: 128));
             AlterColumn("dbo.Razgovor", "ucesnik1", c => c.String(maxLength: 128));
             AlterColumn("dbo.Razgovor", "ucesnik2", c => c.String(maxLength: 128));
-            AlterColumn("dbo.Album", "ProfilId", c => c.String(maxLength: 128));
         }
         
         public override void Down()
@@ -30,7 +29,6 @@ namespace Social_Network.Migrations
             AlterColumn("dbo.Notifikacija", "ProfilId", c => c.Int(nullable: false));
             AlterColumn("dbo.Komentar", "tekst", c => c.String(nullable: false, maxLength: 100));
             DropColumn("dbo.Komentar", "napisao");
-            AlterColumn("dbo.Album", "ProfilId", c => c.Int(nullable: false));
         }
     }
 }
