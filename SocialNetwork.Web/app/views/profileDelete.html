@@ -1,6 +1,6 @@
 <div class="center">
-    <h2>Are you sure, you want to delete your profile : {{currentUser.userName}}</h2>
-    <button class="btn btn-warning btn-block" type="submit" data-ng-click="deleteCurrentUser()">Yes</button>
-    <button class="btn btn-success btn-block" type="submit" data-ng-click="goHome()">No</button>
-    User E-Mail: {{currentUser.eMail}}
+    <h2>{{'confirmMSGDeleteProfile'|translate}} : {{currentUser.userName}}</h2>
+    <button class="btn btn-warning btn-block" type="submit" data-ng-click="deleteCurrentUser()">{{'yes'|translate}}</button>
+    <button class="btn btn-success btn-block" type="submit" data-ng-click="goHome()">{{'no'|translate}}</button>
+    {{'userEmailProfile'|translate}} {{currentUser.eMail}}
 </div>

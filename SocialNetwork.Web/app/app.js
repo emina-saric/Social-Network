@@ -1,4 +1,5 @@
-﻿var app = angular.module("AngularApp", ['ngRoute', 'LocalStorageModule', 'angular-loading-bar','pascalprecht.translate','AxelSoft']);
+﻿/// <reference path="views/profileDelete.html" />
+var app = angular.module("AngularApp", ['ngRoute', 'LocalStorageModule', 'angular-loading-bar','pascalprecht.translate','AxelSoft']);
 
 
 app.config(function ($routeProvider) {
@@ -91,9 +92,50 @@ app.config(['$httpProvider', function ($httpProvider) {
 
 app.config(function ($translateProvider) {
     $translateProvider.translations('en', {
-        testHOME: 'ENG',
+        welcomeHome: 'Welcome to Social Network !',
+        profileIndex: 'Profile',
+        profileMyProfileIndex: 'My Profile',
+        profileEditProfileIndex: 'Edit Profile',
+        profileChangePasswordIndex: 'Change Password',
+        profileDeleteProfileIndex: 'Delete Profile',
+        welcomeIndex: 'Welcome',
+        logoutIndex: 'Log Out',
+        userEmailProfile: 'User E-Mail:',
+        changeYDataProfileEdit: 'Change your Data',
+        firstName: 'First Name',
+        lastName: 'Last Name',
+        currentPassword: 'Current Password',
+        password: 'Password',
+        newPassword: 'New Password',
+        confirmNewPassword: 'Confirm New Password',
+        changeYourPassword: 'Change your Password',
+        submit: 'Submit',
+        yes: 'Yes',
+        no: 'No',
+        confirmMSGDeleteProfile: 'Are you sure, you want to delete your profile'
     }).translations('ba', {
-        testHOME: 'BA',
+        welcomeHome: 'Dobrodosli na Social Network !',
+        profileIndex: 'Profil',
+        profileMyProfileIndex: 'Moj Profil',
+        profileEditProfileIndex: 'Izmjeni Profil',
+        profileChangePasswordIndex: 'Izmjeni Sifru',
+        profileDeleteProfileIndex: 'Izbrisi Profil',
+        welcomeIndex: 'Dobrodosao/la',
+        logoutIndex: 'Odjavi se',
+        userEmailProfile: 'Korisnicki E-Mail:',
+        changeYDataProfileEdit: 'Izmjeni svoje podatke',
+        firstName: 'Ime',
+        lastName: 'Prezime',
+        currentPassword: 'Sadasnja Sifra',
+        password: 'Sifra',
+        newPassword: 'Nova Sifra',
+        confirmNewPassword: 'Potvrda za Novu Sifru',
+        changeYourPassword: 'Izmjeni svoju Sifru',
+        submit: 'Potvrdi',
+        yes: 'Da',
+        no: 'Ne',
+        confirmMSGDeleteProfile: 'Da li ste sigurni da zelite da izbrisete svoj profil'
+
     });
     $translateProvider.preferredLanguage('ba');
 });

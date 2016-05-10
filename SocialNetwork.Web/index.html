@@ -39,18 +39,18 @@
         <div id="sidebar" class="navbar navbar-inverse hide-sidebar" role="banner">
             <div class="collapse navbar-collapse navbar-left">
                 <ul class="nav navbar-link">
-                    <li data-ng-hide="!authentication.isAuth">Welcome {{authentication.userName}}</li>
+                    <li data-ng-hide="!authentication.isAuth">{{'welcomeIndex'|translate}} {{authentication.userName}}</li>
                     <!--Ovdje Idu Stranice-->
                     <li data-ng-hide="!authentication.isAuth" class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Profile<b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{'profileIndex'|translate}}<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#/profile">My Profile</a></li>
-                            <li><a href="#/profile/edit">Edit Profile</a></li>
-                            <li><a href="#/profile/changepassword">Change Password</a></li>
-                            <li><a href="#/profile/delete">Delete Profile</a></li>
+                            <li><a href="#/profile">{{'profileMyProfileIndex'|translate}}</a></li>
+                            <li><a href="#/profile/edit">{{'profileEditProfileIndex'|translate}}</a></li>
+                            <li><a href="#/profile/changepassword">{{'profileChangePasswordIndex'|translate}}</a></li>
+                            <li><a href="#/profile/delete">{{'profileDeleteProfileIndex'|translate}}</a></li>
                         </ul>
                     </li><!--Profil View,Edit i Delete-->
-                    <li data-ng-hide="!authentication.isAuth"><a href="" onclick="sideBarKill(true);" data-ng-click="logOut()">ODJAVA</a></li>
+                    <li data-ng-hide="!authentication.isAuth"><a href="" onclick="sideBarKill(true);" data-ng-click="logOut()">{{'logoutIndex'|translate}}</a></li>
                     <!--
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <i class="fa fa-angle-down"></i></a>
@@ -83,6 +83,11 @@
                     <a href="index.html" class="navbar-brand" id="titleSocialNetwork2" data-ng-hide="authentication.isAuth">Social Network</a>
                     <ul class="nav navbar-nav navbar-right">
                         <li>
+                            <div ng-controller="translationsController">
+                                <a class="btn btn-link" style="color:#ffffff;" ng-click="changeLanguage()">{{language}}</a>
+                            </div>
+                        </li>
+                        <li>
                             <div class="container-fluid" ng-controller="SearchController">
 
                                <!--<p>Selected person: {{ person | json }}</p>-->
@@ -102,11 +107,6 @@
                     </ul>
                 </div>
             </nav><!--Top-->
-
-
-
-
-
 
             <div id="main" class="main">
                 <div class="container-fluid">

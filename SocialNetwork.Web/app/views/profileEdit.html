@@ -1,21 +1,21 @@
 <div class="col-md-3"></div>
 <div class="col-md-6">
     <form class="form-login" role="form">
-        <h2 class="form-login-heading">Change your Data</h2>
+        <h2 class="form-login-heading">{{'changeYDataProfileEdit'|translate}}</h2>
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="First Name" data-ng-model="currentUser.firstName" required autofocus>
+            <input type="text" class="form-control" placeholder={{'firstName'|translate}} data-ng-model="currentUser.firstName" required autofocus>
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="Last Name" data-ng-model="currentUser.lastName" required autofocus>
+            <input type="text" class="form-control" placeholder={{'lastName'|translate}} data-ng-model="currentUser.lastName" required autofocus>
         </div>
         <div class="form-group">
-            <input type="password" class="form-control" placeholder="Current Password" data-ng-model="currentUser.currentPassword" required>
+            <input type="password" class="form-control" placeholder={{'currentPassword'|translate}} data-ng-model="currentUser.currentPassword" required>
         </div>
         <div class="row">
             <div class="col-md-4"></div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <button class="btn btn-primary btn-block" type="submit" data-ng-click="editCurrentUser()">Submit</button>
+                    <button class="btn btn-primary btn-block" type="submit" data-ng-click="editCurrentUser()">{{'submit'|translate}}</button>
                 </div>
             </div>
             <div class="col-md-4"></div>
