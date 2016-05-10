@@ -23,7 +23,7 @@ using System.Data.Entity;
 
 namespace Social_Network.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [RoutePrefix("api/Profile")]
     public class ProfileController : BaseApiController
     {

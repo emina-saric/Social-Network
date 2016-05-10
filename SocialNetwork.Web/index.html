@@ -88,16 +88,16 @@
                             </div>
                         </li>
                         <li>
-                            <div class="container-fluid" ng-controller="SearchController">
+                            <div class="container-fluid" ng-controller="searchController">
 
                                <!--<p>Selected person: {{ person | json }}</p>-->
-                                <div custom-select="t as t.name for t in people | filter: { name: $searchTerm }" ng-model="person">
+                                <div custom-select="t as t.FirstName for t in people | filter: { FirstName: $searchTerm }" ng-model="person">
                                     <div class="pull-left" style="width: 40px">
-                                        <img ng-src="{{ t.picture }}" style="width: 30px" />
+                                       <!-- <img ng-src="{{ t.picture }}" style="width: 30px" />-->
                                     </div>
                                     <div class="pull-left">
-                                        <strong>{{ t.name }}</strong><br />
-                                        <span>{{ t.phone }}</span>
+                                        <strong>{{ t.FirstName+' '+t.LastName }}</strong><br />
+                                       <!-- <span>{{ t.phone }}</span>-->
                                     </div>
                                     <div class="clearfix"></div>
                                 </div>
@@ -158,6 +158,7 @@
     <script src="app/services/authService.js?v=2"></script>
     <script src="app/services/tokensManagerService.js?v=2"></script>
     <script src="app/services/userService.js"></script>
+    <script src="app/services/searchService.js"></script>
     <!-- Load controllers -->
     <script src="app/controllers/indexController.js?v=2"></script>
     <script src="app/controllers/homeController.js?v=2"></script>
@@ -171,7 +172,7 @@
     <script src="app/controllers/profileController.js"></script>
     <script src="app/controllers/resetPasswordController.js"></script>
     <script src="app/controllers/translationsController.js"></script>
-    <script src="app/controllers/SearchController.js"></script>
+    <script src="app/controllers/searchController.js"></script>
 
         <script src="app/js/customSelect.js"></script>
 

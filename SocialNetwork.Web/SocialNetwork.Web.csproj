@@ -147,10 +147,11 @@
     <Content Include="app\controllers\forgotPasswordController.js" />
     <Content Include="app\controllers\profileController.js" />
     <Content Include="app\controllers\resetPasswordController.js" />
-    <Content Include="app\controllers\SearchController.js" />
+    <Content Include="app\controllers\searchController.js" />
     <Content Include="app\css\site.css" />
     <Content Include="app\js\customSelect.js" />
     <Content Include="app\js\site.js" />
+    <Content Include="app\services\searchService.js" />
     <Content Include="app\services\userService.js" />
     <Content Include="app\views\confirmEmail.html" />
     <Content Include="app\views\forgotPassword.html" />
