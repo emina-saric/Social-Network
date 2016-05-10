@@ -30,14 +30,30 @@ namespace Social_Network
         public static GoogleOAuth2AuthenticationOptions googleAuthOptions { get; private set; }
         public static FacebookAuthenticationOptions facebookAuthOptions { get; private set; }
         public void Configuration(IAppBuilder app)
-        {
+        {/*
             HttpConfiguration config = new HttpConfiguration();
 
             ConfigureOAuth(app);
 
             WebApiConfig.Register(config);
             app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
-            app.UseWebApi(config);
+            app.UseWebApi(config);*/
+
+            HttpConfiguration httpConfig = new HttpConfiguration();
+
+            ConfigureOAuthTokenGeneration(app);
+
+            ConfigureOAuthTokenConsumption(app);
+
+            //ConfigureWebApi(httpConfig);
+
+            WebApiConfig.Register(httpConfig);
+
+            app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
+
+            app.UseWebApi(httpConfig);
+
+
 
         }
         public void ConfigureOAuth(IAppBuilder app)
@@ -117,8 +133,8 @@ namespace Social_Network
         {
 
             var issuer = "http://localhost:57409";
-            string audienceId = ConfigurationManager.AppSettings["as:AudienceId"];
-            byte[] audienceSecret = TextEncodings.Base64Url.Decode(ConfigurationManager.AppSettings["as:AudienceSecret"]);
+            string audienceId = "414e1927a3884f68abc79f7283837fd1";
+            byte[] audienceSecret = TextEncodings.Base64Url.Decode("qMCdFDQuF23RV1Y-1Gq9L3cF3VmuFwVbam4fMTdAfpo");
 
             // Api controllers with an [Authorize] attribute will be validated with JWT
             app.UseJwtBearerAuthentication(

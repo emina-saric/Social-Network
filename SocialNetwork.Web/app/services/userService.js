@@ -12,20 +12,35 @@ app.factory('userService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
     var _getCurrentUser = function(user) {
         currentUser.userName = user;
         return $http.get(serviceBase + 'api/Profile/GetUserByUserName/' + currentUser.userName).then(function (response) {
-            currentUser.userId = response.data['id'];
             return response;
         });
 
     };
-    var serviceBaseX = 'http://localhost:57409/';
+
+    var _editCurrentUser = function (user) {
+        return $http.put(serviceBase + 'api/Profile/EditCurrentUser/',user).then(function (response) {
+            return response;
+        });
+
+    };
+
+    var _changePassword = function (user) {
+        return $http.put(serviceBase + 'api/Profile/ChangePassword/', user).then(function (response) {
+            return response;
+        });
+
+    };
+
     var _deleteCurrentUser = function () {
-        return $http.delete(serviceBaseX + 'api/Profile/DeleteCurrentUser/' + currentUser.userId).then(function (response) {
-            alert(response.data['id'])
+        return $http.delete(serviceBase + 'api/Profile/DeleteCurrentUser/').then(function (response) {
             return response;
         });
     }
 
     authServiceFactory.getCurrentUser = _getCurrentUser;
     authServiceFactory.deleteCurrentUser = _deleteCurrentUser;
+    authServiceFactory.editCurrentUser = _editCurrentUser;
+    authServiceFactory.changePassword = _changePassword;
+
     return authServiceFactory;
 }]);

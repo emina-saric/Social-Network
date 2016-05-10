@@ -39,15 +39,50 @@ namespace Social_Network.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        public string Recaptcha { get; set; }
     }
+
+    public class EditCurrentUserBindingModel
+    {
+        [Required]
+        [EmailAddress]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+
+        [Required]
+        [Display(Name = "Username")]
+        public string UserName { get; set; }
+
+        [Required]
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+
+        [Display(Name = "Role Name")]
+        public string RoleName { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [DataType(DataType.Password)]
+        [Display(Name = "Current Password")]
+        public string CurrentPassword { get; set; }
+    }
+
+
+
+
 
     public class ChangePasswordBindingModel
     {
-       
         [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Current password")]
-        public string OldPassword { get; set; }
+        public string CurrentPassword { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
@@ -59,7 +94,7 @@ namespace Social_Network.Models
         [DataType(DataType.Password)]
         [Display(Name = "Confirm new password")]
         [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
-        public string ConfirmPassword { get; set; }
+        public string ConfirmNewPassword { get; set; }
     
     }
 }

@@ -16,7 +16,7 @@
     <link href="/Content/Template/css/main.css" rel="stylesheet">
     <link href="/Content/Template/css/responsive.css" rel="stylesheet">
     <link href="app/css/site.css" rel="stylesheet" />
-    <!--[if lt IE 9]>
+        <!--[if lt IE 9]>
     <script src="~/Scripts/html5shiv.js"></script>
     <script src="~/Scripts/respond.min.js"></script>
     <![endif]-->
@@ -27,8 +27,8 @@
     <link rel="apple-touch-icon-precomposed" href="/Content/Template/images/ico/apple-touch-icon-57-precomposed.png">
 
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
-
-    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <!--reCaptcha-->
+    <script src='https://www.google.com/recaptcha/api.js' async defer></script>
 </head><!--/head-->
 
 <body class="homepage">
@@ -39,25 +39,18 @@
         <div id="sidebar" class="navbar navbar-inverse hide-sidebar" role="banner">
             <div class="collapse navbar-collapse navbar-left">
                 <ul class="nav navbar-link">
-                    <li data-ng-hide="!authentication.isAuth">Welcome {{authentication.userName}}</li>
+                    <li data-ng-hide="!authentication.isAuth">{{'welcomeIndex'|translate}} {{authentication.userName}}</li>
                     <!--Ovdje Idu Stranice-->
                     <li data-ng-hide="!authentication.isAuth" class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Profile<b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{'profileIndex'|translate}}<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#/profile">My Profile</a></li>
-                            <li><a href="#/profile/edit">Edit Profile</a></li>
-                            <li><a href="#/profile/delete">Delete Profile</a></li>
+                            <li><a href="#/profile">{{'profileMyProfileIndex'|translate}}</a></li>
+                            <li><a href="#/profile/edit">{{'profileEditProfileIndex'|translate}}</a></li>
+                            <li><a href="#/profile/changepassword">{{'profileChangePasswordIndex'|translate}}</a></li>
+                            <li><a href="#/profile/delete">{{'profileDeleteProfileIndex'|translate}}</a></li>
                         </ul>
                     </li><!--Profil View,Edit i Delete-->
-
-
-
-
-
-
-
-
-                    <li data-ng-hide="!authentication.isAuth"><a href="" onclick="sideBarKill(true);" data-ng-click="logOut()">ODJAVA</a></li>
+                    <li data-ng-hide="!authentication.isAuth"><a href="" onclick="sideBarKill(true);" data-ng-click="logOut()">{{'logoutIndex'|translate}}</a></li>
                     <!--
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <i class="fa fa-angle-down"></i></a>
@@ -90,22 +83,30 @@
                     <a href="index.html" class="navbar-brand" id="titleSocialNetwork2" data-ng-hide="authentication.isAuth">Social Network</a>
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <div class="search">
-                                <form role="form">
-                                    <input type="text" class="search-form" autocomplete="off" placeholder="Search">
-                                    <i class="fa fa-search"></i>
-                                </form>
+                            <div ng-controller="translationsController">
+                                <a class="btn btn-link" style="color:#ffffff;" ng-click="changeLanguage()">{{language}}</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="container-fluid" ng-controller="searchController">
+
+                               <!--<p>Selected person: {{ person | json }}</p>-->
+                                <div custom-select="t as t.FirstName for t in people | filter: { FirstName: $searchTerm }" ng-model="person" data-ng-click="goToProfile()">
+                                    <div class="pull-left" style="width: 40px">
+                                       <!-- <img ng-src="{{ t.picture }}" style="width: 30px" />-->
+                                    </div>
+                                    <div class="pull-left">
+                                        <strong>{{ t.FirstName+' '+t.LastName }}</strong><br />
+                                       <!-- <span>{{ t.phone }}</span>-->
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
                             </div>
                         </li>
                         <li><!--Do Not Remove--></li>
                     </ul>
                 </div>
             </nav><!--Top-->
-
-
-
-
-
 
             <div id="main" class="main">
                 <div class="container-fluid">
@@ -131,19 +132,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-    
-
-
-
     <script src="/Scripts/jquery-2.2.3.min.js"></script>
     <script src="/Scripts/bootstrap.min.js"></script>
     <script src="/Scripts/jquery.prettyPhoto.js"></script>
@@ -156,9 +144,13 @@
 
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.min.js"></script>
+    <script src="Scripts/angular-translate.min.js"></script>
+    <script src="Scripts/angular-translate-loader-url.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-sanitize.js"></script>
     <script src="Scripts/angular-local-storage.min.js"></script>
     <script src="Scripts/loading-bar.min.js"></script>
+
+    <script src="app/js/customSelect.js"></script>
     <!-- Load app main script -->
     <script src="app/app.js?v=2"></script>
     <!-- Load services -->
@@ -166,6 +158,7 @@
     <script src="app/services/authService.js?v=2"></script>
     <script src="app/services/tokensManagerService.js?v=2"></script>
     <script src="app/services/userService.js"></script>
+    <script src="app/services/searchService.js"></script>
     <!-- Load controllers -->
     <script src="app/controllers/indexController.js?v=2"></script>
     <script src="app/controllers/homeController.js?v=2"></script>
@@ -178,6 +171,11 @@
     <script src="app/controllers/forgotPasswordController.js"></script>
     <script src="app/controllers/profileController.js"></script>
     <script src="app/controllers/resetPasswordController.js"></script>
+    <script src="app/controllers/translationsController.js"></script>
+    <script src="app/controllers/searchController.js"></script>
+
+        <script src="app/js/customSelect.js"></script>
+
     <!--<a href="app/views/profile.html">app/views/profile.html</a>-->
     <!-- Load custom filters -->
     <!-- Load custom directives -->

@@ -10,12 +10,13 @@ app.controller('signupController', ['$scope', '$location', '$timeout', 'authServ
         firstName: "",
         lastName: "",
         confirmPassword: "",
-        eMail: ""
+        eMail: "",
+        recaptcha: ""
     };
 
+
     $scope.signUp = function () {
-        //var reCaptcha = grecaptcha.getResponse();
-        //if (reCaptcha != "") {
+        $scope.registration.recaptcha = grecaptcha.getResponse();
             authService.saveRegistration($scope.registration).then(function (response) {
 
                 $scope.savedSuccessfully = true;
@@ -26,16 +27,28 @@ app.controller('signupController', ['$scope', '$location', '$timeout', 'authServ
              function (response) {
                  var errors = [];
                  for (var key in response.data.modelState) {
-                     for (var i = 0; i < response.data.modelState[key].length; i++) {
-                         errors.push(response.data.modelState[key][i]);
+                     if (key != '$id') {
+                         for (var i = 0; i < response.data.modelState[key].length; i++) {
+                         
+                             errors.push(response.data.modelState[key][i]);
+
+                         }
                      }
                  }
-                 $scope.message = "Failed to register user due to:" + errors.join(' ');
+                 $scope.message = "Failed to register user due to: " + errors.join(' ');
              });
-       // } else {
-        //    $scope.message = "Captcha Fail";
-      //  }
     };
+
+    (function () {
+        if (window.localStorage) {
+            if (!localStorage.getItem('firstLoad')) {
+                localStorage['firstLoad'] = true;
+                window.location.reload();
+            }
+            else
+                localStorage.removeItem('firstLoad');
+        }
+    })();
 
     var startTimer = function () {
         var timer = $timeout(function () {

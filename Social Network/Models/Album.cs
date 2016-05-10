@@ -17,6 +17,7 @@ namespace Social_Network.Models
         public DateTime Datum { get; set; }
         public bool Privatni { get; set; }
         public string AlbumCol { get; set; }
-        public int ProfilId { get; set; }
+        [MaxLength(128)]
+        public string ProfilId { get; set; }
     }
 }
