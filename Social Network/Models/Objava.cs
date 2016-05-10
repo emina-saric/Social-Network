@@ -19,6 +19,7 @@ namespace Social_Network.Models
         public int pozGlasovi { get; set; }
         public int negGlasovi { get; set; }
         public string oznake { get; set; }
-        public int ProfilId { get; set; }
+        [MaxLength(128)]
+        public string ProfilId { get; set; }
     }
 }

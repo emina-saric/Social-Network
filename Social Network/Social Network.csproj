@@ -256,6 +256,10 @@
     <Compile Include="Migrations\201605081402538_noPluralization.Designer.cs">
       <DependentUpon>201605081402538_noPluralization.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605101002101_profileIds.cs" />
+    <Compile Include="Migrations\201605101002101_profileIds.Designer.cs">
+      <DependentUpon>201605101002101_profileIds.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\RefreshToken.cs" />
     <Compile Include="Global.asax.cs">
@@ -342,6 +346,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605081402538_noPluralization.resx">
       <DependentUpon>201605081402538_noPluralization.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605101002101_profileIds.resx">
+      <DependentUpon>201605101002101_profileIds.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
