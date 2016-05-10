@@ -4,6 +4,7 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
     $scope.savedSuccessfully = false;
     $scope.message = "";
     $scope.authentication = authService.authentication;
+    $scope.messageEdit = "";
 
     $scope.currentUser = {
         userName: "",
