@@ -38,6 +38,16 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
     };
 
 
+    $scope.editCurrentUser = function () {
+        userService.editCurrentUser().then(function (response) {
+            authService.logOut();
+            $scope.goHome();
+            $window.location.reload();
+        });
+    };
+
+
+
     $scope.goHome = function() {
         $location.url(serviceBase);
     };

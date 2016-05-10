@@ -154,6 +154,7 @@
     <Content Include="app\views\forgotPassword.html" />
     <Content Include="app\views\friends.html" />
     <Content Include="app\views\profile.html" />
+    <Content Include="app\views\profileChangePassword.html" />
     <Content Include="app\views\profileDelete.html" />
     <Content Include="app\views\profileEdit.html" />
     <Content Include="app\views\resetPassword.html" />
