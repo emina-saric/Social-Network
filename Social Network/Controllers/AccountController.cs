@@ -73,6 +73,11 @@ namespace Social_Network.Controllers
                 LastName = userModel.LastName
             };
 
+            string response = await ValidateCaptcha(userModel.Recaptcha);
+            if (!response.Equals("Ok"))
+            {
+                return BadRequest("Captcha not valid");
+            }
 
             //IdentityResult result = await _userManager.CreateAsync(user, userModel.Password);
             IdentityResult addUserResult = await this.AppUserManager.CreateAsync(user, userModel.Password);
@@ -84,6 +89,36 @@ namespace Social_Network.Controllers
 
             string callbackUrl = await SendEmailConfirmationTokenAsync(user.Id, "Account confirmation");
             return Ok(callbackUrl);
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [Route("ValidateCaptcha")]
+        public async Task<string> ValidateCaptcha(string response)
+        {
+
+            //secret that was generated in key value pair
+            var secret = System.Configuration.ConfigurationManager.AppSettings["as:secretKey"];
+
+            var client = new HttpClient();
+            string url = string.Format("https://www.google.com/recaptcha/api/siteverify?secret={0}&response={1}", secret, response);
+
+            try
+            {
+                HttpResponseMessage captchaResponse = await client.GetAsync(url);
+                if (!captchaResponse.IsSuccessStatusCode)
+                {
+                    return "NotOk";
+                }
+
+            }
+            catch (HttpRequestException e)
+            {
+                // Handle exception.
+                return "NotOk";
+            }
+            return "Ok";
+
         }
 
         // GET api/Account/ExternalLogin
