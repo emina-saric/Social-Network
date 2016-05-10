@@ -15,10 +15,13 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using Social_Network.Infrastructure;
+using System.Web.Http.Cors;
 
 namespace Social_Network.Controllers
 {
     [RoutePrefix("api/Account")]
+    //[EnableCors(origins: "http://localhost:57409", headers: "*", methods: "*")]
+    [EnableCors(origins: "http://localhost:51622", headers: "*", methods: "*", exposedHeaders: "*", SupportsCredentials = true)]
     public class AccountController : BaseApiController
     {
         private AuthRepository _repo = new AuthRepository();
@@ -87,7 +90,7 @@ namespace Social_Network.Controllers
         [HostAuthentication(DefaultAuthenticationTypes.ExternalCookie)]
         [AllowAnonymous]
         [HttpGet]
-      //  [Route("ExternalLogin", Name = "ExternalLogin")]
+        [Route("ExternalLogin", Name = "ExternalLogin")]
         public async Task<IHttpActionResult> ExternalLogin(string provider, string error = null)
         {
             string redirectUri = string.Empty;

@@ -33,7 +33,7 @@ namespace Social_Network.Controllers
         [OverrideAuthentication]
         [AllowAnonymous]
         [HttpDelete]
-        [Route("DeleteCurrentUser/{Id}")]
+        //[Route("DeleteCurrentUser/{Id}")]
         public async Task<IHttpActionResult> DeleteCurrentUser(string Id)
         {
             var user = await db.Users.Where(u => u.Id==Id ).FirstOrDefaultAsync();
