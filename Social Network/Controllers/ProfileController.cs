@@ -75,9 +75,6 @@ namespace Social_Network.Controllers
         {
             var id = HttpContext.Current.User.Identity.GetUserId();
             var CurrentUser = await db.Users.Where(u => u.Id == id).FirstOrDefaultAsync();
-            Console.WriteLine(userModel.FirstName);
-            Console.WriteLine(userModel.LastName);
-            Console.WriteLine(userModel.CurrentPassword);
             ApplicationUser user = await this.AppUserManager.FindAsync(CurrentUser.UserName, userModel.CurrentPassword);
 
             if (user == null)
@@ -104,7 +101,24 @@ namespace Social_Network.Controllers
         }
 
 
+        [HttpPut]
+        [Route("ChangePassword")]
+        public async Task<IHttpActionResult> ChangePassword(ChangePasswordBindingModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
+            IdentityResult result = await this.AppUserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.CurrentPassword, model.NewPassword);
+
+            if (!result.Succeeded)
+            {
+                return GetErrorResult(result);
+            }
+
+            return Ok();
+        }
 
 
 

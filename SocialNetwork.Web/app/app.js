@@ -45,6 +45,11 @@ app.config(function ($routeProvider) {
         templateUrl: "/app/views/profileDelete.html"
     });
 
+    $routeProvider.when("/profile/changepassword", {
+        controller: "profileController",
+        templateUrl: "/app/views/profileChangePassword.html"
+    });
+
     $routeProvider.when("/confirmEmail/:userId/:code", {
         controller: "confirmEmailController",
         templateUrl: "/app/views/confirmEmail.html"

@@ -24,6 +24,13 @@ app.factory('userService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
 
     };
 
+    var _changePassword = function (user) {
+        return $http.put(serviceBase + 'api/Profile/ChangePassword/', user).then(function (response) {
+            return response;
+        });
+
+    };
+
     var _deleteCurrentUser = function () {
         return $http.delete(serviceBase + 'api/Profile/DeleteCurrentUser/').then(function (response) {
             return response;
@@ -33,5 +40,7 @@ app.factory('userService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
     authServiceFactory.getCurrentUser = _getCurrentUser;
     authServiceFactory.deleteCurrentUser = _deleteCurrentUser;
     authServiceFactory.editCurrentUser = _editCurrentUser;
+    authServiceFactory.changePassword = _changePassword;
+
     return authServiceFactory;
 }]);

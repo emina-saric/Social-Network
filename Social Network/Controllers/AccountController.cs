@@ -352,24 +352,6 @@ namespace Social_Network.Controllers
             return BadRequest("Error. Sorry for inconvenience.");
         }
 
-        // [Route("ChangePassword")]
-        public async Task<IHttpActionResult> ChangePassword(ChangePasswordBindingModel model)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            IdentityResult result = await this.AppUserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword, model.NewPassword);
-
-            if (!result.Succeeded)
-            {
-                return GetErrorResult(result);
-            }
-
-            return Ok();
-        }
-
         #region Helpers
 
         private new IHttpActionResult GetErrorResult(IdentityResult result)
