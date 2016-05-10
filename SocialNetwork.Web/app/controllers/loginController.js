@@ -28,7 +28,7 @@ app.controller('loginController', ['$scope', '$location', 'authService', 'ngAuth
 
         var redirectUri = location.protocol + '//' + location.host + '/authcomplete.html';
 
-        var externalProviderUrl = "http://localhost:57409/" + "api/Account/ExternalLogin?provider=" + provider
+        var externalProviderUrl = ngAuthSettings.apiServiceBaseUri + "api/Account/ExternalLogin?provider=" + provider
                                                                     + "&response_type=token&client_id=" + ngAuthSettings.clientId
                                                                     + "&redirect_uri=" + redirectUri;
         window.$windowScope = $scope;
