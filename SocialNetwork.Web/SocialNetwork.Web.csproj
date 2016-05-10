@@ -150,6 +150,7 @@
     <Content Include="app\controllers\confirmEmailController.js" />
     <Content Include="app\controllers\forgotPasswordController.js" />
     <Content Include="app\controllers\profileController.js" />
+    <Content Include="app\controllers\profileOtherController.js" />
     <Content Include="app\controllers\resetPasswordController.js" />
     <Content Include="app\controllers\searchController.js" />
     <Content Include="app\css\site.css" />
@@ -164,6 +165,7 @@
     <Content Include="app\views\profileChangePassword.html" />
     <Content Include="app\views\profileDelete.html" />
     <Content Include="app\views\profileEdit.html" />
+    <Content Include="app\views\profileOther.html" />
     <Content Include="app\views\resetPassword.html" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />

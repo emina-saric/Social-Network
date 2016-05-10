@@ -63,6 +63,10 @@ app.config(function ($routeProvider) {
         controller: "resetPasswordController",
         templateUrl: "/app/views/resetPassword.html"
     });
+    $routeProvider.when("/profileOther", {
+        controller: "profileOtherController",
+        templateUrl: "/app/views/profileOther.html"
+    });
 
     $routeProvider.otherwise({ redirectTo: "/home" });
 
