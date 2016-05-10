@@ -39,8 +39,9 @@ $scope.people = [
     };
 
     $scope.goToProfile = function () {
-        var user = $scope.person;
-        alert(user.userName);
+        //var user = $scope.person.userName;
+       // alert(user);
+       $location.path('/profileOther');
     }
     $scope.getAllUsers();             
 }]);
