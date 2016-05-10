@@ -69,6 +69,49 @@ namespace Social_Network.Controllers
             return Ok(user);
         }
 
+        [HttpPut]
+        [Route("EditCurrentUser")]
+        public async Task<IHttpActionResult> EditCurrentUser(EditCurrentUserBindingModel userModel)
+        {
+            var id = HttpContext.Current.User.Identity.GetUserId();
+            var CurrentUser = await db.Users.Where(u => u.Id == id).FirstOrDefaultAsync();
+            Console.WriteLine(userModel.FirstName);
+            Console.WriteLine(userModel.LastName);
+            Console.WriteLine(userModel.CurrentPassword);
+            ApplicationUser user = await this.AppUserManager.FindAsync(CurrentUser.UserName, userModel.CurrentPassword);
+
+            if (user == null)
+            {
+                ModelState.AddModelError("", "Wrong Password.");
+            }
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+
+            user.FirstName = userModel.FirstName;
+            user.LastName = userModel.LastName;
+
+            IdentityResult editUserResult = await this.AppUserManager.UpdateAsync(user);
+
+            if (!editUserResult.Succeeded)
+            {
+                return GetErrorResult(editUserResult);
+            }
+
+            return Ok();
+        }
+
+
+
+
+
+
+
+
+
+
         [HttpGet]
         [Route("GetUsers")]
         public async Task<IHttpActionResult> GetUsers()

@@ -12,7 +12,13 @@ app.factory('userService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
     var _getCurrentUser = function(user) {
         currentUser.userName = user;
         return $http.get(serviceBase + 'api/Profile/GetUserByUserName/' + currentUser.userName).then(function (response) {
-            currentUser.userId = response.data['id'];
+            return response;
+        });
+
+    };
+
+    var _editCurrentUser = function (user) {
+        return $http.put(serviceBase + 'api/Profile/EditCurrentUser/',user).then(function (response) {
             return response;
         });
 
@@ -26,5 +32,6 @@ app.factory('userService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
 
     authServiceFactory.getCurrentUser = _getCurrentUser;
     authServiceFactory.deleteCurrentUser = _deleteCurrentUser;
+    authServiceFactory.editCurrentUser = _editCurrentUser;
     return authServiceFactory;
 }]);
