@@ -16,7 +16,7 @@
     <link href="/Content/Template/css/main.css" rel="stylesheet">
     <link href="/Content/Template/css/responsive.css" rel="stylesheet">
     <link href="app/css/site.css" rel="stylesheet" />
-    <!--[if lt IE 9]>
+        <!--[if lt IE 9]>
     <script src="~/Scripts/html5shiv.js"></script>
     <script src="~/Scripts/respond.min.js"></script>
     <![endif]-->
@@ -90,11 +90,19 @@
                     <a href="index.html" class="navbar-brand" id="titleSocialNetwork2" data-ng-hide="authentication.isAuth">Social Network</a>
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <div class="search">
-                                <form role="form">
-                                    <input type="text" class="search-form" autocomplete="off" placeholder="Search">
-                                    <i class="fa fa-search"></i>
-                                </form>
+                            <div class="container-fluid" ng-controller="SearchController">
+
+                               <!--<p>Selected person: {{ person | json }}</p>-->
+                                <div custom-select="t as t.name for t in people | filter: { name: $searchTerm }" ng-model="person">
+                                    <div class="pull-left" style="width: 40px">
+                                        <img ng-src="{{ t.picture }}" style="width: 30px" />
+                                    </div>
+                                    <div class="pull-left">
+                                        <strong>{{ t.name }}</strong><br />
+                                        <span>{{ t.phone }}</span>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
                             </div>
                         </li>
                         <li><!--Do Not Remove--></li>
@@ -159,6 +167,8 @@
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-sanitize.js"></script>
     <script src="Scripts/angular-local-storage.min.js"></script>
     <script src="Scripts/loading-bar.min.js"></script>
+
+    <script src="app/js/customSelect.js"></script>
     <!-- Load app main script -->
     <script src="app/app.js?v=2"></script>
     <!-- Load services -->
@@ -178,6 +188,7 @@
     <script src="app/controllers/forgotPasswordController.js"></script>
     <script src="app/controllers/profileController.js"></script>
     <script src="app/controllers/resetPasswordController.js"></script>
+    <script src="app/controllers/SearchController.js"></script>
     <!--<a href="app/views/profile.html">app/views/profile.html</a>-->
     <!-- Load custom filters -->
     <!-- Load custom directives -->

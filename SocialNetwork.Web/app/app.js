@@ -1,5 +1,5 @@
 ﻿
-var app = angular.module("AngularApp", ['ngRoute', 'LocalStorageModule', 'angular-loading-bar']);
+var app = angular.module("AngularApp", ['ngRoute', 'LocalStorageModule', 'angular-loading-bar','AxelSoft']);
 
 app.config(function ($routeProvider) {
 
