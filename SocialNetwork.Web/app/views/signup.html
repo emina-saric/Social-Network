@@ -4,7 +4,7 @@
         <h2 class="form-login-heading">{{'signup'|translate}}</h2>
         <div class="form-group">
             <input type="text" class="form-control" placeholder={{'username'|translate}} data-ng-model="registration.userName" required autofocus>
-        </div>        
+        </div>
         <div class="form-group">
             <input type="text" class="form-control" placeholder={{'firstName'|translate}} data-ng-model="registration.firstName" required autofocus>
         </div>
@@ -20,6 +20,11 @@
         <div class="form-group">
             <input type="password" class="form-control" placeholder={{'confirmPassword'|translate}} data-ng-model="registration.confirmPassword" required>
         </div>
+
+        <div class="form-group">
+            <div class="g-recaptcha" data-sitekey="6LeC9B4TAAAAAJGSWY3FqWAV01b1lfYd8-GVx0Vs"></div>
+        </div>
+
         <div class="row">
             <div class="col-md-4"></div>
             <div class="col-md-4">
@@ -32,6 +37,6 @@
         <div data-ng-hide="message == ''" data-ng-class="(savedSuccessfully) ? 'alert alert-success' : 'alert alert-danger'">
             {{message}}
         </div>
-</form>
+    </form>
 </div>
 <div class="col-md-3"></div>
