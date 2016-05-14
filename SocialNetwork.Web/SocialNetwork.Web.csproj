@@ -43,34 +43,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.0.1011, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.AI.DependencyCollector, Version=1.2.3.246, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.1.2.3\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=1.2.3.246, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.1.2.3\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=1.2.3.246, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.1.2.3\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.AI.Web, Version=1.2.3.246, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.1.2.3\lib\net45\Microsoft.AI.Web.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.AI.WindowsServer, Version=1.2.3.246, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.1.2.3\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.ApplicationInsights, Version=1.2.3.490, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.1.2.3\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -80,8 +52,8 @@
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="SendGrid, Version=6.3.4.0, Culture=neutral, PublicKeyToken=4f047e93159395ca, processorArchitecture=MSIL">
@@ -149,6 +121,7 @@
   <ItemGroup>
     <Content Include="app\controllers\confirmEmailController.js" />
     <Content Include="app\controllers\forgotPasswordController.js" />
+    <Content Include="app\controllers\friendsController.js" />
     <Content Include="app\controllers\ordersController.js" />
     <Content Include="app\controllers\profileController.js" />
     <Content Include="app\controllers\profileOtherController.js" />
@@ -335,23 +308,37 @@
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Scripts\angular-animate.min.js.map" />
-    <Content Include="Scripts\angular-aria.min.js.map" />
-    <Content Include="Scripts\angular-cookies.min.js.map" />
-    <Content Include="Scripts\angular-loader.min.js.map" />
-    <Content Include="Scripts\angular-message-format.min.js.map" />
-    <Content Include="Scripts\angular-messages.min.js.map" />
+    <Content Include="Scripts\angular-animate.js" />
+    <Content Include="Scripts\angular-animate.min.js" />
+    <Content Include="Scripts\angular-aria.js" />
+    <Content Include="Scripts\angular-aria.min.js" />
+    <Content Include="Scripts\angular-cookies.js" />
+    <Content Include="Scripts\angular-cookies.min.js" />
+    <Content Include="Scripts\angular-loader.js" />
+    <Content Include="Scripts\angular-loader.min.js" />
+    <Content Include="Scripts\angular-message-format.js" />
+    <Content Include="Scripts\angular-message-format.min.js" />
+    <Content Include="Scripts\angular-messages.js" />
+    <Content Include="Scripts\angular-messages.min.js" />
+    <Content Include="Scripts\angular-mocks.js" />
+    <Content Include="Scripts\angular-parse-ext.js" />
+    <Content Include="Scripts\angular-parse-ext.min.js" />
     <Content Include="Scripts\angular-recaptcha.js" />
     <Content Include="Scripts\angular-recaptcha.min.js" />
-    <Content Include="Scripts\angular-resource.min.js.map" />
-    <Content Include="Scripts\angular-route.min.js.map" />
-    <Content Include="Scripts\angular-sanitize.min.js.map" />
-    <Content Include="Scripts\angular-touch.min.js.map" />
+    <Content Include="Scripts\angular-resource.js" />
+    <Content Include="Scripts\angular-resource.min.js" />
+    <Content Include="Scripts\angular-route.js" />
+    <Content Include="Scripts\angular-route.min.js" />
+    <Content Include="Scripts\angular-sanitize.js" />
+    <Content Include="Scripts\angular-sanitize.min.js" />
+    <Content Include="Scripts\angular-touch.js" />
+    <Content Include="Scripts\angular-touch.min.js" />
     <Content Include="Scripts\angular-translate-loader-url.js" />
     <Content Include="Scripts\angular-translate-loader-url.min.js" />
     <Content Include="Scripts\angular-translate.js" />
     <Content Include="Scripts\angular-translate.min.js" />
-    <Content Include="Scripts\angular.min.js.map" />
+    <Content Include="Scripts\angular.js" />
+    <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\errors.json" />
     <Content Include="Content\Template\images\fontawesome-webfont.eot" />
     <Content Include="Content\Template\images\fontawesome-webfont.ttf" />
@@ -362,13 +349,30 @@
     <Content Include="Content\Template\images\glyphicons-halflings-regular.woff" />
     <Content Include="Content\Template\style\404.xcf" />
     <Content Include="Content\Template\images\404.xcf" />
+    <Content Include="Content\bootswatch\cosmo\Thumbs.db" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="Content\bootswatch\cosmo\Thumbs.db" />
+    <Content Include="Scripts\angular.min.js.map" />
+    <Content Include="Scripts\angular-touch.min.js.map" />
+    <Content Include="Scripts\angular-sanitize.min.js.map" />
+    <Content Include="Scripts\angular-route.min.js.map" />
+    <Content Include="Scripts\angular-resource.min.js.map" />
+    <Content Include="Scripts\angular-parse-ext.min.js.map" />
+    <Content Include="Scripts\angular-messages.min.js.map" />
+    <Content Include="Scripts\angular-message-format.min.js.map" />
+    <Content Include="Scripts\angular-loader.min.js.map" />
+    <Content Include="Scripts\angular-cookies.min.js.map" />
+    <Content Include="Scripts\angular-aria.min.js.map" />
+    <Content Include="Scripts\angular-animate.min.js.map" />
+    <None Include="Scripts\jquery-2.2.3.intellisense.js" />
+    <Content Include="Scripts\jquery-2.2.3.js" />
+    <Content Include="Scripts\jquery-2.2.3.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -399,34 +403,9 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
-    <Content Include="Scripts\ai.0.15.0-build58334.js" />
-    <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
-    <Content Include="Scripts\angular-animate.js" />
-    <Content Include="Scripts\angular-animate.min.js" />
-    <Content Include="Scripts\angular-aria.js" />
-    <Content Include="Scripts\angular-aria.min.js" />
-    <Content Include="Scripts\angular-cookies.js" />
-    <Content Include="Scripts\angular-cookies.min.js" />
     <Content Include="Scripts\angular-csp.css" />
-    <Content Include="Scripts\angular-loader.js" />
-    <Content Include="Scripts\angular-loader.min.js" />
     <Content Include="Scripts\angular-local-storage.min.js" />
-    <Content Include="Scripts\angular-message-format.js" />
-    <Content Include="Scripts\angular-message-format.min.js" />
-    <Content Include="Scripts\angular-messages.js" />
-    <Content Include="Scripts\angular-messages.min.js" />
-    <Content Include="Scripts\angular-mocks.js" />
-    <Content Include="Scripts\angular-resource.js" />
-    <Content Include="Scripts\angular-resource.min.js" />
-    <Content Include="Scripts\angular-route.js" />
-    <Content Include="Scripts\angular-route.min.js" />
-    <Content Include="Scripts\angular-sanitize.js" />
-    <Content Include="Scripts\angular-sanitize.min.js" />
     <Content Include="Scripts\angular-scenario.js" />
-    <Content Include="Scripts\angular-touch.js" />
-    <Content Include="Scripts\angular-touch.min.js" />
-    <Content Include="Scripts\angular.js" />
-    <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\app\app.datamodel.js" />
     <Content Include="Scripts\app\app.viewmodel.js" />
     <Content Include="Scripts\app\common.js" />
@@ -1180,17 +1159,9 @@
     <Content Include="Scripts\i18n\angular-locale_zh.js" />
     <Content Include="Scripts\i18n\angular-locale_zu-za.js" />
     <Content Include="Scripts\i18n\angular-locale_zu.js" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery-2.2.3.min.js" />
     <Content Include="Scripts\jquery.isotope.min.js" />
     <Content Include="Scripts\jquery.prettyPhoto.js" />
-    <Content Include="Scripts\knockout-2.3.0.debug.js" />
-    <Content Include="Scripts\knockout-2.3.0.js" />
-    <Content Include="Scripts\knockout.validation.debug.js" />
-    <Content Include="Scripts\knockout.validation.js" />
     <Content Include="Scripts\loading-bar.min.js" />
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
@@ -1203,7 +1174,6 @@
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Scripts\version.json" />
   </ItemGroup>
   <ItemGroup>
