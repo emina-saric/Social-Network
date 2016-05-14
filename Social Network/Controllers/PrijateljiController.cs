@@ -23,6 +23,11 @@ namespace Social_Network.Controllers
             return Json(prijatelji, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult GetFriends(string userId)
+        {
+            return Json(db.Prijateljs.Where(p => p.Osoba1 == userId || p.Osoba2 == userId).ToListAsync());
+        }
+
         // GET: Prijatelji/Details/5
         public async Task<ActionResult> Details(int? id)
         {

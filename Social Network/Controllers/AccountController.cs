@@ -6,7 +6,6 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Linq;
-using Social_Network;
 using System;
 using System.Linq;
 using System.Net.Http;
@@ -14,18 +13,11 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
-using System.Web.Http.ModelBinding;
-using System.Net.Http;
-using Social_Network.Controllers;
-using Social_Network.Results;
 using Social_Network.Infrastructure;
-using System.Web.Http.Cors;
 
 namespace Social_Network.Controllers
 {
     [RoutePrefix("api/Account")]
-    //[EnableCors(origins: "http://localhost:57409", headers: "*", methods: "*")]
-    [EnableCors(origins: "http://localhost:51622", headers: "*", methods: "*", exposedHeaders: "*", SupportsCredentials = true)]
     public class AccountController : BaseApiController
     {
         private AuthRepository _repo = new AuthRepository();
@@ -46,6 +38,7 @@ namespace Social_Network.Controllers
             _userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(_ctx));
 
         }
+
         [Route("user/{id:guid}", Name = "GetUserById")]
         public async Task<IHttpActionResult> GetUser(string Id)
         {

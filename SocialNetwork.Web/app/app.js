@@ -67,6 +67,10 @@ app.config(function ($routeProvider) {
         controller: "profileOtherController",
         templateUrl: "/app/views/profileOther.html"
     });
+    $routeProvider.when("/profile/friends", {
+        controller: "friendsController",
+        templateUrl: "/app/views/friends.html"
+    });
 
     $routeProvider.otherwise({ redirectTo: "/home" });
 
@@ -125,13 +129,14 @@ app.config(function ($translateProvider) {
         login: 'Login',
         loginText: 'If you have an account, you can use the button below to access the page.',
         signupText: 'Use the button below to create an account.',
-        signup: 'Create Account'
+        signup: 'Create Account',
+        friends: "Friends"
     }).translations('ba', {
         welcomeHome: 'Dobro došli na Social Network!',
         profileIndex: 'Profil',
         profileMyProfileIndex: 'Moj profil',
         profileEditProfileIndex: 'Izmijeni profil',
-        profileChangePasswordIndex: 'Izmjeni šifru',
+        profileChangePasswordIndex: 'Izmijeni šifru',
         profileDeleteProfileIndex: 'Izbriši profil',
         welcomeIndex: 'Dobrodošao/la',
         logoutIndex: 'Odjavi se',
@@ -156,7 +161,8 @@ app.config(function ($translateProvider) {
         login: 'Prijava',
         loginText: 'Ako imate korisnički nalog, možete iskoristiti dugme ispod za prijavu.',
         signupText: 'Iskoristite dugme ispod za pravljenje korisničkog naloga.',
-        signup: 'Napravi nalog'
+        signup: 'Napravi nalog',
+        friends: 'Prijatelji'
 
     });
     $translateProvider.preferredLanguage('ba');
