@@ -1,6 +1,7 @@
-﻿app.controller('profileOtherController', ['$scope', '$location', '$timeout', 'authService', 'userService', '$routeParams', function ($scope, $location, $timeout, authService, userService, $routeParams) {
+﻿'use strict';
+app.controller('profileOtherController', ['$scope', '$location', '$timeout', 'authService', 'userService', '$routeParams', 'searchService', function ($scope, $location, $timeout, authService, userService, $routeParams, searchService) {
     
-    //alert($scope.person.userName);
+    //alert(searchService.otherUser.userName);  
     $scope.otherUser = {
         userName: "",
         userId: "",
@@ -13,8 +14,7 @@
         confirmNewPassword: ""
     };
     $scope.getOtherUser = function () {
-        userService.getCurrentUser('amar').then(function (response) {
-
+        userService.getCurrentUser(searchService.otherUser.userName).then(function (response) {
             $scope.savedSuccessfully = true;
             $scope.message = "User found !";
             $scope.otherUser.userId = response.data['id'];
@@ -25,6 +25,13 @@
         });
     };
 
-    $scope.getOtherUser();
+    var updateFoo = function () {
+        $scope.getOtherUser();
+    };
+
+    searchService.registerObserverCallback(updateFoo);
+    //service now in control of updating foo
+
+   $scope.getOtherUser();
 
 }]);

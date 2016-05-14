@@ -40,8 +40,10 @@ $scope.people = [
 
     $scope.goToProfile = function () {
         //var user = $scope.person.userName;
-       // alert(user);
-       $location.path('/profileOther');
+        
+        
+        searchService.takeData($scope.person);
+        $location.path('/profileOther');
     }
     $scope.getAllUsers();             
 }]);
