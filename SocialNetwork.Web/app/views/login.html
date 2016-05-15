@@ -2,25 +2,33 @@
     <div class="row">
         <div class="col-md-2">
             &nbsp;
-        </div>
+        </div>        
         <div class="col-md-4">
             <h2 class="form-login-heading">{{'login'|translate}}</h2>
-            <input type="text" class="form-control" placeholder={{'username'|translate}} data-ng-model="loginData.userName" required autofocus>
-            <input type="password" class="form-control" placeholder={{'password'|translate}} data-ng-model="loginData.password" required>
-            <!--
+            <hr />
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder={{'username'|translate}} data-ng-model="loginData.userName" required autofocus>
+                <br />
+                <input type="password" class="form-control" placeholder={{'password'|translate}} data-ng-model="loginData.password" required>
+                <!--
             <div class="checkbox">
                 <label>
                     <input type="checkbox" data-ng-model="loginData.useRefreshTokens"><strong> Use Refresh Tokens</strong>
                 </label>
             </div>-->
-            <button class="btn btn-md btn-info btn-block" type="submit" data-ng-click="login()">{{'login'|translate}}</button>
-            <a href="/#/forgotPassword">{{'lostPassword'|translate}}</a>
-              <div data-ng-hide="message == ''" class="alert alert-danger">
-                {{message}}
+                <br />
+                <button class="btn btn-md btn-info btn-block" type="submit" data-ng-click="login()">{{'login'|translate}}</button>
+                <br />
+                <a href="/#/forgotPassword">{{'lostPassword'|translate}}</a>
+                <br />
+                <div data-ng-hide="message == ''" class="alert alert-danger">
+                    {{message}}
+                </div>
             </div>
         </div>
         <div class="col-md-4">
             <h2 class="form-login-heading">{{'socialLogins'|translate}}</h2>
+            <hr />
             <p>{{'socialLoginsText'|translate}}</p>
             <button class="btn btn-large btn-facebook btn-block" type="button" data-ng-click="authExternalProvider('Facebook')"><i class="fa fa-facebook"></i> | Connect with Facebook</button>
             <button class="btn btn-large btn-google-plus btn-block" type="button" data-ng-click="authExternalProvider('Google')"><i class="fa fa-google-plus"></i> | Connect with Google+</button>
