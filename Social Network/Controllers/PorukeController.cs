@@ -19,7 +19,7 @@ namespace Social_Network.Controllers
         // GET: Poruke
         public async Task<ActionResult> Index()
         {
-            var poruke = await db.Porukas.ToListAsync();
+            var poruke = await db.Poruka.ToListAsync();
             return Json(poruke, JsonRequestBehavior.AllowGet);
         }
 
@@ -30,7 +30,7 @@ namespace Social_Network.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Poruka poruka = await db.Porukas.FindAsync(id);
+            Poruka poruka = await db.Poruka.FindAsync(id);
             if (poruka == null)
             {
                 return HttpNotFound();
@@ -53,7 +53,7 @@ namespace Social_Network.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Porukas.Add(poruka);
+                db.Poruka.Add(poruka);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
@@ -68,7 +68,7 @@ namespace Social_Network.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Poruka poruka = await db.Porukas.FindAsync(id);
+            Poruka poruka = await db.Poruka.FindAsync(id);
             if (poruka == null)
             {
                 return HttpNotFound();
@@ -99,7 +99,7 @@ namespace Social_Network.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Poruka poruka = await db.Porukas.FindAsync(id);
+            Poruka poruka = await db.Poruka.FindAsync(id);
             if (poruka == null)
             {
                 return HttpNotFound();
@@ -112,8 +112,8 @@ namespace Social_Network.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Poruka poruka = await db.Porukas.FindAsync(id);
-            db.Porukas.Remove(poruka);
+            Poruka poruka = await db.Poruka.FindAsync(id);
+            db.Poruka.Remove(poruka);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

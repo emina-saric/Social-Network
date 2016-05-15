@@ -19,7 +19,7 @@ namespace Social_Network.Controllers
         // GET: Komentari
         public async Task<ActionResult> Index()
         {
-            var komentari = await db.Komentars.ToListAsync();
+            var komentari = await db.Komentar.ToListAsync();
             return Json(komentari, JsonRequestBehavior.AllowGet);
         }
 
@@ -30,7 +30,7 @@ namespace Social_Network.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Komentar komentar = await db.Komentars.FindAsync(id);
+            Komentar komentar = await db.Komentar.FindAsync(id);
             if (komentar == null)
             {
                 return HttpNotFound();
@@ -53,7 +53,7 @@ namespace Social_Network.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Komentars.Add(komentar);
+                db.Komentar.Add(komentar);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
@@ -68,7 +68,7 @@ namespace Social_Network.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Komentar komentar = await db.Komentars.FindAsync(id);
+            Komentar komentar = await db.Komentar.FindAsync(id);
             if (komentar == null)
             {
                 return HttpNotFound();
@@ -99,7 +99,7 @@ namespace Social_Network.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Komentar komentar = await db.Komentars.FindAsync(id);
+            Komentar komentar = await db.Komentar.FindAsync(id);
             if (komentar == null)
             {
                 return HttpNotFound();
@@ -112,8 +112,8 @@ namespace Social_Network.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Komentar komentar = await db.Komentars.FindAsync(id);
-            db.Komentars.Remove(komentar);
+            Komentar komentar = await db.Komentar.FindAsync(id);
+            db.Komentar.Remove(komentar);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

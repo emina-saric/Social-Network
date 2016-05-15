@@ -19,7 +19,7 @@ namespace Social_Network.Controllers
         // GET: Objave
         public async Task<ActionResult> Index()
         {
-            var objave = await db.Objavas.ToListAsync();
+            var objave = await db.Objava.ToListAsync();
             return Json(objave, JsonRequestBehavior.AllowGet);
         }
 
@@ -30,7 +30,7 @@ namespace Social_Network.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Objava objava = await db.Objavas.FindAsync(id);
+            Objava objava = await db.Objava.FindAsync(id);
             if (objava == null)
             {
                 return HttpNotFound();
@@ -53,7 +53,7 @@ namespace Social_Network.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Objavas.Add(objava);
+                db.Objava.Add(objava);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
@@ -68,7 +68,7 @@ namespace Social_Network.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Objava objava = await db.Objavas.FindAsync(id);
+            Objava objava = await db.Objava.FindAsync(id);
             if (objava == null)
             {
                 return HttpNotFound();
@@ -99,7 +99,7 @@ namespace Social_Network.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Objava objava = await db.Objavas.FindAsync(id);
+            Objava objava = await db.Objava.FindAsync(id);
             if (objava == null)
             {
                 return HttpNotFound();
@@ -112,8 +112,8 @@ namespace Social_Network.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Objava objava = await db.Objavas.FindAsync(id);
-            db.Objavas.Remove(objava);
+            Objava objava = await db.Objava.FindAsync(id);
+            db.Objava.Remove(objava);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

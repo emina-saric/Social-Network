@@ -19,13 +19,13 @@ namespace Social_Network.Controllers
         // GET: Prijatelji
         public async Task<ActionResult> Index()
         {
-            var prijatelji = await db.Prijateljs.ToListAsync();
+            var prijatelji = await db.Prijatelj.ToListAsync();
             return Json(prijatelji, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult GetFriends(string userId)
         {
-            return Json(db.Prijateljs.Where(p => p.Osoba1 == userId || p.Osoba2 == userId).ToListAsync());
+            return Json(db.Prijatelj.Where(p => p.Osoba1 == userId || p.Osoba2 == userId).ToListAsync());
         }
 
         // GET: Prijatelji/Details/5
@@ -35,7 +35,7 @@ namespace Social_Network.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Prijatelj prijatelj = await db.Prijateljs.FindAsync(id);
+            Prijatelj prijatelj = await db.Prijatelj.FindAsync(id);
             if (prijatelj == null)
             {
                 return HttpNotFound();
@@ -58,7 +58,7 @@ namespace Social_Network.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Prijateljs.Add(prijatelj);
+                db.Prijatelj.Add(prijatelj);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
@@ -73,7 +73,7 @@ namespace Social_Network.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Prijatelj prijatelj = await db.Prijateljs.FindAsync(id);
+            Prijatelj prijatelj = await db.Prijatelj.FindAsync(id);
             if (prijatelj == null)
             {
                 return HttpNotFound();
@@ -104,7 +104,7 @@ namespace Social_Network.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Prijatelj prijatelj = await db.Prijateljs.FindAsync(id);
+            Prijatelj prijatelj = await db.Prijatelj.FindAsync(id);
             if (prijatelj == null)
             {
                 return HttpNotFound();
@@ -117,8 +117,8 @@ namespace Social_Network.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Prijatelj prijatelj = await db.Prijateljs.FindAsync(id);
-            db.Prijateljs.Remove(prijatelj);
+            Prijatelj prijatelj = await db.Prijatelj.FindAsync(id);
+            db.Prijatelj.Remove(prijatelj);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

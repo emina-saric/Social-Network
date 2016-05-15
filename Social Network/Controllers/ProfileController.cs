@@ -1,25 +1,13 @@
-﻿using Social_Network.Models;
-using Social_Network.Results;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Identity.Owin;
+﻿using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
-using Microsoft.Owin.Security.OAuth;
-using Newtonsoft.Json.Linq;
-using Social_Network;
-using System;
+using Social_Network.Infrastructure;
+using Social_Network.Models;
+using System.Data.Entity;
 using System.Linq;
 using System.Net.Http;
-using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
-using System.Web.Http.ModelBinding;
-using System.Net.Http;
-using Social_Network.Controllers;
-using Social_Network.Results;
-using Social_Network.Infrastructure;
-using System.Data.Entity;
 
 namespace Social_Network.Controllers
 {

@@ -35,13 +35,13 @@ namespace Social_Network.Models
         public DbSet<Client> Clients { get; set; }
         public DbSet<RefreshToken> RefreshTokens { get; set; }
 
-        public System.Data.Entity.DbSet<Social_Network.Models.Album> Albums { get; set; }
-        public System.Data.Entity.DbSet<Social_Network.Models.Komentar> Komentars { get; set; }
-        public System.Data.Entity.DbSet<Social_Network.Models.Notifikacija> Notifikacijas { get; set; }
-        public System.Data.Entity.DbSet<Social_Network.Models.Objava> Objavas { get; set; }
-        public System.Data.Entity.DbSet<Social_Network.Models.Poruka> Porukas { get; set; }
-        public System.Data.Entity.DbSet<Social_Network.Models.Prijatelj> Prijateljs { get; set; }
-        public System.Data.Entity.DbSet<Social_Network.Models.Razgovor> Razgovors { get; set; }
-        public System.Data.Entity.DbSet<Social_Network.Models.Slika> Slikas { get; set; }
+        public System.Data.Entity.DbSet<Social_Network.Models.Album> Album { get; set; }
+        public System.Data.Entity.DbSet<Social_Network.Models.Komentar> Komentar { get; set; }
+        public System.Data.Entity.DbSet<Social_Network.Models.Notifikacija> Notifikacija { get; set; }
+        public System.Data.Entity.DbSet<Social_Network.Models.Objava> Objava { get; set; }
+        public System.Data.Entity.DbSet<Social_Network.Models.Poruka> Poruka { get; set; }
+        public System.Data.Entity.DbSet<Social_Network.Models.Prijatelj> Prijatelj { get; set; }
+        public System.Data.Entity.DbSet<Social_Network.Models.Razgovor> Razgovor { get; set; }
+        public System.Data.Entity.DbSet<Social_Network.Models.Slika> Slika { get; set; }
     }
 }
