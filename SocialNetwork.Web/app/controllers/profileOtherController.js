@@ -1,6 +1,6 @@
 ﻿'use strict';
-app.controller('profileOtherController', ['$scope', '$location', '$timeout', 'authService', 'userService', '$routeParams', 'searchService', function ($scope, $location, $timeout, authService, userService, $routeParams, searchService) {
-    
+app.controller('profileOtherController', ['$scope', '$location', '$timeout', 'authService', 'userService', '$routeParams', 'searchService', '$http', function ($scope, $location, $timeout, authService, userService, $routeParams, searchService, $http) {
+
     //alert(searchService.otherUser.userName);  
     $scope.otherUser = {
         userName: "",
@@ -28,10 +28,15 @@ app.controller('profileOtherController', ['$scope', '$location', '$timeout', 'au
     var updateFoo = function () {
         $scope.getOtherUser();
     };
-
+    var _addFriend = function () {
+        return $http.post('api/Prijatelji/AddFriend', { "Id1": $scope.otherUser.userId, "Id2": authService.authentication.userName }).then(function (response) {
+            return response;
+        });
+    }
+    $scope.addFriend = _addFriend;
     searchService.registerObserverCallback(updateFoo);
     //service now in control of updating foo
 
-   $scope.getOtherUser();
+    $scope.getOtherUser();
 
 }]);
