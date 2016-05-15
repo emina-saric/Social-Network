@@ -3,7 +3,7 @@
 </div>
 
 <div class="row">
-    <p translate>{{search}}</p><input ng-model="query">
+    {{'search'|translate}}: <input ng-model="query">
     <ul class="list-group">
         <li class="list-group-item" ng-repeat="friend in friends | filter:query">
             <a href="{{friend.Url}}"><h4 class="list-group-item-heading">{{friend.FullName}}</h4></a>

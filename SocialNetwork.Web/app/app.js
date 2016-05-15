@@ -1,5 +1,5 @@
 ﻿/// <reference path="views/profileDelete.html" />
-var app = angular.module("AngularApp", ['ngRoute', 'LocalStorageModule', 'angular-loading-bar','pascalprecht.translate','AxelSoft', 'vcRecaptcha']);
+var app = angular.module("AngularApp", ['ngRoute', 'LocalStorageModule', 'angular-loading-bar','pascalprecht.translate','AxelSoft']);
 
 
 app.config(function ($routeProvider) {
