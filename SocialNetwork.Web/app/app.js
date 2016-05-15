@@ -130,7 +130,8 @@ app.config(function ($translateProvider) {
         loginText: 'If you have an account, you can use the button below to access the page.',
         signupText: 'Use the button below to create an account.',
         signup: 'Create Account',
-        friends: "Friends"
+        friends: "Friends",
+        search: "Search"
     }).translations('ba', {
         welcomeHome: 'Dobro došli na Social Network!',
         profileIndex: 'Profil',
@@ -162,8 +163,8 @@ app.config(function ($translateProvider) {
         loginText: 'Ako imate korisnički nalog, možete iskoristiti dugme ispod za prijavu.',
         signupText: 'Iskoristite dugme ispod za pravljenje korisničkog naloga.',
         signup: 'Napravi nalog',
-        friends: 'Prijatelji'
-
+        friends: 'Prijatelji',
+        search: 'Pretraga'
     });
     $translateProvider.preferredLanguage('ba');
 });
