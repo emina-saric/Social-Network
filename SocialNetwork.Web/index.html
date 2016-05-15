@@ -27,8 +27,6 @@
     <link rel="apple-touch-icon-precomposed" href="/Content/Template/images/ico/apple-touch-icon-57-precomposed.png">
 
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
-    <!--reCaptcha-->
-    <script src='https://www.google.com/recaptcha/api.js'></script>
 </head><!--/head-->
 
 <body class="homepage">
@@ -120,13 +118,13 @@
 
 
 
-        <footer id="footer" class="midnight-blue">
+        <!--<footer id="footer" class="midnight-blue">
             <div class="container-fluid">
                 <div class="navbar navbar-inverse navbar-fixed-bottom">
                     <h4 class="text-info text-center">&copy; 2016 NWT Social Network @Nadrealisti</h4>
                 </div>
             </div>
-        </footer><!--/#footer-->
+        </footer>/#footer-->
     </div>
 
     <!--End-->
@@ -150,6 +148,12 @@
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-sanitize.js"></script>
     <script src="Scripts/angular-local-storage.min.js"></script>
     <script src="Scripts/loading-bar.min.js"></script>
+
+    <!--reCaptcha-->
+    <!--<script src='https://www.google.com/recaptcha/api.js'></script>-->
+    <script src="https://www.google.com/recaptcha/api.js?onload=vcRecaptchaApiLoaded&render=explicit"
+            async defer></script>
+    <script type="text/javascript" src="/Scripts/angular-recaptcha.min.js"></script>
 
     <script src="app/js/customSelect.js"></script>
     <!-- Load app main script -->
