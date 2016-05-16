@@ -25,13 +25,8 @@ namespace Social_Network.Controllers
         [Route("getObjave")]
         public async Task<IHttpActionResult> getObjave()
         {
-<<<<<<< HEAD
-            var objave = await db.Objavas.ToListAsync();
-            return Ok(objave);
-=======
             var objave = await db.Objava.ToListAsync();
-            return Json(objave, JsonRequestBehavior.AllowGet);
->>>>>>> origin/master
+            return Ok(objave);
         }
 
         // GET: Objave/Details/5
@@ -65,26 +60,7 @@ namespace Social_Network.Controllers
                 return Ok(objava);
             }
 
-<<<<<<< HEAD
             return NotFound();
-=======
-            return View(objava);
-        }
-
-        // GET: Objave/Edit/5
-        public async Task<ActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Objava objava = await db.Objava.FindAsync(id);
-            if (objava == null)
-            {
-                return HttpNotFound();
-            }
-            return View(objava);
->>>>>>> origin/master
         }
 
         // PUT: Objave/Edit/5
@@ -101,34 +77,7 @@ namespace Social_Network.Controllers
             }
             return NotFound();
 
-<<<<<<< HEAD
 
-=======
-        // GET: Objave/Delete/5
-        public async Task<ActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Objava objava = await db.Objava.FindAsync(id);
-            if (objava == null)
-            {
-                return HttpNotFound();
-            }
-            return View(objava);
-        }
-
-        // POST: Objave/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(int id)
-        {
-            Objava objava = await db.Objava.FindAsync(id);
-            db.Objava.Remove(objava);
-            await db.SaveChangesAsync();
-            return RedirectToAction("Index");
->>>>>>> origin/master
         }
 
 
@@ -139,7 +88,7 @@ namespace Social_Network.Controllers
         {
             if (id != null)
             {
-                Objava objava = await db.Objavas.FindAsync(id);
+                Objava objava = await db.Objava.FindAsync(id);
                 db.Entry(objava).State = EntityState.Deleted;
                 await db.SaveChangesAsync();
                 return Ok();

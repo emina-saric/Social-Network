@@ -32,7 +32,7 @@ namespace Social_Network.Migrations
             {
                 return;
             }
-            context.Objavas.AddRange(BuildObjave());
+            context.Objava.AddRange(BuildObjave());
             context.SaveChanges();
             context.Clients.AddRange(BuildClientsList());
             context.SaveChanges();
@@ -54,6 +54,15 @@ namespace Social_Network.Migrations
                 },
                 new Client
                 {   Id = "consoleApp",
+                    Secret=Helper.GetHash("123@abc"),
+                    Name="Console Application",
+                    ApplicationType =Models.ApplicationTypes.NativeConfidential,
+                    Active = true,
+                    RefreshTokenLifeTime = 14400,
+                    AllowedOrigin = "*"
+                },
+                new Client
+                {   Id = "sssasa",
                     Secret=Helper.GetHash("123@abc"),
                     Name="Console Application",
                     ApplicationType =Models.ApplicationTypes.NativeConfidential,
