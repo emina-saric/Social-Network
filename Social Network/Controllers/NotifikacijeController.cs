@@ -19,7 +19,7 @@ namespace Social_Network.Controllers
         // GET: Notifikacije
         public async Task<ActionResult> Index()
         {
-            var notifikacije = await db.Notifikacijas.ToListAsync();
+            var notifikacije = await db.Notifikacija.ToListAsync();
             return Json(notifikacije, JsonRequestBehavior.AllowGet);
         }
 
@@ -31,7 +31,7 @@ namespace Social_Network.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Notifikacija notifikacija = await db.Notifikacijas.FindAsync(id);
+            Notifikacija notifikacija = await db.Notifikacija.FindAsync(id);
             if (notifikacija == null)
             {
                 return HttpNotFound();
@@ -54,7 +54,7 @@ namespace Social_Network.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Notifikacijas.Add(notifikacija);
+                db.Notifikacija.Add(notifikacija);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
@@ -69,7 +69,7 @@ namespace Social_Network.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Notifikacija notifikacija = await db.Notifikacijas.FindAsync(id);
+            Notifikacija notifikacija = await db.Notifikacija.FindAsync(id);
             if (notifikacija == null)
             {
                 return HttpNotFound();
@@ -100,7 +100,7 @@ namespace Social_Network.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Notifikacija notifikacija = await db.Notifikacijas.FindAsync(id);
+            Notifikacija notifikacija = await db.Notifikacija.FindAsync(id);
             if (notifikacija == null)
             {
                 return HttpNotFound();
@@ -113,8 +113,8 @@ namespace Social_Network.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Notifikacija notifikacija = await db.Notifikacijas.FindAsync(id);
-            db.Notifikacijas.Remove(notifikacija);
+            Notifikacija notifikacija = await db.Notifikacija.FindAsync(id);
+            db.Notifikacija.Remove(notifikacija);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

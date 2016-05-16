@@ -19,7 +19,7 @@ namespace Social_Network.Controllers
         // GET: Razgovori
         public async Task<ActionResult> Index()
         {
-            var razgovori = await db.Razgovors.ToListAsync();
+            var razgovori = await db.Razgovor.ToListAsync();
             return Json(razgovori, JsonRequestBehavior.AllowGet);
             //return View(await db.Razgovors.ToListAsync());
         }
@@ -31,7 +31,7 @@ namespace Social_Network.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Razgovor razgovor = await db.Razgovors.FindAsync(id);
+            Razgovor razgovor = await db.Razgovor.FindAsync(id);
             if (razgovor == null)
             {
                 return HttpNotFound();
@@ -54,7 +54,7 @@ namespace Social_Network.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Razgovors.Add(razgovor);
+                db.Razgovor.Add(razgovor);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
@@ -69,7 +69,7 @@ namespace Social_Network.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Razgovor razgovor = await db.Razgovors.FindAsync(id);
+            Razgovor razgovor = await db.Razgovor.FindAsync(id);
             if (razgovor == null)
             {
                 return HttpNotFound();
@@ -100,7 +100,7 @@ namespace Social_Network.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Razgovor razgovor = await db.Razgovors.FindAsync(id);
+            Razgovor razgovor = await db.Razgovor.FindAsync(id);
             if (razgovor == null)
             {
                 return HttpNotFound();
@@ -113,8 +113,8 @@ namespace Social_Network.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Razgovor razgovor = await db.Razgovors.FindAsync(id);
-            db.Razgovors.Remove(razgovor);
+            Razgovor razgovor = await db.Razgovor.FindAsync(id);
+            db.Razgovor.Remove(razgovor);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

@@ -19,7 +19,7 @@ namespace Social_Network.Controllers
         // GET: Albumi
         public async Task<ActionResult> Index()
         {
-            var albumi = await db.Albums.ToListAsync();
+            var albumi = await db.Album.ToListAsync();
             return Json(albumi, JsonRequestBehavior.AllowGet);
         }
 
@@ -30,7 +30,7 @@ namespace Social_Network.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Album album = await db.Albums.FindAsync(id);
+            Album album = await db.Album.FindAsync(id);
             if (album == null)
             {
                 return HttpNotFound();
@@ -53,7 +53,7 @@ namespace Social_Network.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Albums.Add(album);
+                db.Album.Add(album);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
@@ -68,7 +68,7 @@ namespace Social_Network.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Album album = await db.Albums.FindAsync(id);
+            Album album = await db.Album.FindAsync(id);
             if (album == null)
             {
                 return HttpNotFound();
@@ -99,7 +99,7 @@ namespace Social_Network.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Album album = await db.Albums.FindAsync(id);
+            Album album = await db.Album.FindAsync(id);
             if (album == null)
             {
                 return HttpNotFound();
@@ -112,8 +112,8 @@ namespace Social_Network.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Album album = await db.Albums.FindAsync(id);
-            db.Albums.Remove(album);
+            Album album = await db.Album.FindAsync(id);
+            db.Album.Remove(album);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

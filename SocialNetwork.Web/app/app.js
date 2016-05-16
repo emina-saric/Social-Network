@@ -67,6 +67,10 @@ app.config(function ($routeProvider) {
         controller: "profileOtherController",
         templateUrl: "/app/views/profileOther.html"
     });
+    $routeProvider.when("/profile/friends", {
+        controller: "friendsController",
+        templateUrl: "/app/views/friends.html"
+    });
 
     $routeProvider.otherwise({ redirectTo: "/home" });
 
@@ -96,7 +100,7 @@ app.config(['$httpProvider', function ($httpProvider) {
 
 app.config(function ($translateProvider) {
     $translateProvider.translations('en', {
-        welcomeHome: 'Welcome to Social Network !',
+        welcomeHome: 'Welcome to Social Network!',
         profileIndex: 'Profile',
         profileMyProfileIndex: 'My Profile',
         profileEditProfileIndex: 'Edit Profile',
@@ -113,51 +117,54 @@ app.config(function ($translateProvider) {
         newPassword: 'New Password',
         username: 'Username',
         confirmNewPassword: 'Confirm New Password',
-        confirmPassword: 'Confirm Pasword',
+        confirmPassword: 'Confirm Password',
         changeYourPassword: 'Change your Password',
         submit: 'Submit',
         yes: 'Yes',
         no: 'No',
-        confirmMSGDeleteProfile: 'Are you sure, you want to delete your profile',
+        confirmMSGDeleteProfile: 'Are you sure you want to delete your profile?',
         lostPassword: 'Lost password?',
         socialLogins: 'Social Logins',
         socialLoginsText: 'Or you can login using one of the social logins below!',
         login: 'Login',
-        loginText: 'If you have account, you can use the button below to access the page.',
-        signupText: 'Use the button below to create account.',
-        signup: 'Create Account'
+        loginText: 'If you have an account, you can use the button below to access the page.',
+        signupText: 'Use the button below to create an account.',
+        signup: 'Create Account',
+        friends: "Friends",
+        search: "Search"
     }).translations('ba', {
-        welcomeHome: 'Dobrodosli na Social Network !',
+        welcomeHome: 'Dobro došli na Social Network!',
         profileIndex: 'Profil',
-        profileMyProfileIndex: 'Moj Profil',
-        profileEditProfileIndex: 'Izmjeni Profil',
-        profileChangePasswordIndex: 'Izmjeni Sifru',
-        profileDeleteProfileIndex: 'Izbrisi Profil',
-        welcomeIndex: 'Dobrodosao/la',
+        profileMyProfileIndex: 'Moj profil',
+        profileEditProfileIndex: 'Izmijeni profil',
+        profileChangePasswordIndex: 'Izmijeni šifru',
+        profileDeleteProfileIndex: 'Izbriši profil',
+        welcomeIndex: 'Dobrodošao/la',
         logoutIndex: 'Odjavi se',
-        userEmailProfile: 'Korisnicki E-Mail:',
-        changeYDataProfileEdit: 'Izmjeni svoje podatke',
+        userEmailProfile: 'E-mail',
+        changeYDataProfileEdit: 'Izmijeni svoje podatke',
         firstName: 'Ime',
         lastName: 'Prezime',
-        currentPassword: 'Sadasnja Sifra',
-        password: 'Sifra',
-        newPassword: 'Nova Sifra',
-        username: 'Korisnicko Ime',
-        confirmNewPassword: 'Potvrda za Novu Sifru',
-        confirmPassword: 'Potvrdi Sifru',
-        changeYourPassword: 'Izmjeni svoju Sifru',
+        currentPassword: 'Trenutna šifra',
+        password: 'Šifra',
+        newPassword: 'Nova šifra',
+        username: 'Korisničko ime',
+        confirmNewPassword: 'Potvrda za novu šifru',
+        confirmPassword: 'Potvrdi šifru',
+        changeYourPassword: 'Izmijeni svoju šifru',
         submit: 'Potvrdi',
         yes: 'Da',
         no: 'Ne',
-        confirmMSGDeleteProfile: 'Da li ste sigurni da zelite da izbrisete svoj profil',
-        lostPassword: 'Izgubljena Sifra?',
-        socialLogins: 'Socijalne Prijave',
-        socialLoginsText: 'Ili se mozete prijaviti sa jednom od mreza ispod !',
+        confirmMSGDeleteProfile: 'Da li ste sigurni da želite da izbrišete svoj profil',
+        lostPassword: 'Izgubljena šifra?',
+        socialLogins: 'Socijalne prijave',
+        socialLoginsText: 'Ili se možete prijaviti sa jednom od mreža ispod!',
         login: 'Prijava',
-        loginText: 'Ako imate korisnicki nalog, mozete iskoristiti dugme ispod za prijavu.',
-        signupText: 'Iskoristite dugme ispod za pravljenje korisnickog naloga.',
-        signup: 'Napravi nalog'
-
+        loginText: 'Ako imate korisnički nalog, možete iskoristiti dugme ispod za prijavu.',
+        signupText: 'Iskoristite dugme ispod za pravljenje korisničkog naloga.',
+        signup: 'Napravi nalog',
+        friends: 'Prijatelji',
+        search: 'Pretraga'
     });
     $translateProvider.preferredLanguage('ba');
 });

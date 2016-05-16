@@ -19,7 +19,7 @@ namespace Social_Network.Controllers
         // GET: Slike
         public async Task<ActionResult> Index()
         {
-            var slike = await db.Slikas.ToListAsync();
+            var slike = await db.Slika.ToListAsync();
             return Json(slike, JsonRequestBehavior.AllowGet);
             //return View(await db.Slikas.ToListAsync());
         }
@@ -31,7 +31,7 @@ namespace Social_Network.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Slika slika = await db.Slikas.FindAsync(id);
+            Slika slika = await db.Slika.FindAsync(id);
             if (slika == null)
             {
                 return HttpNotFound();
@@ -54,7 +54,7 @@ namespace Social_Network.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Slikas.Add(slika);
+                db.Slika.Add(slika);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
@@ -68,7 +68,7 @@ namespace Social_Network.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Slika slika = await db.Slikas.FindAsync(id);
+            Slika slika = await db.Slika.FindAsync(id);
             if (slika == null)
             {
                 return HttpNotFound();
@@ -99,7 +99,7 @@ namespace Social_Network.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Slika slika = await db.Slikas.FindAsync(id);
+            Slika slika = await db.Slika.FindAsync(id);
             if (slika == null)
             {
                 return HttpNotFound();
@@ -112,8 +112,8 @@ namespace Social_Network.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Slika slika = await db.Slikas.FindAsync(id);
-            db.Slikas.Remove(slika);
+            Slika slika = await db.Slika.FindAsync(id);
+            db.Slika.Remove(slika);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
