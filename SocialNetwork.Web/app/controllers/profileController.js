@@ -1,5 +1,5 @@
 ﻿'use strict';
-app.controller('profileController', ['$scope', '$location', '$timeout', 'authService', 'userService', '$routeParams', function ($scope, $location, $timeout, authService, userService, $routeParams) {
+app.controller('profileController', ['$scope', '$location', '$timeout', 'authService', 'userService', '$routeParams','objaveService', function ($scope, $location, $timeout, authService, userService, $routeParams,objaveService) {
 
     $scope.savedSuccessfully = false;
     $scope.ChangedSuccessfully = false;
@@ -8,6 +8,10 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
     $scope.authentication = authService.authentication;
     $scope.messageEdit = "";
     $scope.messagePasswordChange = "";
+
+    
+    $scope.statusObjaveShow = true
+    $scope.objave = new Array();
 
     $scope.currentUser = {
         userName: "",
@@ -97,9 +101,6 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
             $scope.getCurrentUser();
         });
     };
-
-
-
     $scope.goHome = function() {
         $location.url(serviceBase);
     };
@@ -112,8 +113,30 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
     }
 
     $scope.getCurrentUser();
-
-
+    
+   $scope.objavi = function (objava) {
+            $scope.statusObjaveShow= false
+            $scope.statusObjave = "Posted successfully";
+            $timeout(function () { $scope.statusObjaveShow = true; $scope.statusObjave = ""; }, 3000);
+            objaveService.postObjava(objava).then(function (response) {
+                
+            });
+            
+           
+        
+   };
+    //ne dovrseno
+   $scope.getObjave = function () {
+       objaveService.getObjave().then(function (response) {
+           objave = response.data;
+           for (var i = 0; i < objave.length; i++) {
+               var objava = {
+               };
+               $scope.people.objave(objava);
+           }
+       });
+   };
+    
     /*
     authService.confirmEmail(String($routeParams.userId),String($routeParams.code)).then(function (response) {
 
