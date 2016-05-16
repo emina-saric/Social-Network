@@ -32,8 +32,42 @@ namespace Social_Network.Migrations
             {
                 return;
             }
-            context.Objava.AddRange(BuildObjave());
+            context.Objava.AddOrUpdate(new Objava
+            {
+                Id = 1,
+                tekst = "probna objava u bazi za provjeru. ",
+                urlSlike = "nemaSlike",
+                datumObjave = DateTime.Parse("2011-09-01"),
+                pozGlasovi = 5,
+                negGlasovi = 2,
+                oznake = "nema oznaka",
+                ProfilId = "b5648d7f-86f1-4e71-b164-a8c0ab22cae8"
+            });
+            context.Objava.AddOrUpdate(new Objava
+            {
+                Id = 2,
+                tekst = "probna objava dva u bazi za provjeru. ",
+                urlSlike = "nemaSlike",
+                datumObjave = DateTime.Parse("2015-09-01"),
+                pozGlasovi = 20,
+                negGlasovi = 0,
+                oznake = "nema",
+                ProfilId = "b5648d7f-86f1-4e71-b164-a8c0ab22cae8"
+            });
+            context.Objava.AddOrUpdate(new Objava
+            {
+                Id = 2,
+                tekst = "probna objava tri u bazi za provjeru. ",
+                urlSlike = "nemaSlike",
+                datumObjave = DateTime.Parse("2012-09-01"),
+                pozGlasovi = 1,
+                negGlasovi = 0,
+                oznake = "nema",
+                ProfilId = "b5648d7f-86f1-4e71-b164-a8c0ab22cae8"
+            });
             context.SaveChanges();
+
+            //context.Objava.AddRange(BuildObjave());
             context.Clients.AddRange(BuildClientsList());
             context.SaveChanges();
         }
@@ -54,15 +88,6 @@ namespace Social_Network.Migrations
                 },
                 new Client
                 {   Id = "consoleApp",
-                    Secret=Helper.GetHash("123@abc"),
-                    Name="Console Application",
-                    ApplicationType =Models.ApplicationTypes.NativeConfidential,
-                    Active = true,
-                    RefreshTokenLifeTime = 14400,
-                    AllowedOrigin = "*"
-                },
-                new Client
-                {   Id = "sssasa",
                     Secret=Helper.GetHash("123@abc"),
                     Name="Console Application",
                     ApplicationType =Models.ApplicationTypes.NativeConfidential,
