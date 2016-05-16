@@ -32,7 +32,8 @@ namespace Social_Network.Migrations
             {
                 return;
             }
-
+            context.Objavas.AddRange(BuildObjave());
+            context.SaveChanges();
             context.Clients.AddRange(BuildClientsList());
             context.SaveChanges();
         }
@@ -52,7 +53,7 @@ namespace Social_Network.Migrations
                     AllowedOrigin = "http://localhost:51622"
                 },
                 new Client
-                { Id = "consoleApp",
+                {   Id = "consoleApp",
                     Secret=Helper.GetHash("123@abc"),
                     Name="Console Application",
                     ApplicationType =Models.ApplicationTypes.NativeConfidential,
@@ -63,6 +64,25 @@ namespace Social_Network.Migrations
             };
 
             return ClientsList;
+        }
+        private static List<Objava> BuildObjave()
+        {
+
+            List<Objava> ObjaveList = new List<Objava>
+            {
+                new Objava{
+                    Id=1,
+                    tekst = "Hard coded objava u bazi za provjeru. ",
+                    urlSlike = "nemaSlike",
+                    datumObjave = DateTime.Parse("2011-09-01"),
+                    pozGlasovi = 5,
+                    negGlasovi = 2,
+                    oznake ="nema oznaka",
+                    ProfilId = "b5648d7f-86f1-4e71-b164-a8c0ab22cae8"
+                }
+            };
+
+            return ObjaveList;
         }
     }
 }
