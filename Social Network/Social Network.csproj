@@ -260,10 +260,6 @@
     <Compile Include="Migrations\201605161354431_objave.Designer.cs">
       <DependentUpon>201605161354431_objave.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201605171509191_ProfileImage.cs" />
-    <Compile Include="Migrations\201605171509191_ProfileImage.Designer.cs">
-      <DependentUpon>201605171509191_ProfileImage.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201605171830305_objava.cs" />
     <Compile Include="Migrations\201605171830305_objava.Designer.cs">
       <DependentUpon>201605171830305_objava.cs</DependentUpon>
@@ -368,9 +364,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605161354431_objave.resx">
       <DependentUpon>201605161354431_objave.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605171509191_ProfileImage.resx">
-      <DependentUpon>201605171509191_ProfileImage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605171830305_objava.resx">
       <DependentUpon>201605171830305_objava.cs</DependentUpon>
