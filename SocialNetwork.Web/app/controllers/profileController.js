@@ -6,11 +6,14 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
     $scope.savedSuccessfully = false;
     $scope.ChangedSuccessfully = false;
     $scope.ChangedPasswordSuccessfully = false;
-    $scope.PostedSuccessfully = true;
+    $scope.PostedSuccessfully = false;
+    $scope.DeletedSuccessfully = false;
+
     $scope.message = "";
     $scope.authentication = authService.authentication;
     $scope.messageEdit = "";
     $scope.messagePasswordChange = "";
+    $scope.postDelete = "";
     $scope.upload = [];
     $scope.fileUploadObj = { fullFileName: "Test string 1" };
 
@@ -161,6 +164,7 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
                return;
         }
         var objava = {
+            id: "",
             tekst: "",
             urlSlike: "",
             datumObjave: "",
@@ -198,6 +202,7 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
            objave = response.data;
            for (var i = 0; i < objave.length; i++) {
                var objava = {
+                   id:"",
                    tekst: "",
                    urlSlike: "",
                    datumObjave: "",
@@ -206,8 +211,9 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
                    oznake: "",
                    profilId: "",
                    userName: ""
-
                };
+
+               objava.id = objave[i].id;
                objava.tekst = objave[i].tekst;
                objava.urlSlike = objave[i].urlSlike;
                objava.datumObjave = objave[i].datumObjave;
@@ -216,8 +222,9 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
                objava.oznake = objave[i].oznake;
                objava.profilId = objave[i].profilId;
                objava.userName = objave[i].userName;
+
                $scope.objave.unshift(objava);
-               //alert(JSON.stringify(objava));
+              // alert(JSON.stringify(objava));
          
            }
        });
@@ -226,10 +233,20 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
    };
     $scope.GetObjave();
    
+    $scope.remove = function (objava) {
+       // alert(JSON.stringify(objava));
+        var index = $scope.objave.indexOf(objava)
+        $scope.objave.splice(index, 1);
+        objaveService.DeleteObjava(objava.id).then(function (response) {
+            $scope.DeletedSuccessfully = true;
+            $scope.postDelete = "Deleted successfully!"
+            skloniPoruku();
+       });
 
+    }
     var skloniPoruku = function () {
         var timer = $timeout(function () {
-            $scope.messageEdit = "";;
+            $scope.messageEdit = ""; $scope.postDelete="";
         }, 3000);
     }
 

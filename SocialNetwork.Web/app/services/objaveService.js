@@ -18,8 +18,16 @@ app.factory('objaveService', ['$http', '$q', 'localStorageService', 'ngAuthSetti
         });
 
     };
+    var _DeleteObjava = function (id) {
+        return $http.delete(serviceBase + 'api/Objave/DeleteObjava/'+id).then(function (response) {
+
+            return response;
+        });
+
+    };
     authServiceFactory.GetObjave = _GetObjave;
     authServiceFactory.PostObjava = _PostObjava;
+    authServiceFactory.DeleteObjava = _DeleteObjava;
    /* authServiceFactory.deleteCurrentUser = _deleteCurrentUser;
     authServiceFactory.editCurrentUser = _editCurrentUser;
     authServiceFactory.changePassword = _changePassword;*/

@@ -1,37 +1,50 @@
 ﻿<div class="center">
     <h2>{{currentUser.fullName}}</h2>
-            {{'userEmailProfile'|translate}} {{currentUser.eMail}}
+    {{'userEmailProfile'|translate}} {{currentUser.eMail}}
 </div>
- 
+
 <form class="form-control-static">
     <div class="form-group" style="width:500px;margin:auto">
-        <textarea type="text" class = "form-control" rows = "3" placeholder="What's on your mind?" ng-model="objavaTekst"></textarea>
+        <textarea type="text" class="form-control" rows="3" placeholder="What's on your mind?" ng-model="objavaTekst"></textarea>
         <button type="submit" class="btn btn-primary" style="float:right" data-ng-click="objavi(objava)">Post</button>
     </div>
     <br>
     <br>
-    
+
     <div data-ng-hide="messageEdit == ''" data-ng-class="(PostedSuccessfully) ? 'alert alert-success' : 'alert alert-danger'" style="width:500px;margin:4px auto;padding:2px">
-       <p class="text-center" style="font-size:13px;margin:0;padding:0">{{messageEdit}}</p> 
+        <p class="text-center" style="font-size:13px;margin:0;padding:0">{{messageEdit}}</p>
     </div>
-   
+
 </form>
 
-<div ng-repeat="post in posts">
-    
+
+
+<div data-ng-hide="postDelete == ''" data-ng-class="(DeletedSuccessfully) ? 'alert alert-success' : 'alert alert-danger'" style="width:500px;padding:2px;position:fixed;margin-left:-250px;left:50%;top:50%;z-index: 10">
+    <p class="text-center" style="font-size:13px;margin:0;padding:0">{{postDelete}}</p>
 </div>
-<div class="container" >
-    <div class="row" >
+<div class="container">
+    <div class="row">
+
         <div ng-repeat="objava in objave" class="col-sm-12">
 
             <div class="label-default" style="border:1px">
+
+                <div class="dropdown" style="float:right">
+                    <button class="btn btn-group-lg dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="font-size:small; width:20px;min-width:100px">
+                        Dropdown
+                        <span class="caret"></span>
+                    </button>
+                    <div class="dropdown-menu" style="width:20px;min-width:100px">
+                        <button class="btn btn-block" style="margin:0" ng-click="remove(objava)"><span class="glyphicon glyphicon-trash" aria-hidden="true" style="margin:0;padding:0"></span>Delete</button>
+                        <button class="btn btn-block" style="margin:0"><span class="glyphicon glyphicon-pencil" aria-hidden="true" ></span>Edit</button>
+                        
+                    </div>
+                </div>
                 <span class="label label-info">{{ objava.userName }}</span>
                 <div class="panel-body">
                     {{objava.tekst}}<br>
-         
+
                     <span class="label label-primary">{{ objava.datumObjave| date:'dd/MM/yyyy hh:mm:ss' }}</span>
-                   
-                    
                 </div>
 
             </div><!--/row-->
