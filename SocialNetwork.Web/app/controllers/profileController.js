@@ -185,7 +185,9 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
             objaveService.PostObjava(objava).then(function (response) {
                 $scope.PostedSuccessfully = true;
                 $scope.messageEdit = "Posted successfully.";
+                $scope.objavaTekst="";
                 skloniPoruku();
+
             });
            
             
