@@ -1,5 +1,8 @@
 ﻿/*site.css*/
-
+body
+{
+    padding-bottom: 55px;
+}
 #sidebar {
 	background: #2a2c36;
 	color: #eee;
