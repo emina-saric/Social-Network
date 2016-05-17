@@ -9,6 +9,7 @@ namespace Social_Network.Models
 {
     public class Objava
     {
+        
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         [Required]

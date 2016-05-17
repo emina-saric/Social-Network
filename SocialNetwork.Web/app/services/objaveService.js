@@ -5,9 +5,22 @@ app.factory('objaveService', ['$http', '$q', 'localStorageService', 'ngAuthSetti
     var authServiceFactory = {};
 
     
+    var _GetObjave = function () {
+        return $http.get(serviceBase + 'api/Objave/GetObjave/').then(function (response) {
+            return response;
+        });
 
-   /*authServiceFactory.getCurrentUser = _getCurrentUser;
-    authServiceFactory.deleteCurrentUser = _deleteCurrentUser;
+    };
+    var _PostObjava = function (objava) {
+        return $http.post(serviceBase+'api/Objave/CreateObjava',objava).then(function (response) {
+            alert("USpjelo");
+            return response;
+        });
+
+    };
+    authServiceFactory.GetObjave = _GetObjave;
+    authServiceFactory.PostObjava = _PostObjava;
+   /* authServiceFactory.deleteCurrentUser = _deleteCurrentUser;
     authServiceFactory.editCurrentUser = _editCurrentUser;
     authServiceFactory.changePassword = _changePassword;*/
 

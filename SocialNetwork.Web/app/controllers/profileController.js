@@ -15,7 +15,10 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
 
     
     $scope.statusObjaveShow = true
+
     $scope.objave = new Array();
+    
+    var objave = new Array();
 
     $scope.currentUser = {
         userName: "",
@@ -139,28 +142,53 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
 
     $scope.getCurrentUser();
     
-   $scope.objavi = function (objava) {
+   $scope.objavi = function () {
             $scope.statusObjaveShow= false
-            $scope.statusObjave = "Posted successfully";
-            $timeout(function () { $scope.statusObjaveShow = true; $scope.statusObjave = ""; }, 3000);
-            objaveService.postObjava(objava).then(function (response) {
-                
+            var objava = {
+                tekst: "objava iz angulara sa minimalno 20 karaktera jer tako mora",
+                urlSlike: "nema",
+                datumObjave: "2015-01-01T00:00:00",
+                pozGlasovi: "10",
+                negGlasovi: "0",
+                oznake: "nema oznaka",
+                ProfilId: "b5648d7f-86f1-4e71-b164-a8c0ab22cae8"
+            };
+            objaveService.PostObjava(objava).then(function (response) {
+                $scope.statusObjave = "Posted successfully";
+                $timeout(function () { $scope.statusObjaveShow = true; $scope.statusObjave = ""; }, 3000);
+
             });
             
            
         
    };
-    //ne dovrseno
-   $scope.getObjave = function () {
-       objaveService.getObjave().then(function (response) {
+
+   $scope.GetObjave = function () {
+       objaveService.GetObjave().then(function (response) {
            objave = response.data;
            for (var i = 0; i < objave.length; i++) {
                var objava = {
+                   tekst:"",
+                   urlSlike:"",
+                   datumObjave: "",
+                   pozGlasovi: "",
+                   negGlasovi: "",
+                   oznake: "",
+                   ProfilId:""
                };
-               $scope.people.objave(objava);
+               objava.tekst = objave[i].tekst;
+               objava.urlSlike = objave[i].urlSlike;
+               objava.datumObjave = objave[i].datumObjave;
+               objava.pozGlasovi = objave[i].pozGlasovi;
+               objava.negGlasovi = objave[i].negGlasovi;
+               objava.oznake = objave[i].oznake;
+               objava.ProfilId = objave[i].ProfilId;
+               $scope.objave.push(objava);
+               alert(JSON.stringify(objava));
            }
        });
    };
+    $scope.GetObjave();
     
     /*
     authService.confirmEmail(String($routeParams.userId),String($routeParams.code)).then(function (response) {

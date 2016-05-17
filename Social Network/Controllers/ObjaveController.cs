@@ -1,10 +1,13 @@
-﻿using Social_Network.Models;
+﻿using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
+using Social_Network.Infrastructure;
+using Social_Network.Models;
+using System.Data.Entity;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
-using System.Data.Entity;
 
 namespace Social_Network.Controllers
 {
@@ -22,8 +25,8 @@ namespace Social_Network.Controllers
 
         // GET: Objave
         [HttpGet]
-        [Route("getObjave")]
-        public async Task<IHttpActionResult> getObjave()
+        [Route("GetObjave")]
+        public async Task<IHttpActionResult> GetObjave()
         {
             var objave = await db.Objava.ToListAsync();
             return Ok(objave);
@@ -31,8 +34,8 @@ namespace Social_Network.Controllers
 
         // GET: Objave/Details/5
         [HttpGet]
-        [Route("getObjava/{id}")]
-        public async Task<IHttpActionResult> getObjava(int? id)
+        [Route("GetObjava/{id}")]
+        public async Task<IHttpActionResult> GetObjava(int? id)
         {
             if (id == null)
             {
@@ -48,10 +51,10 @@ namespace Social_Network.Controllers
         }
 
         // POST: Objave/Create
-       
+        [AllowAnonymous]
         [HttpPost]
-        [Route("createObjava")]
-        public async Task<IHttpActionResult> createObjava(Objava objava)
+        [Route("CreateObjava")]
+        public async Task<IHttpActionResult> CreateObjava(Objava objava)
         {
             if (ModelState.IsValid)
             {
@@ -66,8 +69,8 @@ namespace Social_Network.Controllers
         // PUT: Objave/Edit/5
         //ostavit cu sad za sad ovako
         [HttpPut]
-        [Route("editObjava")]
-        public async Task<IHttpActionResult> editObjava(Objava objava)
+        [Route("EditObjava")]
+        public async Task<IHttpActionResult> EditObjava(Objava objava)
         {
             if (ModelState.IsValid)
             {
@@ -83,7 +86,7 @@ namespace Social_Network.Controllers
 
         // GET: Objave/Delete/5
         [HttpDelete]
-        [Route("deleteObjava/{id}")]
+        [Route("DeleteObjava/{id}")]
         public async Task<IHttpActionResult> Delete(int? id)
         {
             if (id != null)
