@@ -42,6 +42,19 @@ namespace Social_Network.Controllers
 
             return NotFound();
         }
+        [HttpGet]
+        [Route("GetUserById/{id}")]
+        public async Task<IHttpActionResult> GetUserById(string id)
+        {
+            
+            var user = await db.Users.Where(u => u.Id == id).FirstOrDefaultAsync();
+            if (user != null)
+            {
+                return Ok(user);
+            }
+
+            return NotFound();
+        }
 
         [HttpDelete]
         [Route("DeleteCurrentUser")]

@@ -188,7 +188,8 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
                    pozGlasovi: "",
                    negGlasovi: "",
                    oznake: "",
-                   ProfilId:""
+                   profilId: "",
+                   userName:""
                };
                objava.tekst = objave[i].tekst;
                objava.urlSlike = objave[i].urlSlike;
@@ -196,7 +197,12 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
                objava.pozGlasovi = objave[i].pozGlasovi;
                objava.negGlasovi = objave[i].negGlasovi;
                objava.oznake = objave[i].oznake;
-               objava.ProfilId = objave[i].ProfilId;
+               objava.profilId = objave[i].profilId;
+               
+               userService.getUserById(objava.profilId).then(function (response) {
+                   objava.userName = response.data.userName;
+                   alert(response.data.userName)
+               });
                $scope.objave.push(objava);
                //alert(JSON.stringify(objava));
            }

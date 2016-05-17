@@ -3,7 +3,7 @@
             {{'userEmailProfile'|translate}} {{currentUser.eMail}}
 </div>
  
-<form>
+<form class="form-control-static">
     <div class="form-group" style="width:500px;margin:auto">
         <textarea type="text" class = "form-control" rows = "3" placeholder="What's on your mind?" ng-model="objava.tekst"></textarea>
         <button type="submit" class="btn btn-primary" style="float:right" data-ng-click="objavi(objava)">Post</button>
@@ -19,4 +19,26 @@
 
 <div ng-repeat="post in posts">
     
+</div>
+<div class="container" >
+    <div class="row" >
+        <div ng-repeat="objava in objave" class="col-sm-12">
+
+            <div class="label-default" style="border:1px">
+                <!--<div class="col-xs-2" ng-class-odd="'col-xs-push-10'">
+                    <a href="" ng-click="showUserModal($index)"><img title="{{u.user.name.first}}" src="{{u.user.picture}}" class="img-thumbnail img-responsive img-circle" ng-class-even="'pull-right'" ng-class-odd="'pull-left'" style="width:70px;"></a>
+                </div>-->
+
+                <div class="panel-body">
+                    {{objava.tekst}}<br>
+                    <span class="label label-info">{{ objava.datumObjave }}</span>
+                    <p class="label label-default">{{objava.userName}}</p>
+                </div>
+
+            </div><!--/row-->
+            <br />
+
+        </div><!--/col-->
+
+    </div><!--/row-->
 </div>
