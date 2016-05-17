@@ -37,9 +37,12 @@
 
     <div data-ng-controller="indexController">
         <div id="sidebar" class="navbar navbar-inverse hide-sidebar" role="banner">
-            <div class="collapse navbar-collapse navbar-left">
+            <div class="collapse navbar-collapse navbar-left">  
                 <ul class="nav navbar-link">
-                    <li data-ng-hide="!authentication.isAuth">{{'welcomeIndex'|translate}} {{authentication.userName}}</li>
+                    <li data-ng-hide="!authentication.isAuth">
+                        <img data-ng-controller="profileController" ng-src="{{currentUser.profileImage}}" alt="headshot" class="headshot" /> 
+                        {{'welcomeIndex'|translate}} {{authentication.userName}}
+                    </li>
                     <!--Ovdje Idu Stranice-->
                     <li data-ng-hide="!authentication.isAuth" class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{'profileIndex'|translate}}<b class="caret"></b></a>
@@ -54,16 +57,16 @@
                     </li><!--Profil View,Edit i Delete-->
                     <li data-ng-hide="!authentication.isAuth"><a href="" onclick="sideBarKill(true);" data-ng-click="logOut()">{{'logoutIndex'|translate}}</a></li>
                     <!--
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <i class="fa fa-angle-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="blog-item.html">Blog Single</a></li>
-                                <li><a href="pricing.html">Pricing</a></li>
-                                <li><a href="404.html">404</a></li>
-                                <li><a href="shortcodes.html">Shortcodes</a></li>
-                            </ul>
-                        </li>
-                    -->
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <i class="fa fa-angle-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="blog-item.html">Blog Single</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="404.html">404</a></li>
+                    <li><a href="shortcodes.html">Shortcodes</a></li>
+                </ul>
+            </li>
+        -->
                 </ul>
             </div>
 

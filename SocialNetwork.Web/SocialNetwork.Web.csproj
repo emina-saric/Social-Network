@@ -130,6 +130,7 @@
     <Content Include="app\controllers\translationsController.js" />
     <Content Include="app\css\ng-img-crop.css" />
     <Content Include="app\css\site.css" />
+    <Content Include="app\images\Default.png" />
     <Content Include="app\js\customSelect.js" />
     <Content Include="app\js\ng-img-crop.js" />
     <Content Include="app\js\site.js" />

@@ -20,6 +20,8 @@ namespace Social_Network.Infrastructure
         [Required]
         [MaxLength(100)]
         public string LastName { get; set; }
+
+        public string ProfileImage { get; set; }
         /*
         [Required]
         public byte Level { get; set; }

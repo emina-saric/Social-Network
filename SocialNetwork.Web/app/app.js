@@ -76,6 +76,10 @@ app.config(function ($routeProvider) {
         controller: "friendsController",
         templateUrl: "/app/views/friends.html"
     });
+    $routeProvider.when("/showProfileImage", {
+        controller: "profileController",
+        templateUrl: "/App_Data/Tmp/FileUploads/"
+    });
 
     $routeProvider.otherwise({ redirectTo: "/home" });
 
