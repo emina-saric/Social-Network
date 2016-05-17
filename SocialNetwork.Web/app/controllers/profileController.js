@@ -6,6 +6,7 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
     $scope.savedSuccessfully = false;
     $scope.ChangedSuccessfully = false;
     $scope.ChangedPasswordSuccessfully = false;
+    $scope.PostedSuccessfully = true;
     $scope.message = "";
     $scope.authentication = authService.authentication;
     $scope.messageEdit = "";
@@ -14,7 +15,7 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
     $scope.fileUploadObj = { testString1: "Test string 1", testString2: "Test string 2" };
 
     
-    $scope.statusObjaveShow = true
+    
 
     $scope.objave = new Array();
     
@@ -142,21 +143,34 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
 
     $scope.getCurrentUser();
     
-   $scope.objavi = function () {
-            $scope.statusObjaveShow= false
-            var objava = {
+   $scope.objavi = function (objava) {
+            
+            /*var objava = {
                 tekst: "objava iz angulara sa minimalno 20 karaktera jer tako mora",
                 urlSlike: "nema",
-                datumObjave: "2015-01-01T00:00:00",
+                datumObjave: new Date(),
                 pozGlasovi: "10",
                 negGlasovi: "0",
                 oznake: "nema oznaka",
                 ProfilId: "b5648d7f-86f1-4e71-b164-a8c0ab22cae8"
-            };
+            };*/
+           
+       if (objava==null || objava.tekst.length<1) {
+               $scope.PostedSuccessfully = false;
+               $scope.messageEdit = "You must enter at least one characters!";
+               skloniPoruku();
+               return;
+           }
+            objava.urlSlike = "nema";
+            objava.datumObjave = new Date();
+            objava.pozGlasovi = 0;
+            objava.negGlasovi = 0;
+            objava.oznake = "nema";
+            objava.ProfilId = $scope.currentUser.userId;
             objaveService.PostObjava(objava).then(function (response) {
-                $scope.statusObjave = "Posted successfully";
-                $timeout(function () { $scope.statusObjaveShow = true; $scope.statusObjave = ""; }, 3000);
-
+                $scope.PostedSuccessfully = true;
+                $scope.messageEdit = "Posted successfully.";
+                skloniPoruku();
             });
             
            
@@ -184,12 +198,19 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
                objava.oznake = objave[i].oznake;
                objava.ProfilId = objave[i].ProfilId;
                $scope.objave.push(objava);
-               alert(JSON.stringify(objava));
+               //alert(JSON.stringify(objava));
            }
        });
    };
     $scope.GetObjave();
     
+
+    var skloniPoruku = function () {
+        var timer = $timeout(function () {
+            $scope.messageEdit = "";;
+        }, 3000);
+    }
+
     /*
     authService.confirmEmail(String($routeParams.userId),String($routeParams.code)).then(function (response) {
 

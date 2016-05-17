@@ -9,11 +9,11 @@ namespace Social_Network.Models
 {
     public class Objava
     {
-        
+
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         [Required]
-        [StringLength(500, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 20)]
+        [StringLength(500, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 1)]
         public string tekst { get; set; }
         public string urlSlike { get; set; }
         public DateTime datumObjave { get; set; }

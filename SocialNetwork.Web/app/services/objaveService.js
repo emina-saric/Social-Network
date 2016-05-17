@@ -13,7 +13,7 @@ app.factory('objaveService', ['$http', '$q', 'localStorageService', 'ngAuthSetti
     };
     var _PostObjava = function (objava) {
         return $http.post(serviceBase+'api/Objave/CreateObjava',objava).then(function (response) {
-            alert("USpjelo");
+            
             return response;
         });
 
