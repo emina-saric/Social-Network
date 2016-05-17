@@ -21,6 +21,7 @@
 /// <reference path="../app/js/site.js" />
 /// <reference path="../app/services/authInterceptorService.js" />
 /// <reference path="../app/services/authService.js" />
+/// <reference path="../app/services/objaveservice.js" />
 /// <reference path="../app/services/searchService.js" />
 /// <reference path="../app/services/tokensManagerService.js" />
 /// <reference path="../app/services/userService.js" />

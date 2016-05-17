@@ -133,6 +133,7 @@
     <Content Include="app\js\customSelect.js" />
     <Content Include="app\js\ng-img-crop.js" />
     <Content Include="app\js\site.js" />
+    <Content Include="app\services\objaveService.js" />
     <Content Include="app\services\searchService.js" />
     <Content Include="app\services\userService.js" />
     <Content Include="app\views\confirmEmail.html" />
