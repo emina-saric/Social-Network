@@ -5,7 +5,7 @@
  
 <form class="form-control-static">
     <div class="form-group" style="width:500px;margin:auto">
-        <textarea type="text" class = "form-control" rows = "3" placeholder="What's on your mind?" ng-model="objava.tekst"></textarea>
+        <textarea type="text" class = "form-control" rows = "3" placeholder="What's on your mind?" ng-model="objavaTekst"></textarea>
         <button type="submit" class="btn btn-primary" style="float:right" data-ng-click="objavi(objava)">Post</button>
     </div>
     <br>
@@ -25,12 +25,12 @@
         <div ng-repeat="objava in objave" class="col-sm-12">
 
             <div class="label-default" style="border:1px">
-                
+                <span class="label label-info">{{ objava.userName }}</span>
                 <div class="panel-body">
                     {{objava.tekst}}<br>
+         
+                    <span class="label label-primary">{{ objava.datumObjave| date:'dd/MM/yyyy hh:mm:ss' }}</span>
                    
-                    <span class="label label-info">{{ objava.datumObjave }}</span>
-                    <span class="label label-info">{{ objava.userName }}</span>
                     
                 </div>
 

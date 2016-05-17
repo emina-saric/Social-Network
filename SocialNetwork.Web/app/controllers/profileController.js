@@ -17,9 +17,10 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
     
     
 
-    $scope.objave = new Array();
+    
     
     var objave = new Array();
+    $scope.objave = new Array();
 
     $scope.currentUser = {
         userName: "",
@@ -143,29 +144,46 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
 
     $scope.getCurrentUser();
     
-   $scope.objavi = function (objava) {
-       if (objava==null || objava.tekst.length<1) {
+    $scope.objavi = function () {
+        
+        if ($scope.objavaTekst == null || $scope.objavaTekst.length < 1) {
                $scope.PostedSuccessfully = false;
                $scope.messageEdit = "You must enter at least one characters!";
                skloniPoruku();
                return;
-           }
+        }
+        var objava = {
+            tekst: "",
+            urlSlike: "",
+            datumObjave: "",
+            pozGlasovi: "",
+            negGlasovi: "",
+            oznake: "",
+            profilId: "",
+            userName: ""
+
+        };
             objava.urlSlike = "nema";
             objava.datumObjave = new Date();
             objava.pozGlasovi = 0;
             objava.negGlasovi = 0;
             objava.oznake = "nema";
             objava.ProfilId = $scope.currentUser.userId;
+            objava.userName = $scope.currentUser.userName;
+            objava.tekst = $scope.objavaTekst;
+
+            $scope.objave.unshift(objava);
+
             objaveService.PostObjava(objava).then(function (response) {
                 $scope.PostedSuccessfully = true;
                 $scope.messageEdit = "Posted successfully.";
                 skloniPoruku();
             });
            
-        
+            
    };
    
-   $scope.GetObjave = function () {
+    $scope.GetObjave = function () {
        objaveService.GetObjave().then(function (response) {
            objave = response.data;
            for (var i = 0; i < objave.length; i++) {
@@ -187,17 +205,10 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
                objava.negGlasovi = objave[i].negGlasovi;
                objava.oznake = objave[i].oznake;
                objava.profilId = objave[i].profilId;
-              
-               //alert(objava.profilId)
-               userService.getUserById(objava.profilId).then(function (response) {
-                   objava.userName = response.data.userName;
-                    //alert(response.data.userName)
-                   
-               });
-               alert(objava.userName);
-               $scope.objave.push(objava);
+               objava.userName = objave[i].userName;
+               $scope.objave.unshift(objava);
                //alert(JSON.stringify(objava));
-               //alert("vani");
+         
            }
        });
        

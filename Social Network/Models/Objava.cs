@@ -22,5 +22,6 @@ namespace Social_Network.Models
         public string oznake { get; set; }
         [MaxLength(128)]
         public string ProfilId { get; set; }
+        public string userName { get; set; }
     }
 }

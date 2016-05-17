@@ -260,6 +260,10 @@
     <Compile Include="Migrations\201605161354431_objave.Designer.cs">
       <DependentUpon>201605161354431_objave.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605171830305_objava.cs" />
+    <Compile Include="Migrations\201605171830305_objava.Designer.cs">
+      <DependentUpon>201605171830305_objava.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\RefreshToken.cs" />
     <Compile Include="Global.asax.cs">
@@ -355,6 +359,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605161354431_objave.resx">
       <DependentUpon>201605161354431_objave.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605171830305_objava.resx">
+      <DependentUpon>201605171830305_objava.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
