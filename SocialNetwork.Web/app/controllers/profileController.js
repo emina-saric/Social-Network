@@ -1,6 +1,6 @@
 ﻿'use strict';
 
-app.controller('profileController', ['$scope', '$location', '$timeout', 'authService', 'userService', '$routeParams', 'Upload','objaveService', function ($scope, $location, $timeout, authService, userService, $routeParams, Upload,objaveService) {
+app.controller('profileController', ['$scope', '$location', '$timeout', 'authService', 'userService', '$routeParams', 'Upload', 'objaveService', '$sce', function ($scope, $location, $timeout, authService, userService, $routeParams, Upload, objaveService, $sce) {
 
 
     $scope.savedSuccessfully = false;
@@ -12,7 +12,7 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
     $scope.messageEdit = "";
     $scope.messagePasswordChange = "";
     $scope.upload = [];
-    $scope.fileUploadObj = { testString1: "Test string 1", testString2: "Test string 2" };
+    $scope.fileUploadObj = { fullFileName: "Test string 1" };
 
     
     
@@ -30,7 +30,8 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
         fullName: "",
         currentPassword: "",
         newPassword: "",
-        confirmNewPassword: ""
+        confirmNewPassword: "",
+        profileImage: $sce.trustAsResourceUrl('/app/images/Default.png')
     };
     
     $scope.currentUser.userName = authService.authentication.userName;
@@ -38,20 +39,26 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
 
     
     $scope.upload = function (dataUrl, name) {
+        //$scope.fileUploadObj.fullFileName = "Test";
         Upload.upload({
             url: serviceBase + 'api/Profile/Upload/',
             method: "POST",
             data: {
-                file: Upload.dataUrltoBlob(dataUrl, name)
+                fullFileName: name,
+                userName : $scope.currentUser.userName
             },
+            file: Upload.dataUrltoBlob(dataUrl, name)
         }).then(function (response) {
             $timeout(function () {
+               console.log(response.data);
                 $scope.result = response.data;
             });
         }, function (response) {
+            console.log(response.data);
             if (response.status > 0) $scope.errorMsg = response.status
                 + ': ' + response.data;
         }, function (evt) {
+            console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
             $scope.progress = parseInt(100.0 * evt.loaded / evt.total);
         });
     };
@@ -65,6 +72,7 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
                 $scope.currentUser.firstName = response.data['firstName'];
                 $scope.currentUser.lastName = response.data['lastName'];
                 $scope.currentUser.fullName = response.data['fullName'];
+                $scope.currentUser.profileImage = $sce.trustAsResourceUrl('/app/images/'+response.data['profileImage']);
             });
     };
 

@@ -260,6 +260,10 @@
     <Compile Include="Migrations\201605161354431_objave.Designer.cs">
       <DependentUpon>201605161354431_objave.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605171509191_ProfileImage.cs" />
+    <Compile Include="Migrations\201605171509191_ProfileImage.Designer.cs">
+      <DependentUpon>201605171509191_ProfileImage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\RefreshToken.cs" />
     <Compile Include="Global.asax.cs">
@@ -295,10 +299,12 @@
     <Compile Include="Models\Slika.cs" />
     <Compile Include="Models\SNUser.cs" />
     <Compile Include="Models\Social_NetworkContext.cs" />
+    <Compile Include="Models\UploadDataBindingModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Providers\CustomJwtFormat.cs" />
+    <Compile Include="Providers\CustomMultipartFormDataStreamProvider.cs" />
     <Compile Include="Providers\CustomOAuthProvider.cs" />
     <Compile Include="Providers\FacebookAuthProvider.cs" />
     <Compile Include="Providers\GoogleAuthProvider.cs" />
@@ -355,6 +361,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605161354431_objave.resx">
       <DependentUpon>201605161354431_objave.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605171509191_ProfileImage.resx">
+      <DependentUpon>201605171509191_ProfileImage.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

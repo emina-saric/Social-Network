@@ -66,7 +66,8 @@ namespace Social_Network.Controllers
                 UserName = userModel.UserName,
                 Email = userModel.Email,
                 FirstName = userModel.FirstName,
-                LastName = userModel.LastName
+                LastName = userModel.LastName,
+                ProfileImage = "Default.png"
             };
 
             string response = await ValidateCaptcha(userModel.Recaptcha);
