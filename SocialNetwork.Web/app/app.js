@@ -1,5 +1,5 @@
 ﻿/// <reference path="views/profileDelete.html" />
-var app = angular.module("AngularApp", ['ngRoute', 'LocalStorageModule', 'angular-loading-bar','pascalprecht.translate','AxelSoft']);
+var app = angular.module("AngularApp", ['ngRoute', 'LocalStorageModule', 'angular-loading-bar', 'pascalprecht.translate', 'AxelSoft', 'ngFileUpload', 'ngImgCrop']);
 
 
 app.config(function ($routeProvider) {
@@ -49,6 +49,11 @@ app.config(function ($routeProvider) {
     $routeProvider.when("/profile/changepassword", {
         controller: "profileController",
         templateUrl: "/app/views/profileChangePassword.html"
+    });
+
+    $routeProvider.when("/profile/changeimage", {
+        controller: "profileController",
+        templateUrl: "/app/views/profileImageChange.html"
     });
 
     $routeProvider.when("/confirmEmail/:userId/:code", {
@@ -131,7 +136,8 @@ app.config(function ($translateProvider) {
         signupText: 'Use the button below to create an account.',
         signup: 'Create Account',
         friends: "Friends",
-        search: "Search"
+        search: "Search",
+        profileChangeImageIndex: "Change Profile Image"
     }).translations('ba', {
         welcomeHome: 'Dobro došli na Social Network!',
         profileIndex: 'Profil',
@@ -164,7 +170,8 @@ app.config(function ($translateProvider) {
         signupText: 'Iskoristite dugme ispod za pravljenje korisničkog naloga.',
         signup: 'Napravi nalog',
         friends: 'Prijatelji',
-        search: 'Pretraga'
+        search: 'Pretraga',
+        profileChangeImageIndex: "Izmjeni Profilnu Sliku"
     });
     $translateProvider.preferredLanguage('ba');
 });

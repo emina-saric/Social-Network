@@ -25,7 +25,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/Content/Template/images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/Content/Template/images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="/Content/Template/images/ico/apple-touch-icon-57-precomposed.png">
-
+    <link href="app/css/ng-img-crop.css" rel="stylesheet" />
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
     <!--reCaptcha-->
     <script src='https://www.google.com/recaptcha/api.js'></script>
@@ -47,6 +47,7 @@
                             <li><a href="#/profile">{{'profileMyProfileIndex'|translate}}</a></li>
                             <li><a href="#/profile/edit">{{'profileEditProfileIndex'|translate}}</a></li>
                             <li><a href="#/profile/changepassword">{{'profileChangePasswordIndex'|translate}}</a></li>
+                            <li><a href="#/profile/changeimage">{{'profileChangeImageIndex'|translate}}</a></li>
                             <li><a href="#/profile/friends">{{'friends' | translate}}</a></li>
                             <li><a href="#/profile/delete">{{'profileDeleteProfileIndex'|translate}}</a></li>
                         </ul>
@@ -150,7 +151,9 @@
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-sanitize.js"></script>
     <script src="Scripts/angular-local-storage.min.js"></script>
     <script src="Scripts/loading-bar.min.js"></script>
-
+    <script src="Scripts/ng-file-upload-shim.min.js"></script>
+    <script src="Scripts/ng-file-upload.min.js"></script>
+    <script src="app/js/ng-img-crop.js"></script>
     <script src="app/js/customSelect.js"></script>
     <!-- Load app main script -->
     <script src="app/app.js?v=2"></script>

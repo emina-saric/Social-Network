@@ -1,5 +1,5 @@
 ﻿'use strict';
-app.controller('profileController', ['$scope', '$location', '$timeout', 'authService', 'userService', '$routeParams', function ($scope, $location, $timeout, authService, userService, $routeParams) {
+app.controller('profileController', ['$scope', '$location', '$timeout', 'authService', 'userService', '$routeParams', 'Upload', function ($scope, $location, $timeout, authService, userService, $routeParams, Upload) {
 
     $scope.savedSuccessfully = false;
     $scope.ChangedSuccessfully = false;
@@ -8,6 +8,8 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
     $scope.authentication = authService.authentication;
     $scope.messageEdit = "";
     $scope.messagePasswordChange = "";
+    $scope.upload = [];
+    $scope.fileUploadObj = { testString1: "Test string 1", testString2: "Test string 2" };
 
     $scope.currentUser = {
         userName: "",
@@ -22,6 +24,27 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
     };
     
     $scope.currentUser.userName = authService.authentication.userName;
+    
+
+    
+    $scope.upload = function (dataUrl, name) {
+        Upload.upload({
+            url: serviceBase + 'api/Profile/Upload/',
+            method: "POST",
+            data: {
+                file: Upload.dataUrltoBlob(dataUrl, name)
+            },
+        }).then(function (response) {
+            $timeout(function () {
+                $scope.result = response.data;
+            });
+        }, function (response) {
+            if (response.status > 0) $scope.errorMsg = response.status
+                + ': ' + response.data;
+        }, function (evt) {
+            $scope.progress = parseInt(100.0 * evt.loaded / evt.total);
+        });
+    };
     
     $scope.getCurrentUser = function () {
         userService.getCurrentUser($scope.currentUser.userName).then(function (response) {
