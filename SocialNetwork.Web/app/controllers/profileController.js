@@ -144,17 +144,6 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
     $scope.getCurrentUser();
     
    $scope.objavi = function (objava) {
-            
-            /*var objava = {
-                tekst: "objava iz angulara sa minimalno 20 karaktera jer tako mora",
-                urlSlike: "nema",
-                datumObjave: new Date(),
-                pozGlasovi: "10",
-                negGlasovi: "0",
-                oznake: "nema oznaka",
-                ProfilId: "b5648d7f-86f1-4e71-b164-a8c0ab22cae8"
-            };*/
-           
        if (objava==null || objava.tekst.length<1) {
                $scope.PostedSuccessfully = false;
                $scope.messageEdit = "You must enter at least one characters!";
@@ -172,24 +161,24 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
                 $scope.messageEdit = "Posted successfully.";
                 skloniPoruku();
             });
-            
            
         
    };
-
+   
    $scope.GetObjave = function () {
        objaveService.GetObjave().then(function (response) {
            objave = response.data;
            for (var i = 0; i < objave.length; i++) {
                var objava = {
-                   tekst:"",
-                   urlSlike:"",
+                   tekst: "",
+                   urlSlike: "",
                    datumObjave: "",
                    pozGlasovi: "",
                    negGlasovi: "",
                    oznake: "",
                    profilId: "",
-                   userName:""
+                   userName: ""
+
                };
                objava.tekst = objave[i].tekst;
                objava.urlSlike = objave[i].urlSlike;
@@ -198,18 +187,24 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
                objava.negGlasovi = objave[i].negGlasovi;
                objava.oznake = objave[i].oznake;
                objava.profilId = objave[i].profilId;
-               
+              
+               //alert(objava.profilId)
                userService.getUserById(objava.profilId).then(function (response) {
                    objava.userName = response.data.userName;
-                   alert(response.data.userName)
+                    //alert(response.data.userName)
+                   
                });
+               alert(objava.userName);
                $scope.objave.push(objava);
                //alert(JSON.stringify(objava));
+               //alert("vani");
            }
        });
+       
+      
    };
     $scope.GetObjave();
-    
+   
 
     var skloniPoruku = function () {
         var timer = $timeout(function () {

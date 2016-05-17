@@ -25,14 +25,13 @@
         <div ng-repeat="objava in objave" class="col-sm-12">
 
             <div class="label-default" style="border:1px">
-                <!--<div class="col-xs-2" ng-class-odd="'col-xs-push-10'">
-                    <a href="" ng-click="showUserModal($index)"><img title="{{u.user.name.first}}" src="{{u.user.picture}}" class="img-thumbnail img-responsive img-circle" ng-class-even="'pull-right'" ng-class-odd="'pull-left'" style="width:70px;"></a>
-                </div>-->
-
+                
                 <div class="panel-body">
                     {{objava.tekst}}<br>
+                   
                     <span class="label label-info">{{ objava.datumObjave }}</span>
-                    <p class="label label-default">{{objava.userName}}</p>
+                    <span class="label label-info">{{ objava.userName }}</span>
+                    
                 </div>
 
             </div><!--/row-->
