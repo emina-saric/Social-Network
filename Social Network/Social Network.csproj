@@ -260,6 +260,7 @@
     <Compile Include="Migrations\201605161354431_objave.Designer.cs">
       <DependentUpon>201605161354431_objave.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605161536168_new.Designer.cs" />
     <Compile Include="Migrations\201605171830305_objava.cs" />
     <Compile Include="Migrations\201605171830305_objava.Designer.cs">
       <DependentUpon>201605171830305_objava.cs</DependentUpon>
@@ -321,6 +322,7 @@
     <Compile Include="Validators\MyCustomUserValidator.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="dbo.AspNetUsers.data.sql" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <None Include="Scripts\jquery-2.2.3.intellisense.js" />
@@ -365,6 +367,7 @@
     <EmbeddedResource Include="Migrations\201605161354431_objave.resx">
       <DependentUpon>201605161354431_objave.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605161536168_new.resx" />
     <EmbeddedResource Include="Migrations\201605171830305_objava.resx">
       <DependentUpon>201605171830305_objava.cs</DependentUpon>
     </EmbeddedResource>
