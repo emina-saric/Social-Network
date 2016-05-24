@@ -73,39 +73,61 @@ namespace Social_Network.Migrations
             {
                 return;
             }
-            context.Objava.AddOrUpdate(new Objava
-            {
-                Id = 1,
-                tekst = "probna objava u bazi za provjeru. ",
-                urlSlike = "nemaSlike",
-                datumObjave = DateTime.Parse("2011-09-01"),
-                pozGlasovi = 5,
-                negGlasovi = 2,
-                oznake = "nema oznaka",
-                ProfilId = "b5648d7f-86f1-4e71-b164-a8c0ab22cae8"
-            });
-            context.Objava.AddOrUpdate(new Objava
-            {
-                Id = 2,
-                tekst = "probna objava dva u bazi za provjeru. ",
-                urlSlike = "nemaSlike",
-                datumObjave = DateTime.Parse("2015-09-01"),
-                pozGlasovi = 20,
-                negGlasovi = 0,
-                oznake = "nema",
-                ProfilId = "b5648d7f-86f1-4e71-b164-a8c0ab22cae8"
-            });
-            context.Objava.AddOrUpdate(new Objava
-            {
-                Id = 2,
-                tekst = "probna objava tri u bazi za provjeru. ",
-                urlSlike = "nemaSlike",
-                datumObjave = DateTime.Parse("2012-09-01"),
-                pozGlasovi = 1,
-                negGlasovi = 0,
-                oznake = "nema",
-                ProfilId = "b5648d7f-86f1-4e71-b164-a8c0ab22cae8"
-            });
+
+            Objava obj1 = new Objava();
+            obj1.Id = 1;
+            obj1.tekst = "probna objava broj jedan u bazi za provjeru. ";
+            obj1.urlSlike = "nemaSlike";
+            obj1.datumObjave = DateTime.Parse("2011-09-01");
+            obj1.pozGlasovi = 5;
+            obj1.negGlasovi = 2;
+            obj1.oznake = "nema oznaka";
+            obj1.ProfilId = "bf298fdf-f141-48d5-a215-4071ce19f7af";
+            obj1.komentari = new List<Komentar>();
+
+            Objava obj2 = new Objava();
+            obj2.Id = 1;
+            obj2.tekst = "probna objava broj dva u bazi za provjeru.probna objava broj dva u bazi za provjeru.  ";
+            obj2.urlSlike = "nemaSlike";
+            obj2.datumObjave = DateTime.Parse("2011-09-01");
+            obj2.pozGlasovi = 5;
+            obj2.negGlasovi = 2;
+            obj2.oznake = "nema oznaka";
+            obj2.ProfilId = "bf298fdf-f141-48d5-a215-4071ce19f7af";
+            obj2.komentari = new List<Komentar>();
+
+            Komentar k1 = new Komentar();
+            k1.Id = 1;
+            k1.tekst = "neki tekst za objavu 1";
+            k1.datum = DateTime.Now;
+            k1.ObjavaId = 1;
+            k1.Objava = obj1;
+            k1.napisao = "SuperAdminUser";
+
+            Komentar k2 = new Komentar();
+            k2.Id = 2;
+            k2.tekst = "neki tekst za objavu 2,neki tekst za objavu 1";
+            k2.datum = DateTime.Now;
+            k2.ObjavaId = 1;
+            k2.Objava = obj1;
+            k2.napisao = "SuperAdminUser";
+
+
+            Komentar k3 = new Komentar();
+            k3.Id = 3;
+            k3.tekst = "neki tekst za objavu 2,neki tekst za objavu 1";
+            k3.datum = DateTime.Now;
+            k3.ObjavaId = 1;
+            k3.Objava = obj1;
+            k3.napisao = "SuperAdminUser";
+
+            obj1.komentari.Add(k1);
+            obj1.komentari.Add(k2);
+            obj1.komentari.Add(k3);
+
+            context.Objava.AddOrUpdate(obj1);
+
+
             context.SaveChanges();
 
             //context.Objava.AddRange(BuildObjave());
