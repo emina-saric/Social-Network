@@ -1,5 +1,8 @@
 namespace Social_Network.Migrations
 {
+    using Infrastructure;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using Models;
     using System;
     using System.Collections.Generic;
@@ -28,6 +31,44 @@ namespace Social_Network.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+            var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new Social_NetworkContext()));
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new Social_NetworkContext()));
+
+            var superAdmin = new ApplicationUser()
+            {
+                UserName = "SuperAdminUser",
+                Email = "superadminuser@gmail.com",
+                EmailConfirmed = true,
+                FirstName = "SuperAdmin",
+                LastName = "User"
+            };
+            var admin = new ApplicationUser()
+            {
+                UserName = "AdminUser",
+                Email = "adminuser@gmail.com",
+                EmailConfirmed = true,
+                FirstName = "Admin",
+                LastName = "User"
+            };
+
+            manager.Create(superAdmin, "SuperAdminUser123");
+            manager.Create(admin, "AdminUser123");
+
+            if (roleManager.Roles.Count() == 0)
+            {
+                roleManager.Create(new IdentityRole { Name = "SuperAdmin" });
+                roleManager.Create(new IdentityRole { Name = "Admin" });
+                roleManager.Create(new IdentityRole { Name = "User" });
+            }
+
+            var superAdminUser = manager.FindByName("SuperAdminUser");
+            var adminUser = manager.FindByName("AdminUser");
+
+            manager.AddToRoles(superAdminUser.Id, new string[] { "SuperAdmin", "Admin","User"});
+            manager.AddToRoles(adminUser.Id, new string[] { "Admin", "User" });
+
+
+
             if (context.Clients.Count() > 0)
             {
                 return;

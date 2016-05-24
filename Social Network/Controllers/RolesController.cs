@@ -12,6 +12,8 @@ using System.Web.Http;
 
 namespace Social_Network.Controllers
 {
+    //controller which is responsible to manage roles in the system 
+    //controller can only be accessed by users in "Admin" role
     [Authorize(Roles="Admin")]
     [RoutePrefix("roles")]
     public class RolesController : BaseApiController
