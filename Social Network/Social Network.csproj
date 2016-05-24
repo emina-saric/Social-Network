@@ -269,6 +269,14 @@
     <Compile Include="Migrations\201605171942298_nesta.Designer.cs">
       <DependentUpon>201605171942298_nesta.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605241800567_ObjaveKOmentari.cs" />
+    <Compile Include="Migrations\201605241800567_ObjaveKOmentari.Designer.cs">
+      <DependentUpon>201605241800567_ObjaveKOmentari.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605241810120_komentar.cs" />
+    <Compile Include="Migrations\201605241810120_komentar.Designer.cs">
+      <DependentUpon>201605241810120_komentar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\RefreshToken.cs" />
     <Compile Include="Global.asax.cs">
@@ -373,6 +381,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605171942298_nesta.resx">
       <DependentUpon>201605171942298_nesta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605241800567_ObjaveKOmentari.resx">
+      <DependentUpon>201605241800567_ObjaveKOmentari.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605241810120_komentar.resx">
+      <DependentUpon>201605241810120_komentar.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

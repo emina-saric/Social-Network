@@ -234,3 +234,4 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+Social Network/Migrations/201605241737005_objavaKomentar.Designer.cs
