@@ -58,14 +58,13 @@ namespace Social_Network.Migrations
             {
                 roleManager.Create(new IdentityRole { Name = "SuperAdmin" });
                 roleManager.Create(new IdentityRole { Name = "Admin" });
-                roleManager.Create(new IdentityRole { Name = "User" });
             }
 
             var superAdminUser = manager.FindByName("SuperAdminUser");
             var adminUser = manager.FindByName("AdminUser");
 
-            manager.AddToRoles(superAdminUser.Id, new string[] { "SuperAdmin", "Admin","User"});
-            manager.AddToRoles(adminUser.Id, new string[] { "Admin", "User" });
+            manager.AddToRoles(superAdminUser.Id, new string[] { "SuperAdmin", "Admin"});
+            manager.AddToRoles(adminUser.Id, new string[] { "Admin"});
 
 
 
@@ -75,7 +74,6 @@ namespace Social_Network.Migrations
             }
 
             Objava obj1 = new Objava();
-            obj1.Id = 1;
             obj1.tekst = "probna objava broj jedan u bazi za provjeru. ";
             obj1.urlSlike = "nemaSlike";
             obj1.datumObjave = DateTime.Parse("2011-09-01");
@@ -86,7 +84,6 @@ namespace Social_Network.Migrations
             obj1.komentari = new List<Komentar>();
 
             Objava obj2 = new Objava();
-            obj2.Id = 1;
             obj2.tekst = "probna objava broj dva u bazi za provjeru.probna objava broj dva u bazi za provjeru.  ";
             obj2.urlSlike = "nemaSlike";
             obj2.datumObjave = DateTime.Parse("2011-09-01");
@@ -97,7 +94,6 @@ namespace Social_Network.Migrations
             obj2.komentari = new List<Komentar>();
 
             Komentar k1 = new Komentar();
-            k1.Id = 1;
             k1.tekst = "neki tekst za objavu 1";
             k1.datum = DateTime.Now;
             k1.ObjavaId = 1;
@@ -105,7 +101,6 @@ namespace Social_Network.Migrations
             k1.napisao = "SuperAdminUser";
 
             Komentar k2 = new Komentar();
-            k2.Id = 2;
             k2.tekst = "neki tekst za objavu 2,neki tekst za objavu 1";
             k2.datum = DateTime.Now;
             k2.ObjavaId = 1;
@@ -114,7 +109,6 @@ namespace Social_Network.Migrations
 
 
             Komentar k3 = new Komentar();
-            k3.Id = 3;
             k3.tekst = "neki tekst za objavu 2,neki tekst za objavu 1";
             k3.datum = DateTime.Now;
             k3.ObjavaId = 1;

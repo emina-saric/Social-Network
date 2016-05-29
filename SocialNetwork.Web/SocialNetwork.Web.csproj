@@ -407,6 +407,7 @@
     <Content Include="AdminPanel\views\ui-elements\notifications.html" />
     <Content Include="AdminPanel\views\ui-elements\panels-wells.html" />
     <Content Include="AdminPanel\views\ui-elements\typography.html" />
+    <Content Include="app\controllers\adminController.js" />
     <Content Include="app\controllers\confirmEmailController.js" />
     <Content Include="app\controllers\forgotPasswordController.js" />
     <Content Include="app\controllers\friendsController.js" />
@@ -425,7 +426,10 @@
     <Content Include="app\services\objaveService.js" />
     <Content Include="app\services\searchService.js" />
     <Content Include="app\services\userService.js" />
+    <Content Include="app\views\adminProfili.html" />
     <Content Include="app\views\confirmEmail.html" />
+    <Content Include="app\views\edit-button.html" />
+    <Content Include="app\views\edit-modal.html" />
     <Content Include="app\views\forgotPassword.html" />
     <Content Include="app\views\friends.html" />
     <Content Include="app\views\profile.html" />
