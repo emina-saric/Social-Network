@@ -407,11 +407,8 @@
     <Content Include="AdminPanel\views\ui-elements\notifications.html" />
     <Content Include="AdminPanel\views\ui-elements\panels-wells.html" />
     <Content Include="AdminPanel\views\ui-elements\typography.html" />
-<<<<<<< HEAD
     <Content Include="app\controllers\adminController.js" />
-=======
     <Content Include="app\controllers\chartController.js" />
->>>>>>> 76744d5928855640c7022a575cf627914145aa1b
     <Content Include="app\controllers\confirmEmailController.js" />
     <Content Include="app\controllers\forgotPasswordController.js" />
     <Content Include="app\controllers\friendsController.js" />
@@ -431,11 +428,8 @@
     <Content Include="app\services\objaveService.js" />
     <Content Include="app\services\searchService.js" />
     <Content Include="app\services\userService.js" />
-<<<<<<< HEAD
     <Content Include="app\views\adminProfili.html" />
-=======
     <Content Include="app\views\chart.html" />
->>>>>>> 76744d5928855640c7022a575cf627914145aa1b
     <Content Include="app\views\confirmEmail.html" />
     <Content Include="app\views\edit-button.html" />
     <Content Include="app\views\edit-modal.html" />
