@@ -1,5 +1,5 @@
 ﻿/// <reference path="views/profileDelete.html" />
-var app = angular.module("AngularApp", ['ngRoute', 'LocalStorageModule', 'angular-loading-bar', 'pascalprecht.translate', 'AxelSoft', 'ngFileUpload', 'ngImgCrop']);
+var app = angular.module("AngularApp", ['ngRoute', 'LocalStorageModule', 'angular-loading-bar', 'pascalprecht.translate', 'AxelSoft', 'ngFileUpload', 'ngImgCrop','chart.js']);
 
 
 app.config(function ($routeProvider) {
@@ -81,6 +81,11 @@ app.config(function ($routeProvider) {
         templateUrl: "/App_Data/Tmp/FileUploads/"
     });
 
+    $routeProvider.when("/charts", {
+        controller: "chartController",
+        templateUrl: "/app/views/chart.html"
+    });
+
     $routeProvider.otherwise({ redirectTo: "/home" });
 
 });
@@ -105,6 +110,7 @@ app.config(['$httpProvider', function ($httpProvider) {
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
 }
 ]);
+
 
 
 app.config(function ($translateProvider) {

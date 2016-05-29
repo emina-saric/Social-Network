@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Charts</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<div class="row">
+    <div class="col-lg-6 col-sm-12" id="pie-chart" ng-controller="chartController">
+        <div class="panel panel-default">
+            <div class="panel-heading">Users Confirmed Stats. Total Users : {{UserConfirmedStats.total}}</div>
+            <div class="panel-body">
+                <canvas id="pie" class="chart chart-pie chart-xs" data="UserConfirmedStats.data" labels="UserConfirmedStats.labels"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 col-sm-12" id="pie-chart" ng-controller="chartController">
+        <div class="panel panel-default">
+            <div class="panel-heading">Users Image Change.</div>
+            <div class="panel-body">
+                <canvas id="pie" class="chart chart-pie chart-xs" data="UserImageChangeStats.data" labels="UserImageChangeStats.labels"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
