@@ -58,6 +58,44 @@ namespace Social_Network.Controllers
             return NotFound();
         }
 
+        [HttpGet]
+        [Route("GetUserConfirmedStats")]
+        public async Task<IHttpActionResult> GetUserConfirmedStats() {
+
+            var total = await db.Users.CountAsync();
+            var confirmed = await db.Users.Where(u => u.EmailConfirmed == true).CountAsync();
+            var notConfirmed = total - confirmed;
+
+            UserConfirmationViewModel x = new UserConfirmationViewModel()
+            {
+                Total = total,
+                Confirmed = confirmed,
+                NotConfirmed = notConfirmed
+            };
+            return Ok(x);
+        }
+
+        [HttpGet]
+        [Route("GetUserProfileImageStats")]
+        public async Task<IHttpActionResult> GetUserProfileImageStats()
+        {
+
+            var total = await db.Users.CountAsync();
+            var confirmed = await db.Users.Where(u => u.ProfileImage == "Default.png").CountAsync();
+            var notConfirmed = total - confirmed;
+
+            UserConfirmationViewModel x = new UserConfirmationViewModel()
+            {
+                Total = total,
+                Confirmed = confirmed,
+                NotConfirmed = notConfirmed
+            };
+            return Ok(x);
+        }
+
+
+
+
         [HttpDelete]
         [Route("DeleteCurrentUser")]
         public async Task<IHttpActionResult> DeleteCurrentUser()

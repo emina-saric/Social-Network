@@ -45,6 +45,13 @@ namespace Social_Network.Models
         public bool RememberMe { get; set; }
     }
 
+    public class UserConfirmationViewModel
+    {
+        public int Total { get; set; }
+        public int Confirmed { get; set; }
+        public int NotConfirmed { get; set; }
+    }
+
     public class ForgotViewModel
     {
         [Required]

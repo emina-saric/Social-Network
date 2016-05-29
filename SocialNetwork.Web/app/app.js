@@ -1,4 +1,5 @@
 ﻿/// <reference path="views/profileDelete.html" />
+<<<<<<< HEAD
 var app = angular.module("AngularApp", ['ngRoute', 'LocalStorageModule', 'angular-loading-bar', 'pascalprecht.translate', 'AxelSoft', 'ngFileUpload', 'ngImgCrop','ui.grid', 'ui.grid.edit', 'ui.bootstrap', 'schemaForm']);
 
 app.constant('PersonSchema', {
@@ -271,6 +272,9 @@ function RowEditCtrl($modalInstance, PersonSchema, grid, row) {
     
 */
 
+=======
+var app = angular.module("AngularApp", ['ngRoute', 'LocalStorageModule', 'angular-loading-bar', 'pascalprecht.translate', 'AxelSoft', 'ngFileUpload', 'ngImgCrop','chart.js']);
+>>>>>>> 76744d5928855640c7022a575cf627914145aa1b
 
 
 app.config(function ($routeProvider) {
@@ -356,6 +360,11 @@ app.config(function ($routeProvider) {
         templateUrl: "/app/views/adminProfili.html"
     });
 
+    $routeProvider.when("/charts", {
+        controller: "chartController",
+        templateUrl: "/app/views/chart.html"
+    });
+
     $routeProvider.otherwise({ redirectTo: "/home" });
 
 });
@@ -380,6 +389,7 @@ app.config(['$httpProvider', function ($httpProvider) {
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
 }
 ]);
+
 
 
 app.config(function ($translateProvider) {
