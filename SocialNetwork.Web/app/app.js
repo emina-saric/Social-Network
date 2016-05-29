@@ -1,5 +1,6 @@
 ﻿var app = angular.module("AngularApp", ['ngRoute', 'LocalStorageModule', 'angular-loading-bar', 'pascalprecht.translate', 'AxelSoft', 'ngFileUpload', 'ngImgCrop','ui.grid', 'ui.grid.edit', 'ui.bootstrap', 'schemaForm','chart.js']);
 
+//profile definition
 app.constant('PersonSchema', {
     type: 'object',
     properties: {
@@ -9,7 +10,7 @@ app.constant('PersonSchema', {
         'address.city': { type: 'string', title: 'City' }
     }
 })
-
+//izbaciti ova dva kontrollera u zasebne fajlove kao  service
 app.controller('MainCtrl', MainCtrl)
 app.controller('RowEditCtrl', RowEditCtrl)
 app.service('RowEditor', RowEditor)
@@ -20,12 +21,12 @@ function MainCtrl ($http, RowEditor) {
     var vm = this;
   
     vm.editRow = RowEditor.editRow;
-  
+  //kolone tabele
     vm.gridOptions = {
         columnDefs: [
           { field: 'id', name: '', cellTemplate: 'app/views/edit-button.html', width: 34 },
-          { name: 'firstName' },
-          { name: 'lastName' },
+          { name: 'name' },
+          { name: 'company' },
           { name: 'phone' },
           { name: 'City', field: 'address.city' },
         ]
@@ -42,6 +43,8 @@ function MainCtrl ($http, RowEditor) {
             alert("fer");
         });
     }*/
+
+    //podaci u tabelu
     vm.gridOptions.data =
     [
     {
