@@ -31,7 +31,11 @@ function MainCtrl ($http, RowEditor,$scope) {
     vm.gridOptions = {
         columnDefs: [
             //bilo field:'id'
-          { field: 'action', name: 'Action', cellTemplate: 'app/views/edit-button.html', width: 100 },
+          { field: 'action', name: 'Action', cellTemplate: '<div class="ui-grid-cell-contents">'+
+    '<button style="margin:0" type="button" class="btn btn-xs btn-primary" ng-click="grid.appScope.vm.editRow(grid, row)">'+
+       '<i class="fa fa-edit"></i>'+
+    '</button>'+
+'</div>', width: 100 },
           { name: 'id' },
           { name: 'firstName' },
           { name: 'lastName' },
@@ -57,9 +61,22 @@ function RowEditor($rootScope, $modal) {
     var service = {};
     service.editRow = editRow;
   
+    var modaltemp = '<div>' +
+                            '<div class="modal-header">' +
+                               '<h3 class="modal-title">Edit Row</h3>' +
+                           ' </div>' +
+                            '<div class="modal-body">' +
+                               '<form sf-schema="vm.schema" sf-form="vm.form" sf-model="vm.entity"></form>' +
+                            '</div>' +
+                            '<div class="modal-footer">' +
+                               '<button class="btn btn-success" ng-click="vm.save()">Save</button>' +
+                                '<button class="btn btn-warning" ng-click="$close()">Cancel</button>' +
+                           ' </div>' +
+                        '</div>';
     function editRow(grid, row) {
         $modal.open({
-            templateUrl: 'app/views/edit-modal.html',
+            //svaki red zatvoriti unutar ' ' i dodati plus na kraj
+            template: modaltemp,
             controller: ['$modalInstance', 'PersonSchema', 'grid', 'row', RowEditCtrl],
             controllerAs: 'vm',
             resolve: {

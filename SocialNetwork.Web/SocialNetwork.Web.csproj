@@ -431,8 +431,6 @@
     <Content Include="app\views\adminProfili.html" />
     <Content Include="app\views\chart.html" />
     <Content Include="app\views\confirmEmail.html" />
-    <Content Include="app\views\edit-button.html" />
-    <Content Include="app\views\edit-modal.html" />
     <Content Include="app\views\forgotPassword.html" />
     <Content Include="app\views\friends.html" />
     <Content Include="app\views\profile.html" />
