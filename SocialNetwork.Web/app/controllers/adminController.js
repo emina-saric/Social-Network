@@ -13,7 +13,7 @@ app.constant('PersonSchema', {
         lockoutEndDateUtc: { type: 'string', title: 'Banned Until' },
         accessFailedCount: { type: 'string', title: 'Access Failed' },
         userName: { type: 'string', title: 'User Name' },
-        profileImage: { type: 'string', title: 'Profile Image' }
+        profileImage: { type: 'string', title: 'Profile Image' },
     }
 })
 //izbaciti ova dva kontrollera u zasebne fajlove kao  service
@@ -46,13 +46,13 @@ function MainCtrl ($http, RowEditor,$scope) {
           { name: 'lockoutEndDateUtc' },
           { name: 'accessFailedCount' },
           { name: 'profileImage' },
-          { name: 'userName' }
+          { name: 'userName' },
         ]
     };
     $http.get(serviceBase + 'api/Profile/GetUsers/')
       .success(function (data) {
           vm.gridOptions.data = data;
-          alert(JSON.stringify(vm.gridOptions.data));
+          //alert(JSON.stringify(vm.gridOptions.data));
       });
 }
 
@@ -63,7 +63,7 @@ function RowEditor($rootScope, $modal) {
   
     var modaltemp = '<div>' +
                             '<div class="modal-header">' +
-                               '<h3 class="modal-title">Edit Row</h3>' +
+                               '<h3 class="modal-title">Edit profile</h3>' +
                            ' </div>' +
                             '<div class="modal-body">' +
                                '<form sf-schema="vm.schema" sf-form="vm.form" sf-model="vm.entity"></form>' +
@@ -94,6 +94,7 @@ function RowEditCtrl($modalInstance, PersonSchema, grid, row) {
   
     vm.schema = PersonSchema;
     vm.entity = angular.copy(row.entity);
+   // alert(JSON.stringify(row.entity));
     vm.form = [
       'firstName',
       'lastName',

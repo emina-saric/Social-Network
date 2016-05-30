@@ -39,7 +39,7 @@ app.controller('signupController', ['$scope', '$location', '$timeout', 'authServ
              });
     };
     
-    (function () {
+  /*  (function () {
         if (window.localStorage) {
             if (!localStorage.getItem('firstLoad')) {
                 localStorage['firstLoad'] = true;
@@ -48,7 +48,8 @@ app.controller('signupController', ['$scope', '$location', '$timeout', 'authServ
             else
                 localStorage.removeItem('firstLoad');
         }
-    })();
+    })();*/
+
 
     var startTimer = function () {
         var timer = $timeout(function () {
