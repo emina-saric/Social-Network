@@ -17,11 +17,7 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
     $scope.upload = [];
     $scope.fileUploadObj = { fullFileName: "Test string 1" };
 
-    
-    
-
-    
-    
+   
     var objave = new Array();
     $scope.objave = new Array();
 
@@ -54,8 +50,13 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
             file: Upload.dataUrltoBlob(dataUrl, name)
         }).then(function (response) {
             $timeout(function () {
-               console.log(response.data);
+                $scope.currentUser.profileImage = ' ';
+                console.log(response.data);
                 $scope.result = response.data;
+                userService.getCurrentUser($scope.currentUser.userName).then(function (response) {
+                    $scope.currentUser.profileImage = $sce.trustAsResourceUrl('/app/images/' + response.data['profileImage']);
+                    window.location.reload();
+                });
             });
         }, function (response) {
             console.log(response.data);
@@ -67,6 +68,7 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
         });
     };
     
+
     $scope.getCurrentUser = function () {
         userService.getCurrentUser($scope.currentUser.userName).then(function (response) {
                 $scope.savedSuccessfully = true;
@@ -76,7 +78,7 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
                 $scope.currentUser.firstName = response.data['firstName'];
                 $scope.currentUser.lastName = response.data['lastName'];
                 $scope.currentUser.fullName = response.data['fullName'];
-                $scope.currentUser.profileImage = $sce.trustAsResourceUrl('/app/images/'+response.data['profileImage']);
+                $scope.currentUser.profileImage = $sce.trustAsResourceUrl('/app/images/' + response.data['profileImage']);
             });
     };
 

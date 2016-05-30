@@ -65,7 +65,7 @@
             <div class="collapse navbar-collapse navbar-left">
                 <ul class="nav navbar-link">
                     <li data-ng-hide="!authentication.isAuth">
-                        <img data-ng-controller="profileController" ng-src="{{currentUser.profileImage}}" alt="headshot" class="headshot" />
+                        <img data-ng-controller="profileController" ng-show="currentUser.profileImage" ng-src="{{currentUser.profileImage || '//:0'}}" alt="headshot" class="headshot" />
                         {{'welcomeIndex'|translate}} {{authentication.userName}}
                     </li>
                     <!--Ovdje Idu Stranice-->
@@ -191,7 +191,7 @@
     <script src="Scripts/ng-file-upload.min.js"></script>
     <script src="app/js/ng-img-crop.js"></script>
     <script src="app/js/customSelect.js"></script>
-
+    <script src="Scripts/dirPagination.js"></script>
 
     <script src="https://cdn.rawgit.com/mike-marcacci/objectpath/v1.1.0/lib/ObjectPath.js"></script>
     <script src="https://cdn.rawgit.com/geraintluff/tv4/v1.1.9/tv4.min.js"></script>

@@ -4,15 +4,19 @@
 
 <div class="row">
     {{'search'|translate}}: <input ng-model="query">
+
+
     <ul class="list-group">
-        <li class="list-group-item" ng-repeat="friend in friends | filter:query">
+        <li class="list-group-item" dir-paginate="friend in friends | filter:query | itemsPerPage: 10">
             <!--<a href="{{friend.Url}}"><h4 class="list-group-item-heading">{{friend.FullName}}</h4></a>-->
             {{friend.FirstName + ' ' + friend.LastName}}
             <!--<p>{{friend.Email}}</p>-->
         </li>
     </ul>
 </div>
+<dir-pagination-controls></dir-pagination-controls>
 
+<!--https://github.com/michaelbromley/angularUtils/tree/master/src/directives/pagination#working-with-asynchronous-data-->
 <!--<link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
 <div class="container bootstrap snippet">

@@ -1,4 +1,4 @@
-﻿var app = angular.module("AngularApp", ['ngRoute', 'LocalStorageModule', 'angular-loading-bar', 'pascalprecht.translate', 'AxelSoft', 'ngFileUpload', 'ngImgCrop','ui.grid', 'ui.grid.edit', 'ui.bootstrap', 'schemaForm','chart.js']);
+﻿var app = angular.module("AngularApp", ['ngRoute', 'LocalStorageModule', 'angular-loading-bar', 'pascalprecht.translate', 'AxelSoft', 'ngFileUpload', 'ngImgCrop','ui.grid', 'ui.grid.edit', 'ui.bootstrap', 'schemaForm','chart.js','angularUtils.directives.dirPagination']);
 
 //profile definition
 app.constant('PersonSchema', {
@@ -10,6 +10,11 @@ app.constant('PersonSchema', {
         'address.city': { type: 'string', title: 'City' }
     }
 })
+
+app.config(function (paginationTemplateProvider) {
+    paginationTemplateProvider.setPath('Scripts/dirPagination.tpl.html');
+});
+
 //izbaciti ova dva kontrollera u zasebne fajlove kao  service
 app.controller('MainCtrl', MainCtrl)
 app.controller('RowEditCtrl', RowEditCtrl)
