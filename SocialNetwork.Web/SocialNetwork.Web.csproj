@@ -643,6 +643,8 @@
     <Content Include="Scripts\angular-translate.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\dirPagination.js" />
+    <Content Include="Scripts\dirPagination.tpl.html" />
     <Content Include="Scripts\errors.json" />
     <Content Include="Content\Template\images\fontawesome-webfont.eot" />
     <Content Include="Content\Template\images\fontawesome-webfont.ttf" />
@@ -924,6 +926,7 @@
     <Content Include="Scripts\angular-chart.js.tar.gz" />
     <Content Include="Scripts\angular-chart.min.css.map" />
     <Content Include="Scripts\angular-chart.min.js.map" />
+    <Content Include="backupFile" />
     <None Include="Scripts\jquery-2.2.3.intellisense.js" />
     <Content Include="Scripts\FileAPI.flash.swf" />
     <Content Include="Scripts\FileAPI.js" />
