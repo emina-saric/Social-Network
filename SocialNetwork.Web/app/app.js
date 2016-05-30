@@ -1,4 +1,4 @@
-﻿var app = angular.module("AngularApp", ['ngRoute', 'LocalStorageModule', 'angular-loading-bar', 'pascalprecht.translate', 'AxelSoft', 'ngFileUpload', 'ngImgCrop','ui.grid', 'ui.grid.edit', 'ui.bootstrap', 'schemaForm','chart.js','angularUtils.directives.dirPagination']);
+﻿var app = angular.module("AngularApp", ['ngRoute', 'LocalStorageModule', 'chieffancypants.loadingBar', 'pascalprecht.translate', 'AxelSoft', 'ngFileUpload', 'ngImgCrop', 'ui.grid', 'ui.grid.edit', 'ui.bootstrap', 'schemaForm', 'chart.js', 'angularUtils.directives.dirPagination']);
 
 
 app.config(function (paginationTemplateProvider) {
