@@ -22,8 +22,8 @@ app.controller('RowEditCtrl', RowEditCtrl)
 app.service('RowEditor', RowEditor)
 ;
 
-MainCtrl.$inject = ['$http', 'RowEditor', '$scope'];
-function MainCtrl ($http, RowEditor,$scope) {
+MainCtrl.$inject = ['$http', 'RowEditor', '$scope','$q'];
+function MainCtrl ($http, RowEditor,$scope,$q) {
     var vm = this;
   
     vm.editRow = RowEditor.editRow;
@@ -54,6 +54,8 @@ function MainCtrl ($http, RowEditor,$scope) {
           vm.gridOptions.data = data;
           //alert(JSON.stringify(vm.gridOptions.data));
       });
+
+ 
 }
 
 RowEditor.$inject = ['$rootScope', '$modal'];

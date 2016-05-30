@@ -86,7 +86,13 @@ app.config(function ($routeProvider) {
     });
     $routeProvider.when("/admin/profili", {
         controller: "MainCtrl",
-        templateUrl: "/app/views/adminProfili.html"
+        templateUrl: "/app/views/adminProfili.html",
+        resolve: {
+            //This function is injected with the AuthService where you'll put your authentication logic
+            'auth': function (accessService) {
+                return accessService.authenticate();
+            }
+        }
     });
 
     $routeProvider.when("/charts", {
@@ -113,6 +119,15 @@ app.config(function ($httpProvider) {
 app.run(['authService', function (authService) {
     authService.fillAuthData();
 }]);
+app.run(function ($rootScope, $location) {
+    //If the route change failed due to authentication error, redirect them out
+    $rootScope.$on('$routeChangeError', function (event, current, previous, rejection) {
+        if (rejection === 'Not Authenticated') {
+            $location.path('/home');
+        }
+    })
+});
+       
 app.config(['$httpProvider', function ($httpProvider) {
     $httpProvider.defaults.useXDomain = true;
     delete $httpProvider.defaults.headers.common['X-Requested-With'];

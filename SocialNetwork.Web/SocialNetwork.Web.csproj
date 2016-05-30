@@ -424,6 +424,7 @@
     <Content Include="app\js\customSelect.js" />
     <Content Include="app\js\ng-img-crop.js" />
     <Content Include="app\js\site.js" />
+    <Content Include="app\services\accessService.js" />
     <Content Include="app\services\chartService.js" />
     <Content Include="app\services\objaveService.js" />
     <Content Include="app\services\searchService.js" />

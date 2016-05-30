@@ -16,6 +16,13 @@ app.factory('userService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
         });
 
     };
+    var _getRoles = function(id) {
+        
+        return $http.get(serviceBase + 'api/Account/GetRoles/' + id).then(function (response) {
+            return response;
+        });
+
+    };
    
 
     var _editCurrentUser = function (user) {
@@ -52,6 +59,7 @@ app.factory('userService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
     authServiceFactory.deleteCurrentUser = _deleteCurrentUser;
     authServiceFactory.editCurrentUser = _editCurrentUser;
     authServiceFactory.changePassword = _changePassword;
+    authServiceFactory.getRoles = _getRoles;
 
     return authServiceFactory;
 }]);

@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using Social_Network.Infrastructure;
+using System.Data.Entity;
 
 namespace Social_Network.Controllers
 {
@@ -25,6 +26,7 @@ namespace Social_Network.Controllers
         private Social_NetworkContext _ctx;
 
         private ApplicationUserManager _userManager;
+        private RoleManager<IdentityRole> _roleManager;
 
         private IAuthenticationManager Authentication
         {
@@ -36,9 +38,18 @@ namespace Social_Network.Controllers
         {
             _ctx = new Social_NetworkContext();
             _userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(_ctx));
+            _roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(_ctx));
 
         }
+        [HttpGet]
+        [Route("GetRoles/{userName}")]
+       public IHttpActionResult GetRoles(string userName)
+        {
 
+            var role = _userManager.GetRoles(id).ToList();
+            return Json(role);
+
+        }
         [Route("user/{id:guid}", Name = "GetUserById")]
         public async Task<IHttpActionResult> GetUser(string Id)
         {
@@ -57,6 +68,7 @@ namespace Social_Network.Controllers
         [Route("Register")]
         public async Task<IHttpActionResult> Register(CreateUserBindingModel userModel)
         {
+                     
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
