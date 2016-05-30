@@ -9,7 +9,6 @@ namespace Social_Network.Models
 {
     public class Objava
     {
-
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         [Required]
@@ -23,5 +22,6 @@ namespace Social_Network.Models
         [MaxLength(128)]
         public string ProfilId { get; set; }
         public string userName { get; set; }
+        public virtual List<Komentar> komentari { get; set; }
     }
 }

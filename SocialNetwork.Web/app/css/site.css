@@ -290,3 +290,8 @@ form .progress {
 .headshot {
 width: 50px;
 }
+
+.grid {
+  height: 450px;
+  width: 100%;
+}

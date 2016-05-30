@@ -58,9 +58,11 @@ namespace Social_Network
         {
             //use a cookie to temporarily store information about a user logging in with a third party login provider
 
+            // Configure the db context,user manager and role manager to use a single instance per request
             app.CreatePerOwinContext(Social_NetworkContext.Create);
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
             app.CreatePerOwinContext<ApplicationRoleManager>(ApplicationRoleManager.Create);
+
             app.UseExternalSignInCookie(Microsoft.AspNet.Identity.DefaultAuthenticationTypes.ExternalCookie);
             OAuthBearerOptions = new OAuthBearerAuthenticationOptions();
 
