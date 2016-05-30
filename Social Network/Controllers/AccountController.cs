@@ -42,8 +42,8 @@ namespace Social_Network.Controllers
 
         }
         [HttpGet]
-        [Route("GetRoles/{userName}")]
-       public IHttpActionResult GetRoles(string userName)
+        [Route("GetRoles/{id}")]
+       public IHttpActionResult GetRoles(string id)
         {
 
             var role = _userManager.GetRoles(id).ToList();
