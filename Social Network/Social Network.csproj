@@ -256,6 +256,27 @@
     <Compile Include="Migrations\201605101029226_test.Designer.cs">
       <DependentUpon>201605101029226_test.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605161354431_objave.cs" />
+    <Compile Include="Migrations\201605161354431_objave.Designer.cs">
+      <DependentUpon>201605161354431_objave.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605161536168_new.Designer.cs" />
+    <Compile Include="Migrations\201605171830305_objava.cs" />
+    <Compile Include="Migrations\201605171830305_objava.Designer.cs">
+      <DependentUpon>201605171830305_objava.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605171942298_nesta.cs" />
+    <Compile Include="Migrations\201605171942298_nesta.Designer.cs">
+      <DependentUpon>201605171942298_nesta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605241800567_ObjaveKOmentari.cs" />
+    <Compile Include="Migrations\201605241800567_ObjaveKOmentari.Designer.cs">
+      <DependentUpon>201605241800567_ObjaveKOmentari.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605241810120_komentar.cs" />
+    <Compile Include="Migrations\201605241810120_komentar.Designer.cs">
+      <DependentUpon>201605241810120_komentar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\RefreshToken.cs" />
     <Compile Include="Global.asax.cs">
@@ -295,6 +316,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Providers\CustomJwtFormat.cs" />
+    <Compile Include="Providers\CustomMultipartFormDataStreamProvider.cs" />
     <Compile Include="Providers\CustomOAuthProvider.cs" />
     <Compile Include="Providers\FacebookAuthProvider.cs" />
     <Compile Include="Providers\GoogleAuthProvider.cs" />
@@ -308,6 +330,7 @@
     <Compile Include="Validators\MyCustomUserValidator.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="dbo.AspNetUsers.data.sql" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <None Include="Scripts\jquery-2.2.3.intellisense.js" />
@@ -348,6 +371,22 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605101029226_test.resx">
       <DependentUpon>201605101029226_test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605161354431_objave.resx">
+      <DependentUpon>201605161354431_objave.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605161536168_new.resx" />
+    <EmbeddedResource Include="Migrations\201605171830305_objava.resx">
+      <DependentUpon>201605171830305_objava.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605171942298_nesta.resx">
+      <DependentUpon>201605171942298_nesta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605241800567_ObjaveKOmentari.resx">
+      <DependentUpon>201605241800567_ObjaveKOmentari.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605241810120_komentar.resx">
+      <DependentUpon>201605241810120_komentar.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -6,40 +6,37 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Social Network</title>
-
-    <!-- core CSS -->
-    <link href="/Content/Template/css/bootstrap.min.css" rel="stylesheet">
-    <link href="Content/bootswatch/yeti/bootstrap.min.css" rel="stylesheet" />
-    <link href="/Content/Template/css/font-awesome.min.css" rel="stylesheet">
-    <link href="/Content/Template/css/animate.min.css" rel="stylesheet">
-    <link href="/Content/Template/css/prettyPhoto.css" rel="stylesheet">
-    <link href="/Content/Template/css/main.css" rel="stylesheet">
-    <link href="/Content/Template/css/responsive.css" rel="stylesheet">
-    <link href="app/css/site.css" rel="stylesheet" />
-        <!--[if lt IE 9]>
-    <script src="~/Scripts/html5shiv.js"></script>
-    <script src="~/Scripts/respond.min.js"></script>
-    <![endif]-->
+     <!--FAVICON-->
     <link rel="shortcut icon" href="/Content/Template/images/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/Content/Template/images/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/Content/Template/images/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/Content/Template/images/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="/Content/Template/images/ico/apple-touch-icon-57-precomposed.png">
+    <!--GLYPHICONS-->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+    <!--FONT AWESOME-->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+    <!--IMAGE CROP -->
+    <link href="app/css/ng-img-crop.css" rel="stylesheet" />
+    <!--UI-GRID CSS -->
+    <link data-require="ui-grid@3.0.0RC20" data-semver="3.0.0RC20" rel="stylesheet" href="http://cdn.rawgit.com/angular-ui/ui-grid.info/gh-pages/release/3.0.0-rc.20/ui-grid.css" />
+    <!--TEMA-->
+    <link href="Content/bootswatch/yeti/bootstrap.css" rel="stylesheet" />
+    <!--SITE CSS ||OVDJE DODAVATI CUSTOM CSS -->
+    <link href="app/css/site.css" rel="stylesheet" />
 
-    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
-    <!--reCaptcha-->
-    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/angular-loading-bar/0.9.0/loading-bar.min.css' type='text/css' media='all' />
+
 </head><!--/head-->
 
 <body class="homepage">
-        <!--New-->
+    <!--New-->
 
 
     <div data-ng-controller="indexController">
-        <div id="sidebar" class="navbar navbar-inverse hide-sidebar" role="banner">
+        <div id="sidebar" class="navbar navbar-inverse hide-sidebar" role="banner" style="width:200px;margin-right:-150px">
             <div class="collapse navbar-collapse navbar-left">
                 <ul class="nav navbar-link">
-                    <li data-ng-hide="!authentication.isAuth">{{'welcomeIndex'|translate}} {{authentication.userName}}</li>
+                    <li data-ng-hide="!authentication.isAuth">
+                        <img data-ng-controller="profileController" ng-show="currentUser.profileImage" ng-src="{{currentUser.profileImage || '//:0'}}" alt="headshot" class="img-circle" style="width:150px" />
+                        {{'welcomeIndex'|translate}} {{authentication.userName}}
+                    </li>
                     <!--Ovdje Idu Stranice-->
                     <li data-ng-hide="!authentication.isAuth" class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{'profileIndex'|translate}}<b class="caret"></b></a>
@@ -47,8 +44,12 @@
                             <li><a href="#/profile">{{'profileMyProfileIndex'|translate}}</a></li>
                             <li><a href="#/profile/edit">{{'profileEditProfileIndex'|translate}}</a></li>
                             <li><a href="#/profile/changepassword">{{'profileChangePasswordIndex'|translate}}</a></li>
+                            <li><a href="#/profile/changeimage">{{'profileChangeImageIndex'|translate}}</a></li>
                             <li><a href="#/profile/friends">{{'friends' | translate}}</a></li>
                             <li><a href="#/profile/delete">{{'profileDeleteProfileIndex'|translate}}</a></li>
+                            <li><a href="#/admin/profili">Admin Panel</a></li>
+                            <li><a href="#/charts">Charts</a></li>
+
                         </ul>
                     </li><!--Profil View,Edit i Delete-->
                     <li data-ng-hide="!authentication.isAuth"><a href="" onclick="sideBarKill(true);" data-ng-click="logOut()">{{'logoutIndex'|translate}}</a></li>
@@ -91,16 +92,18 @@
                         <li>
                             <div class="container-fluid" ng-controller="searchController">
 
-                               <!--<p>Selected person: {{ person | json }}</p>-->
+                                <!--<p>Selected person: {{ person | json }}</p>-->
                                 <div custom-select="t as t.FirstName for t in people | filter: { FirstName: $searchTerm }" ng-model="person" data-ng-click="goToProfile()">
                                     <div class="pull-left" style="width: 40px">
-                                       <!-- <img ng-src="{{ t.picture }}" style="width: 30px" />-->
+                                        <!-- <img ng-src="{{ t.picture }}" style="width: 30px" />-->
                                     </div>
                                     <div class="pull-left">
+                                        ul
                                         <strong>{{ t.FirstName+' '+t.LastName }}</strong><br />
-                                       <span>{{ t.UserName }}</span>
+                                        <span>{{ t.UserName }}</span>
                                     </div>
                                     <div class="clearfix"></div>
+
                                 </div>
                             </div>
                         </li>
@@ -112,12 +115,11 @@
             <div id="main" class="main">
                 <div class="container-fluid">
                     <div data-ng-view="">
+
                     </div>
                 </div>
             </div><!--/#main-->
         </div>
-
-
 
 
         <footer id="footer" class="midnight-blue">
@@ -127,31 +129,45 @@
                 </div>
             </div>
         </footer><!--/#footer-->
+
     </div>
-
     <!--End-->
-
 
 
     <script src="/Scripts/jquery-2.2.3.min.js"></script>
     <script src="/Scripts/bootstrap.min.js"></script>
-    <script src="/Scripts/jquery.prettyPhoto.js"></script>
-    <script src="/Scripts/jquery.isotope.min.js"></script>
-    <script src="/Scripts/main.js"></script>
+
+
     <script src="/Scripts/wow.min.js"></script>
 
     <!-- 3rd party libraries -->
     <script src="app/js/site.js"></script>
 
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+    <script src="AdminPanel/bower_components/Chart.js/Chart.min.js"></script>
+    <script src="Scripts/angular-chart.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.min.js"></script>
     <script src="Scripts/angular-translate.min.js"></script>
     <script src="Scripts/angular-translate-loader-url.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-sanitize.js"></script>
     <script src="Scripts/angular-local-storage.min.js"></script>
-    <script src="Scripts/loading-bar.min.js"></script>
-
+    <script src="Scripts/ng-file-upload-shim.min.js"></script>
+    <script src="Scripts/ng-file-upload.min.js"></script>
+    <script src="app/js/ng-img-crop.js"></script>
     <script src="app/js/customSelect.js"></script>
+    <script src="Scripts/dirPagination.js"></script>
+
+
+    <script src="https://cdn.rawgit.com/mike-marcacci/objectpath/v1.1.0/lib/ObjectPath.js"></script>
+    <script src="https://cdn.rawgit.com/geraintluff/tv4/v1.1.9/tv4.min.js"></script>
+    <script src="https://cdn.rawgit.com/Textalk/angular-schema-form/0.8.0/dist/schema-form.js"></script>
+    <script src="https://cdn.rawgit.com/Textalk/angular-schema-form/0.8.0/dist/bootstrap-decorator.js"></script>
+
+    <script data-require="ui-grid@3.0.0RC20" data-semver="3.0.0RC20" src="http://cdn.rawgit.com/angular-ui/ui-grid.info/gh-pages/release/3.0.0-rc.20/ui-grid.js"></script>
+    <script data-require="ui-bootstrap@*" data-semver="0.12.1" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.1.js"></script>
+    <script data-require="jquery@2.1.3" data-semver="2.1.3" src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/angular-loading-bar/0.9.0/loading-bar.min.js'></script>
+
     <!-- Load app main script -->
     <script src="app/app.js?v=2"></script>
     <!-- Load services -->
@@ -160,6 +176,8 @@
     <script src="app/services/tokensManagerService.js?v=2"></script>
     <script src="app/services/userService.js"></script>
     <script src="app/services/searchService.js"></script>
+    <script src="app/services/objaveService.js"></script>
+    <script src="app/services/chartService.js"></script>
     <!-- Load controllers -->
     <script src="app/controllers/indexController.js?v=2"></script>
     <script src="app/controllers/homeController.js?v=2"></script>
@@ -175,7 +193,10 @@
     <script src="app/controllers/translationsController.js"></script>
     <script src="app/controllers/searchController.js"></script>
     <script src="app/controllers/profileOtherController.js"></script>
-        <script src="app/js/customSelect.js"></script>
+    <script src="app/controllers/friendsController.js"></script>
+    <script src="app/controllers/chartController.js"></script>
+    <script src="app/js/customSelect.js"></script>
+    <script src="app/controllers/adminController.js"></script>
 
     <!--<a href="app/views/profile.html">app/views/profile.html</a>-->
     <!-- Load custom filters -->

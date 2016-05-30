@@ -16,6 +16,8 @@ namespace Social_Network.Controllers
 
         private ModelFactory _modelFactory;
         private ApplicationUserManager _AppUserManager = null;
+        //single instance will be used in other controllers which are inherited from this controller
+        //thus it is better to create properties
         private ApplicationRoleManager _AppRoleManager = null;
 
         protected ApplicationUserManager AppUserManager

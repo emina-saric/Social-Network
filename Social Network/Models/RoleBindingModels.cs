@@ -6,6 +6,7 @@ using System.Web;
 
 namespace Social_Network.Models
 {
+
     public class CreateRoleBindingModel
     {
 

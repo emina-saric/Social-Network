@@ -28,8 +28,10 @@ app.controller('profileOtherController', ['$scope', '$location', '$timeout', 'au
     var updateFoo = function () {
         $scope.getOtherUser();
     };
+
+
     var _addFriend = function () {
-        return $http.post('api/Prijatelji/AddFriend', { "Id1": $scope.otherUser.userId, "Id2": authService.authentication.userName }).then(function (response) {
+        return $http.post('api/Prijatelji/AddFriend/' + $scope.otherUser.userId).then(function (response) {
             return response;
         });
     }

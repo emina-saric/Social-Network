@@ -33,6 +33,7 @@ namespace Social_Network.Models
                 LastName = appUser.LastName,
                 Email = appUser.Email,
                 EmailConfirmed = appUser.EmailConfirmed,
+                ProfileImage = appUser.ProfileImage,
                // Level = appUser.Level,
                 //JoinDate = appUser.JoinDate,
                 Roles = _AppUserManager.GetRolesAsync(appUser.Id).Result,
@@ -68,7 +69,7 @@ namespace Social_Network.Models
         public DateTime JoinDate { get; set; }
         public IList<string> Roles { get; set; }
         public IList<System.Security.Claims.Claim> Claims { get; set; }
-
+        public string ProfileImage { get; set; }
     }
 
     public class RoleReturnModel

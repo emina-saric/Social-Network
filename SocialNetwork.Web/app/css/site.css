@@ -1,7 +1,10 @@
 ﻿/*site.css*/
-
+body
+{
+    padding-bottom: 55px;
+}
 #sidebar {
-	background: #2a2c36;
+	//background: #2a2c36;
 	color: #eee;
 	position: fixed;
 	height: 100%;
@@ -15,7 +18,7 @@
 	transition: left ease .25s;
 }
 	#sidebar.hide-sidebar {
-		left: -250px;
+		left: -200px;
 		-moz-transition: left ease .25s;
 		-o-transition: left ease .25s;
 		-webkit-transition: left ease .25s;
@@ -23,7 +26,7 @@
 	}
 
 #wrapper {
-	margin: 0 0 0 250px;
+	margin: 0 0 0 200px;
 	-moz-transition: margin-left ease .25s;
 	-o-transition: margin-left ease .25s;
 	-webkit-transition: margin-left ease .25s;
@@ -38,7 +41,8 @@
 	}
 
 #main {
-    background-color: #eee;
+    // Temp change, maybe
+    //background-color: #eee;
 	padding: 4px;
 	margin: 0;
 }
@@ -183,15 +187,16 @@
 	content: "\f0d8";
 }
 .custom-select > .dropdown-menu {
-	margin-top: 0;
-	border-color: #aaa;
-	border-top: 0;
-	padding-bottom: 0;
-	width: auto;
-	min-width: 100%;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-	border-radius: 0;
+    margin-top: 0;
+    border-color: #aaa;
+    border-top: 0;
+    padding-bottom: 0;
+    width: auto;
+    min-width: 100%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 0;
 }
 .custom-select > .dropdown-menu > .custom-select-search {
 	position: relative;
@@ -264,4 +269,36 @@
 .custom-select > .dropdown-menu > .custom-select-action > button {
 	border-radius: 0;
 	background-image: none;
+}
+.cropArea {
+    background: #E4E4E4;
+    overflow: hidden;
+    width:500px;
+    height:350px;
+}
+form .progress {
+    line-height: 15px;
+}
+.progress {
+    display: inline-block;
+    width: 100px;
+    border: 3px groove #CCC;
+}
+.progress div {
+    font-size: smaller;
+    background: orange;
+    width: 0;
+}
+.headshot {
+width: 50px;
+}
+
+.grid {
+  height: 450px;
+  width: 100%;
+}
+
+.navbar-link > li > a {
+    color:#fff;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }

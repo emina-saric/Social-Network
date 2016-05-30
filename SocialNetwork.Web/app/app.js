@@ -1,5 +1,9 @@
-﻿/// <reference path="views/profileDelete.html" />
-var app = angular.module("AngularApp", ['ngRoute', 'LocalStorageModule', 'angular-loading-bar','pascalprecht.translate','AxelSoft']);
+﻿var app = angular.module("AngularApp", ['ngRoute', 'LocalStorageModule', 'chieffancypants.loadingBar', 'pascalprecht.translate', 'AxelSoft', 'ngFileUpload', 'ngImgCrop', 'ui.grid', 'ui.grid.edit', 'ui.bootstrap', 'schemaForm', 'chart.js', 'angularUtils.directives.dirPagination']);
+
+
+app.config(function (paginationTemplateProvider) {
+    paginationTemplateProvider.setPath('Scripts/dirPagination.tpl.html');
+});
 
 
 app.config(function ($routeProvider) {
@@ -51,6 +55,11 @@ app.config(function ($routeProvider) {
         templateUrl: "/app/views/profileChangePassword.html"
     });
 
+    $routeProvider.when("/profile/changeimage", {
+        controller: "profileController",
+        templateUrl: "/app/views/profileImageChange.html"
+    });
+
     $routeProvider.when("/confirmEmail/:userId/:code", {
         controller: "confirmEmailController",
         templateUrl: "/app/views/confirmEmail.html"
@@ -70,6 +79,19 @@ app.config(function ($routeProvider) {
     $routeProvider.when("/profile/friends", {
         controller: "friendsController",
         templateUrl: "/app/views/friends.html"
+    });
+    $routeProvider.when("/showProfileImage", {
+        controller: "profileController",
+        templateUrl: "/App_Data/Tmp/FileUploads/"
+    });
+    $routeProvider.when("/admin/profili", {
+        controller: "MainCtrl",
+        templateUrl: "/app/views/adminProfili.html"
+    });
+
+    $routeProvider.when("/charts", {
+        controller: "chartController",
+        templateUrl: "/app/views/chart.html"
     });
 
     $routeProvider.otherwise({ redirectTo: "/home" });
@@ -96,6 +118,7 @@ app.config(['$httpProvider', function ($httpProvider) {
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
 }
 ]);
+
 
 
 app.config(function ($translateProvider) {
@@ -131,7 +154,8 @@ app.config(function ($translateProvider) {
         signupText: 'Use the button below to create an account.',
         signup: 'Create Account',
         friends: "Friends",
-        search: "Search"
+        search: "Search",
+        profileChangeImageIndex: "Change Profile Image"
     }).translations('ba', {
         welcomeHome: 'Dobro došli na Social Network!',
         profileIndex: 'Profil',
@@ -164,7 +188,8 @@ app.config(function ($translateProvider) {
         signupText: 'Iskoristite dugme ispod za pravljenje korisničkog naloga.',
         signup: 'Napravi nalog',
         friends: 'Prijatelji',
-        search: 'Pretraga'
+        search: 'Pretraga',
+        profileChangeImageIndex: "Izmjeni Profilnu Sliku"
     });
     $translateProvider.preferredLanguage('ba');
 });

@@ -1,13 +1,25 @@
 ﻿'use strict';
-app.controller('profileController', ['$scope', '$location', '$timeout', 'authService', 'userService', '$routeParams', function ($scope, $location, $timeout, authService, userService, $routeParams) {
+
+app.controller('profileController', ['$scope', '$location', '$timeout', 'authService', 'userService', '$routeParams', 'Upload', 'objaveService', '$sce', function ($scope, $location, $timeout, authService, userService, $routeParams, Upload, objaveService, $sce) {
+
 
     $scope.savedSuccessfully = false;
     $scope.ChangedSuccessfully = false;
     $scope.ChangedPasswordSuccessfully = false;
+    $scope.PostedSuccessfully = false;
+    $scope.DeletedSuccessfully = false;
+
     $scope.message = "";
     $scope.authentication = authService.authentication;
     $scope.messageEdit = "";
     $scope.messagePasswordChange = "";
+    $scope.postDelete = "";
+    $scope.upload = [];
+    $scope.fileUploadObj = { fullFileName: "Test string 1" };
+
+   
+    var objave = new Array();
+    $scope.objave = new Array();
 
     $scope.currentUser = {
         userName: "",
@@ -18,11 +30,45 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
         fullName: "",
         currentPassword: "",
         newPassword: "",
-        confirmNewPassword: ""
+        confirmNewPassword: "",
+        profileImage: $sce.trustAsResourceUrl('/app/images/Default.png')
     };
     
     $scope.currentUser.userName = authService.authentication.userName;
     
+
+    
+    $scope.upload = function (dataUrl, name) {
+        //$scope.fileUploadObj.fullFileName = "Test";
+        Upload.upload({
+            url: serviceBase + 'api/Profile/Upload/',
+            method: "POST",
+            data: {
+                fullFileName: name,
+                userName : $scope.currentUser.userName
+            },
+            file: Upload.dataUrltoBlob(dataUrl, name)
+        }).then(function (response) {
+            $timeout(function () {
+                $scope.currentUser.profileImage = ' ';
+                console.log(response.data);
+                $scope.result = response.data;
+                userService.getCurrentUser($scope.currentUser.userName).then(function (response) {
+                    $scope.currentUser.profileImage = $sce.trustAsResourceUrl('/app/images/' + response.data['profileImage']);
+                    window.location.reload();
+                });
+            });
+        }, function (response) {
+            console.log(response.data);
+            if (response.status > 0) $scope.errorMsg = response.status
+                + ': ' + response.data;
+        }, function (evt) {
+            console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
+            $scope.progress = parseInt(100.0 * evt.loaded / evt.total);
+        });
+    };
+    
+
     $scope.getCurrentUser = function () {
         userService.getCurrentUser($scope.currentUser.userName).then(function (response) {
                 $scope.savedSuccessfully = true;
@@ -32,6 +78,7 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
                 $scope.currentUser.firstName = response.data['firstName'];
                 $scope.currentUser.lastName = response.data['lastName'];
                 $scope.currentUser.fullName = response.data['fullName'];
+                $scope.currentUser.profileImage = $sce.trustAsResourceUrl('/app/images/' + response.data['profileImage']);
             });
     };
 
@@ -97,9 +144,6 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
             $scope.getCurrentUser();
         });
     };
-
-
-
     $scope.goHome = function() {
         $location.url(serviceBase);
     };
@@ -112,7 +156,101 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
     }
 
     $scope.getCurrentUser();
+    
+    $scope.objavi = function () {
+        
+        if ($scope.objavaTekst == null || $scope.objavaTekst.length < 1) {
+               $scope.PostedSuccessfully = false;
+               $scope.messageEdit = "You must enter at least one characters!";
+               skloniPoruku();
+               return;
+        }
+        var objava = {
+            id: "",
+            tekst: "",
+            urlSlike: "",
+            datumObjave: "",
+            pozGlasovi: "",
+            negGlasovi: "",
+            oznake: "",
+            profilId: "",
+            userName: ""
 
+        };
+            objava.urlSlike = "nema";
+            objava.datumObjave = new Date();
+            objava.pozGlasovi = 0;
+            objava.negGlasovi = 0;
+            objava.oznake = "nema";
+            objava.ProfilId = $scope.currentUser.userId;
+            objava.userName = $scope.currentUser.userName;
+            objava.tekst = $scope.objavaTekst;
+
+            $scope.objave.unshift(objava);
+
+            objaveService.PostObjava(objava).then(function (response) {
+                $scope.PostedSuccessfully = true;
+                $scope.messageEdit = "Posted successfully.";
+                $scope.objavaTekst="";
+                skloniPoruku();
+
+            });
+           
+            
+   };
+   
+    $scope.GetObjave = function () {
+       objaveService.GetObjave().then(function (response) {
+           objave = response.data;
+           for (var i = 0; i < objave.length; i++) {
+               var objava = {
+                   id:"",
+                   tekst: "",
+                   urlSlike: "",
+                   datumObjave: "",
+                   pozGlasovi: "",
+                   negGlasovi: "",
+                   oznake: "",
+                   profilId: "",
+                   userName: ""
+               };
+
+               objava.id = objave[i].id;
+               objava.tekst = objave[i].tekst;
+               objava.urlSlike = objave[i].urlSlike;
+               objava.datumObjave = objave[i].datumObjave;
+               objava.pozGlasovi = objave[i].pozGlasovi;
+               objava.negGlasovi = objave[i].negGlasovi;
+               objava.oznake = objave[i].oznake;
+               objava.profilId = objave[i].profilId;
+               objava.userName = objave[i].userName;
+
+               $scope.objave.unshift(objava);
+              // alert(JSON.stringify(objava));
+         
+           }
+       });
+       
+      
+   };
+    $scope.GetObjave();
+   
+    $scope.remove = function (objava) {
+       // alert(JSON.stringify(objava));
+        var index = $scope.objave.indexOf(objava)
+        $scope.objave.splice(index, 1);
+        objaveService.DeleteObjava(objava.id).then(function (response) {
+            $scope.DeletedSuccessfully = true;
+            $scope.postDelete = "Deleted successfully!"
+            skloniPoruku();
+       });
+
+    }
+    var skloniPoruku = function () {
+        var timer = $timeout(function () {
+            $scope.messageEdit = ""; $scope.postDelete="";
+        }, 3000);
+    }
 
     /*
     authService.confirmEmail(String($routeParams.userId),String($routeParams.code)).then(function (response) {
