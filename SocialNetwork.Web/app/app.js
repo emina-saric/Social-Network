@@ -189,7 +189,7 @@ app.config(function ($translateProvider) {
         signup: 'Napravi nalog',
         friends: 'Prijatelji',
         search: 'Pretraga',
-        profileChangeImageIndex: "Izmjeni Profilnu Sliku"
+        profileChangeImageIndex: "Izmijeni profilnu sliku"
     });
     $translateProvider.preferredLanguage('ba');
 });
