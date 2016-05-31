@@ -38,3 +38,21 @@
         </div>
     </div>
 </div>
+
+<div class="col-lg-6 col-sm-12" id="doughnut-chart" ng-controller="chartController">
+    <div class="panel panel-default">
+        <div class="panel-heading">Comments left. {{CommentStats.total}}</div>
+        <div class="panel-body">
+            <canvas id="doughnut" class="chart chart-doughnut chart-xs" data="CommentStats.data" labels="CommentStats.labels"></canvas>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-6 col-sm-12" id="doughnut-chart" ng-controller="chartController">
+    <div class="panel panel-default">
+        <div class="panel-heading">Inactive users. {{InactiveUsersStats.total}}</div>
+        <div class="panel-body">
+            <canvas id="doughnut" class="chart chart-doughnut chart-xs" data="InactiveUsersStats.data" labels="InactiveUsersStats.labels"></canvas>
+        </div>
+    </div>
+</div>

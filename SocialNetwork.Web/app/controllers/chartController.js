@@ -30,8 +30,18 @@ app.controller('chartController', ['$scope', '$timeout','chartService', function
         data: [300, 500],
         total: 0
     };
-    //GetUserConfirmedStats
+    $scope.CommentStats = {
+        labels: ["Approved", "Rejected"],
+        data: [552, 448],
+        total: 0
+    };
+    $scope.InactiveUsersStats = {
+        labels: ["Active", "Inactive"],
+        data: [552, 448],
+        total: 0
+    };
 
+    //GetUserConfirmedStats
     $scope.GetUserConfirmedStats = function () {
         chartService.GetUserConfirmedStats().then(function (response) {
             $scope.UserConfirmedStats.data = [response.data['confirmed'], response.data['notConfirmed']];
@@ -64,8 +74,24 @@ app.controller('chartController', ['$scope', '$timeout','chartService', function
         });
     };
 
+    $scope.GetCommentStats = function () {
+        chartService.GetCommentStats().then(function (response) {
+            $scope.CommentStats.data = [response.data['confirmed'], response.data['notConfirmed']];
+            $scope.CommentStats.total = response.data['total'];
+        });
+    };
+
+    $scope.GetInactiveUsersStats = function () {
+        chartService.GetInactiveUsersStats().then(function (response) {
+            $scope.InactiveUsersStats.data = [response.data['confirmed'], response.data['notConfirmed']];
+            $scope.GetInactiveUsersStats.total = response.data['total'];
+        });
+    };
+
     $scope.GetUserConfirmedStats();
     $scope.GetUserProfileImageStats();
     $scope.GetBannedUsersStats();
     $scope.GetPhoneNumbersStats();
+    $scope.GetCommentStats();
+    $scope.GetInactiveUsersStats();
 }]);
