@@ -317,7 +317,7 @@ namespace Social_Network.Controllers
             // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
             // Send an email with this link:
             var applicationLink = System.Configuration.ConfigurationManager.AppSettings["as:applicationLink"];
-            applicationLink = "http://localhost:51622/#/confirmEmail/";
+            applicationLink = "http://nwt-socialnetwork.azurewebsites.net/#/confirmEmail/";
             string code = await AppUserManager.GenerateEmailConfirmationTokenAsync(userID);
 
             code = HttpServerUtility.UrlTokenEncode(System.Text.Encoding.ASCII.GetBytes(code));
@@ -337,7 +337,7 @@ namespace Social_Network.Controllers
             // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
             // Send an email with this link:
             var applicationLink = System.Configuration.ConfigurationManager.AppSettings["as:applicationLink"];
-            applicationLink = "http://localhost:51622/#/resetPassword/";
+            applicationLink = "http://nwt-socialnetwork.azurewebsites.net/#/resetPassword/";
             string code = await AppUserManager.GeneratePasswordResetTokenAsync(userID);
             //   var callbackUrl = new Uri(Url.Link(applicationLink, new { userId = userID, code = code }));
             code = HttpServerUtility.UrlTokenEncode(System.Text.Encoding.ASCII.GetBytes(code));
