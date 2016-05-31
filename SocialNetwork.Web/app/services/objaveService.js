@@ -25,9 +25,18 @@ app.factory('objaveService', ['$http', '$q', 'localStorageService', 'ngAuthSetti
         });
 
     };
+  
+    var _UpdateObjava = function (objava) {
+        return $http.put(serviceBase + 'api/Objave/EditObjava/', objava).then(function (response) {
+
+            return response;
+        });
+
+    };
     authServiceFactory.GetObjave = _GetObjave;
     authServiceFactory.PostObjava = _PostObjava;
     authServiceFactory.DeleteObjava = _DeleteObjava;
+    authServiceFactory.UpdateObjava = _UpdateObjava;
    /* authServiceFactory.deleteCurrentUser = _deleteCurrentUser;
     authServiceFactory.editCurrentUser = _editCurrentUser;
     authServiceFactory.changePassword = _changePassword;*/
