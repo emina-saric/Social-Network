@@ -29,7 +29,12 @@ app.factory('userService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
         return $http.put(serviceBase + 'api/Profile/EditCurrentUser/',user).then(function (response) {
             return response;
         });
+    };
 
+    var _editUser = function (user) {
+        return $http.put(serviceBase + 'api/Profile/EditUser/', user).then(function (response) {
+            return response;
+        });
     };
 
     var _changePassword = function (user) {
@@ -58,6 +63,7 @@ app.factory('userService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
     authServiceFactory.getUserById = _getUserById;
     authServiceFactory.deleteCurrentUser = _deleteCurrentUser;
     authServiceFactory.editCurrentUser = _editCurrentUser;
+    authServiceFactory.editUser = _editUser;
     authServiceFactory.changePassword = _changePassword;
     authServiceFactory.getRoles = _getRoles;
 

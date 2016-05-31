@@ -114,6 +114,23 @@ namespace Social_Network.Controllers
             return Ok(user);
         }
 
+        [HttpDelete]
+        [Route("DeleteUser/{id}")]
+        public async Task<IHttpActionResult> DeleteUser(string id)
+        {
+            var user = await db.Users.Where(u => u.Id == id).FirstOrDefaultAsync();
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            db.Users.Remove(user);
+            db.SaveChanges();
+
+            return Ok(user);
+        }
+
         [HttpPut]
         [Route("EditCurrentUser")]
         public async Task<IHttpActionResult> EditCurrentUser(EditCurrentUserBindingModel userModel)
@@ -134,6 +151,33 @@ namespace Social_Network.Controllers
 
             user.FirstName = userModel.FirstName;
             user.LastName = userModel.LastName;
+
+            IdentityResult editUserResult = await this.AppUserManager.UpdateAsync(user);
+
+            if (!editUserResult.Succeeded)
+            {
+                return GetErrorResult(editUserResult);
+            }
+
+            return Ok();
+        }
+
+        [HttpPut]
+        [Route("EditUser")]
+        public async Task<IHttpActionResult> EditUser(ApplicationUser userModel)
+        {
+            ApplicationUser user = await this.AppUserManager.FindByIdAsync(userModel.Id);
+
+            user.FirstName = userModel.FirstName;
+            user.LastName = userModel.LastName;
+            user.Email = userModel.Email;
+            user.EmailConfirmed = userModel.EmailConfirmed;
+            user.PhoneNumber = userModel.PhoneNumber;
+            user.LockoutEnabled = userModel.LockoutEnabled;
+            user.LockoutEndDateUtc = userModel.LockoutEndDateUtc;
+            user.AccessFailedCount = userModel.AccessFailedCount;
+            user.UserName = userModel.UserName;
+            user.ProfileImage = userModel.ProfileImage;
 
             IdentityResult editUserResult = await this.AppUserManager.UpdateAsync(user);
 

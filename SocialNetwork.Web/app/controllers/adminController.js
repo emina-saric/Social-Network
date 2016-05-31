@@ -25,7 +25,6 @@ app.service('RowEditor', RowEditor)
 MainCtrl.$inject = ['$http', 'RowEditor', '$scope','$q'];
 function MainCtrl ($http, RowEditor,$scope,$q) {
     var vm = this;
-  
     vm.editRow = RowEditor.editRow;
   //kolone tabele
     vm.gridOptions = {
@@ -55,14 +54,21 @@ function MainCtrl ($http, RowEditor,$scope,$q) {
           //alert(JSON.stringify(vm.gridOptions.data));
       });
 
- 
+    function reloadGrid() {
+        $http.get(serviceBase + 'api/Profile/GetUsers/')
+          .success(function (data) {
+              vm.gridOptions.data = data;
+              //alert(JSON.stringify(vm.gridOptions.data));
+          });
+    }
+    vm.reloadGrid = reloadGrid;
 }
 
-RowEditor.$inject = ['$rootScope', '$modal'];
-function RowEditor($rootScope, $modal) {
+RowEditor.$inject = ['$rootScope', '$modal','userService'];
+function RowEditor($rootScope, $modal,userService) {
     var service = {};
     service.editRow = editRow;
-  
+
     var modaltemp = '<div>' +
                             '<div class="modal-header">' +
                                '<h3 class="modal-title">Edit profile</h3>' +
@@ -71,6 +77,7 @@ function RowEditor($rootScope, $modal) {
                                '<form sf-schema="vm.schema" sf-form="vm.form" sf-model="vm.entity"></form>' +
                             '</div>' +
                             '<div class="modal-footer">' +
+                            '<button class="btn btn-warning" ng-click="vm.deleteX()">Delete</button>' +
                                '<button class="btn btn-success" ng-click="vm.save()">Save</button>' +
                                 '<button class="btn btn-warning" ng-click="$close()">Cancel</button>' +
                            ' </div>' +
@@ -79,7 +86,7 @@ function RowEditor($rootScope, $modal) {
         $modal.open({
             //svaki red zatvoriti unutar ' ' i dodati plus na kraj
             template: modaltemp,
-            controller: ['$modalInstance', 'PersonSchema', 'grid', 'row', RowEditCtrl],
+            controller: ['$modalInstance', 'PersonSchema', 'grid', 'row','$http', RowEditCtrl],
             controllerAs: 'vm',
             resolve: {
                 grid: function () { return grid; },
@@ -91,12 +98,12 @@ function RowEditor($rootScope, $modal) {
     return service;
 }
 
-function RowEditCtrl($modalInstance, PersonSchema, grid, row) {
+function RowEditCtrl($modalInstance, PersonSchema, grid, row, $http) {
     var vm = this;
   
     vm.schema = PersonSchema;
     vm.entity = angular.copy(row.entity);
-   // alert(JSON.stringify(row.entity));
+    //alert(JSON.stringify(row.entity));
     vm.form = [
       'firstName',
       'lastName',
@@ -108,15 +115,49 @@ function RowEditCtrl($modalInstance, PersonSchema, grid, row) {
       'accessFailedCount',
       'userName',
       'profileImage'
-      
      ];
   
     vm.save = save;
+    vm.deleteX = deleteX;
   
     function save() {
         // Copy row values over
         row.entity = angular.extend(row.entity, vm.entity);
-        $modalInstance.close(row.entity);
+        //alert(JSON.stringify(row.entity));
+        $http.put(serviceBase + 'api/Profile/EditUser/', row.entity).then(function (response) {
+            $modalInstance.close(row.entity);
+        },
+        function (response) {
+            var errors = [];
+            for (var key in response.data.modelState) {
+                if (key != '$id') {
+                    for (var i = 0; i < response.data.modelState[key].length; i++) {
+                        errors.push(response.data.modelState[key][i]);
+                    }
+                }
+            }
+            alert("Failed to change user due to: " + errors.join(' '));
+        });
+    }
+
+    function deleteX() {
+        // Copy row values over
+        row.entity = angular.extend(row.entity, vm.entity);
+        //alert(JSON.stringify(row.entity));
+        $http.delete(serviceBase + 'api/Profile/DeleteUser/' + row.entity.id).then(function (response) {
+            $modalInstance.close(row.entity);
+        },
+        function (response) {
+            var errors = [];
+            for (var key in response.data.modelState) {
+                if (key != '$id') {
+                    for (var i = 0; i < response.data.modelState[key].length; i++) {
+                        errors.push(response.data.modelState[key][i]);
+                    }
+                }
+            }
+            alert("Failed to delete user due to: " + errors.join(' '));
+        });
     }
 }
 
