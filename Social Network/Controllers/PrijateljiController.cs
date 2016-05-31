@@ -37,21 +37,55 @@ namespace Social_Network.Controllers
             return Json(friendUsernames);
         }
 
-   //     [Route("AddFriend")]
+        [HttpDelete]
+        [Route("DeleteFriend/{id}")]
+        public IHttpActionResult DeleteFriend(string id)
+        {
+            var y = HttpContext.Current.User.Identity.GetUserId();
+            Prijatelj p = db.Prijatelj.Where(x => x.Osoba1 == id && x.Osoba2 == y).FirstOrDefault();
+            db.Prijatelj.Remove(p);
+            db.SaveChanges();
+            return Ok();
+        }
+
+
+
+        //     [Route("AddFriend")]
         public async Task<IHttpActionResult> AddFriend(string id)
         {
-            try
-            {
-                Prijatelj p = new Prijatelj { Osoba1 = id, Osoba2 = HttpContext.Current.User.Identity.GetUserId(), prijateljiOd = DateTime.Now };
-                db.Prijatelj.Add(p);
-                await db.SaveChangesAsync();
-                return Ok(p);
-            }
-            catch (Exception)
+            var y = HttpContext.Current.User.Identity.GetUserId();
+            Prijatelj px = db.Prijatelj.Where(x => x.Osoba1 == id).FirstOrDefault();
+            if (px != null)
             {
                 return BadRequest();
             }
-        }  
+            else {
+                if (y != id) {
+                    try
+                    {
+                        Prijatelj p = new Prijatelj { Osoba1 = id, Osoba2 = y, prijateljiOd = DateTime.Now };
+                        db.Prijatelj.Add(p);
+                        await db.SaveChangesAsync();
+                        return Ok(p);
+                    }
+                    catch (Exception)
+                    {
+                        return BadRequest();
+                    }
+                }
+                return BadRequest();
+            }
+        }
+
+        public IHttpActionResult CheckFriend(string id)
+        {
+            var y = HttpContext.Current.User.Identity.GetUserId();
+            Prijatelj p = db.Prijatelj.Where(x => x.Osoba1 == id && x.Osoba2 == y).FirstOrDefault();
+            if (p != null) {
+                return Json(true);
+            }
+            return Json(false);
+        }
 
         protected override void Dispose(bool disposing)
         {

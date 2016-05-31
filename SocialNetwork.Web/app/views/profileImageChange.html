@@ -1,7 +1,7 @@
 <form name="myForm">
-    <div>Crop Image and Upload</div>
+    <div>{{'imageChange'|translate}}</div>
     <button ngf-select ng-model="picFile" accept="image/*">
-        Select Picture
+        {{'selectPic'|translate}}
     </button>
     <div ngf-drop ng-model="picFile" ngf-pattern="image/*"
          class="cropArea">
@@ -12,11 +12,11 @@
     <div>
         <img ng-src="{{croppedDataUrl}}" />
     </div>
-    <button ng-click="upload(croppedDataUrl, picFile.name)">Submit</button>
+    <button ng-click="upload(croppedDataUrl, picFile.name)">{{'submit'|translate}}</button>
 
     <span class="progress" ng-show="progress >= 0">
         <div style="width:{{progress}}%" ng-bind="progress + '%'"></div>
     </span>
-    <span ng-show="result">Upload Successful</span>
+    <span ng-show="result">{{'uploadSuc'|translate}}</span>
     <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
 </form>

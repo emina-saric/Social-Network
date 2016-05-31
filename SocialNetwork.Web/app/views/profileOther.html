@@ -1,5 +1,5 @@
 ﻿<div class="text-center">
     <h2>{{otherUser.fullName}}</h2>
-    <p>{{otherUser.eMail}}</p>
-    <button type="button" class="btn btn-primary" data-ng-click="addFriend()">Dodaj kao prijatelja</button>
+    <p data-ng-hide="!isFriend">{{otherUser.eMail}}</p>
+    <button type="button" class="btn btn-primary" data-ng-click="addFriend()" data-ng-hide="isFriend">Dodaj kao prijatelja</button>
 </div>

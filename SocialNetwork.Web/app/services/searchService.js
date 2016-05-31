@@ -40,11 +40,18 @@ app.factory('searchService', ['$http', '$q', 'localStorageService', 'ngAuthSetti
          });
      };
 
+     var _takeDataX = function (data) {
+         _otherUser.userName = data;
+         _notifyObservers();
+         //alert(otherUser.userName)
+     }
+
      authServiceFactory.registerObserverCallback = _registerObserverCallback;
      authServiceFactory.notifyObservers = _notifyObservers;
      authServiceFactory.getAllUsers = _getAllUsers;
      authServiceFactory.takeData = _takeData;
      authServiceFactory.otherUser = _otherUser;
+     authServiceFactory.takeDataX = _takeDataX;
 
     return authServiceFactory;
 }]);

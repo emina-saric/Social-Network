@@ -178,7 +178,15 @@ app.config(function ($translateProvider) {
         friends: "Friends",
         search: "Search",
         profileChangeImageIndex: "Change Profile Image",
-        adminAddUser: "Add new User"
+        adminAddUser: "Add new User",
+        charts: "Charts",
+        deleteX: "Delete",
+        saveX: "Save",
+        cancelX: "Cancel",
+        imageChange: "Crop Image and Upload",
+        selectPic: "Select Picture",
+        uploadSuc: "Upload Successful",
+        yourFriends: "Users you are friends with"
     }).translations('ba', {
         welcomeHome: 'Dobro došli na Social Network!',
         profileIndex: 'Profil',
@@ -213,7 +221,15 @@ app.config(function ($translateProvider) {
         friends: 'Prijatelji',
         search: 'Pretraga',
         profileChangeImageIndex: "Izmijeni profilnu sliku",
-        adminAddUser: "Dodaj novog Korisnika"
+        adminAddUser: "Dodaj novog Korisnika",
+        charts: 'Čartovi',
+        deleteX: "Izbrisi",
+        saveX: "Spasi",
+        cancelX: "Izadji",
+        imageChange: "Kropuj i uploaduj sliku.",
+        selectPic: "Izaberi sliku.",
+        uploadSuc: "Upload Uspjesan",
+        yourFriends: "Korisnici sa kojima ste prijatelj"
     });
     $translateProvider.preferredLanguage('ba');
 });

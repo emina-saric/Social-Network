@@ -1,5 +1,5 @@
 ﻿<div class="page-header">
-    <h3>Korisnici sa kojima ste prijatelj</h3>
+    <h3>{{'yourFriends'|translate}}</h3>
 </div>
 
 <div class="row">
@@ -7,10 +7,12 @@
 
 
     <ul class="list-group">
-        <li class="list-group-item" dir-paginate="friend in friends | filter:query | itemsPerPage: 10">
+        <li></li>
+        <li class="list-group-item container-fluid" dir-paginate="friend in friends | filter:query | itemsPerPage: 10">
             <!--<a href="{{friend.Url}}"><h4 class="list-group-item-heading">{{friend.FullName}}</h4></a>-->
-            {{friend.FirstName + ' ' + friend.LastName}}
+            <a href="#/profileOther" class="navbar-nav navbar-brand text-capitalize" data-ng-click="goToProfile(friend.UserName)" >{{friend.FirstName + ' ' + friend.LastName}}</a>
             <!--<p>{{friend.Email}}</p>-->
+            <button class="btn btn-primary pull-right btn-sm" type="button" data-ng-click="deleteFriend(friend.Id)">{{'deleteX'|translate}}</button>
         </li>
     </ul>
 </div>

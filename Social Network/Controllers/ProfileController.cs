@@ -245,7 +245,8 @@ namespace Social_Network.Controllers
         [Route("GetUsers")]
         public async Task<IHttpActionResult> GetUsers()
         {
-            var users = await db.Users.ToListAsync();
+            var y = HttpContext.Current.User.Identity.GetUserId();
+            var users = await db.Users.Where(u=> u.Id!=y).ToListAsync();
             if (users != null)
                 return Ok(users);
             return NotFound();

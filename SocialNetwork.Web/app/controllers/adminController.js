@@ -79,9 +79,9 @@ function RowEditor($rootScope, $modal,userService) {
                                '<form sf-schema="vm.schema" sf-form="vm.form" sf-model="vm.entity"></form>' +
                             '</div>' +
                             '<div class="modal-footer">' +
-                            '<button class="btn btn-warning" ng-click="vm.deleteX()">Delete</button>' +
-                               '<button class="btn btn-success" ng-click="vm.save()">Save</button>' +
-                                '<button class="btn btn-warning" ng-click="$close()">Cancel</button>' +
+                            '<button class="btn btn-warning" ng-click="vm.deleteX()">{{'+"'deleteX'|translate}}</button>" +
+                               '<button class="btn btn-success" ng-click="vm.save()">{{' + "'saveX'|translate}}</button>" +
+                                '<button class="btn btn-warning" ng-click="$close()">{{' + "'cancelX'|translate}}</button>" +
                            ' </div>' +
                         '</div>';
     function editRow(grid, row) {
