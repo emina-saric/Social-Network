@@ -17,6 +17,7 @@ app.controller('loginController', ['$scope', '$location', 'authService', 'ngAuth
         authService.login($scope.loginData).then(function (response) {
 
             $location.path('/profile');
+            window.location.reload();
 
         },
          function (err) {

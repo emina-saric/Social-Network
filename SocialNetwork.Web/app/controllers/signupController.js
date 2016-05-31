@@ -14,6 +14,25 @@ app.controller('signupController', ['$scope', '$location', '$timeout', 'authServ
         recaptcha: ""
     };
 
+    $scope.newUser = {
+        userName: "",
+        password: "",
+        firstName: "",
+        lastName: "",
+        eMail: "",
+        confirmPassword: "",
+        recaptcha:"123"
+    }
+
+    $scope.newUserX = {
+        userName: "",
+        password: "",
+        firstName: "",
+        lastName: "",
+        eMail: "",
+        confirmPassword: "",
+        recaptcha: "123"
+    }
 
     $scope.signUp = function () {
         $scope.registration.recaptcha = grecaptcha.getResponse();
@@ -39,6 +58,33 @@ app.controller('signupController', ['$scope', '$location', '$timeout', 'authServ
              });
     };
     
+    $scope.addNewUser = function () {
+        $scope.newUser.confirmPassword = $scope.newUser.password;
+        authService.saveUser($scope.newUser).then(function (response) {
+
+            $scope.savedSuccessfully = true;
+            $scope.message = "New User added to the database";
+            startTimerX();
+
+        },
+         function (response) {
+             var errors = [];
+             for (var key in response.data.modelState) {
+                 if (key != '$id') {
+                     for (var i = 0; i < response.data.modelState[key].length; i++) {
+
+                         errors.push(response.data.modelState[key][i]);
+
+                     }
+                 }
+             }
+             $scope.message = "Failed to register user due to: " + errors.join(' ');
+         });
+    };
+
+
+
+
   /*  (function () {
         if (window.localStorage) {
             if (!localStorage.getItem('firstLoad')) {
@@ -50,6 +96,12 @@ app.controller('signupController', ['$scope', '$location', '$timeout', 'authServ
         }
     })();*/
 
+    var startTimerX = function () {
+        var timer = $timeout(function () {
+            $scope.message = "";
+            $scope.newUser = $scope.newUserX;
+        }, 1000);
+    }
 
     var startTimer = function () {
         var timer = $timeout(function () {

@@ -95,6 +95,13 @@ app.config(function ($routeProvider) {
         }
     });
 
+    $routeProvider.when("/adminAddUser", {
+        controller: "signupController",
+        templateUrl: "/app/views/adminAddUser.html"
+    });
+
+
+
     $routeProvider.when("/charts", {
         controller: "chartController",
         templateUrl: "/app/views/chart.html"
@@ -170,7 +177,8 @@ app.config(function ($translateProvider) {
         signup: 'Create Account',
         friends: "Friends",
         search: "Search",
-        profileChangeImageIndex: "Change Profile Image"
+        profileChangeImageIndex: "Change Profile Image",
+        adminAddUser: "Add new User"
     }).translations('ba', {
         welcomeHome: 'Dobro došli na Social Network!',
         profileIndex: 'Profil',
@@ -204,7 +212,8 @@ app.config(function ($translateProvider) {
         signup: 'Napravi nalog',
         friends: 'Prijatelji',
         search: 'Pretraga',
-        profileChangeImageIndex: "Izmijeni profilnu sliku"
+        profileChangeImageIndex: "Izmijeni profilnu sliku",
+        adminAddUser: "Dodaj novog Korisnika"
     });
     $translateProvider.preferredLanguage('ba');
 });

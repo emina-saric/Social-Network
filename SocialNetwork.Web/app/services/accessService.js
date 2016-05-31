@@ -26,9 +26,11 @@ app.factory('accessService', ['$http' ,'$q', 'localStorageService', 'ngAuthSetti
                             //alert(roles[1]);
                             var authenticate = false;
                             for (var i = 0; i < roles.length; i++) {
-                                if (roles[i] == "Admin" || roles[i] == "SuperAdmin")
+                                if (roles[i] == "Admin" || roles[i] == "SuperAdmin") {
                                     return true;
+                                }
                             }
+                            $scope.authISADMIN = false;
                             return $q.reject('Not Authenticated');
                            
                         });
@@ -39,9 +41,7 @@ app.factory('accessService', ['$http' ,'$q', 'localStorageService', 'ngAuthSetti
                 
 
             //alert(JSON.stringify(getCurrentUser));
-                //Else send a rejection
-                
-            
+                //Else send a rejection 
         }
     }
 

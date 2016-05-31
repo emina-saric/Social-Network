@@ -100,6 +100,37 @@ namespace Social_Network.Controllers
             return Ok(callbackUrl);
         }
 
+        [Authorize(Roles = "SuperAdmin,Admin")]
+        [HttpPost]
+        [Route("NewUser")]
+        public async Task<IHttpActionResult> NewUser(CreateUserBindingModel userModel)
+        {
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var user = new ApplicationUser()
+            {
+                UserName = userModel.UserName,
+                Email = userModel.Email,
+                FirstName = userModel.FirstName,
+                LastName = userModel.LastName,
+                ProfileImage = "Default.png",
+                EmailConfirmed = true
+            };
+
+            //IdentityResult result = await _userManager.CreateAsync(user, userModel.Password);
+            IdentityResult addUserResult = await this.AppUserManager.CreateAsync(user, userModel.Password);
+
+            if (!addUserResult.Succeeded)
+            {
+                return GetErrorResult(addUserResult);
+            }
+
+            return Ok();
+        }
+
         [HttpPost]
         [AllowAnonymous]
         [Route("ValidateCaptcha")]

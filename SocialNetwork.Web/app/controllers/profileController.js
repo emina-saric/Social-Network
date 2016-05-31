@@ -34,6 +34,7 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
         profileImage: $sce.trustAsResourceUrl('/app/images/Default.png')
     };
     
+    $scope.isAdmin = false;
     $scope.currentUser.userName = authService.authentication.userName;
     
 
@@ -54,7 +55,8 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
                 console.log(response.data);
                 $scope.result = response.data;
                 userService.getCurrentUser($scope.currentUser.userName).then(function (response) {
-                    $scope.currentUser.profileImage = $sce.trustAsResourceUrl('/app/images/' + response.data['profileImage']);
+                    var random = (new Date()).toString();
+                    $scope.currentUser.profileImage = $sce.trustAsResourceUrl('/app/images/' + response.data['profileImage'] + '?cb=' + random);
                     window.location.reload();
                 });
             });
@@ -79,8 +81,27 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
                 $scope.currentUser.lastName = response.data['lastName'];
                 $scope.currentUser.fullName = response.data['fullName'];
                 $scope.currentUser.profileImage = $sce.trustAsResourceUrl('/app/images/' + response.data['profileImage']);
-            });
+                $scope.getRoles();
+        });
     };
+    var roles = [];
+    $scope.getRoles = function () {
+        userService.getRoles($scope.currentUser.userId).then(function (response2) {
+            roles = response2.data;
+            //alert(roles[1]);
+            var authenticate = false;
+            for (var i = 0; i < roles.length; i++) {
+                if (roles[i] == "Admin" || roles[i] == "SuperAdmin") {
+                    $scope.isAdmin = true;
+                } else {
+                    $scope.isAdmin = false;
+                }
+            }
+            
+
+        });
+    }
+
 
     $scope.deleteCurrentUser = function () {
         userService.deleteCurrentUser().then(function (response) {

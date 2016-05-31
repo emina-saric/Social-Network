@@ -429,6 +429,7 @@
     <Content Include="app\services\objaveService.js" />
     <Content Include="app\services\searchService.js" />
     <Content Include="app\services\userService.js" />
+    <Content Include="app\views\adminAddUser.html" />
     <Content Include="app\views\adminProfili.html" />
     <Content Include="app\views\chart.html" />
     <Content Include="app\views\confirmEmail.html" />
@@ -640,6 +641,8 @@
     <Content Include="Scripts\angular-translate-loader-url.min.js" />
     <Content Include="Scripts\angular-translate.js" />
     <Content Include="Scripts\angular-translate.min.js" />
+    <Content Include="Scripts\angular-ui-router.js" />
+    <Content Include="Scripts\angular-ui-router.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\dirPagination.js" />

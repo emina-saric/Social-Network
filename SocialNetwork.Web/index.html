@@ -47,8 +47,8 @@
                             <li><a href="#/profile/changeimage">{{'profileChangeImageIndex'|translate}}</a></li>
                             <li><a href="#/profile/friends">{{'friends' | translate}}</a></li>
                             <li><a href="#/profile/delete">{{'profileDeleteProfileIndex'|translate}}</a></li>
-                            <li><a href="#/admin/profili">Admin Panel</a></li>
-                            <li><a href="#/charts">Charts</a></li>
+                            <li><a href="#/admin/profili" data-ng-controller="profileController" data-ng-hide="!isAdmin">Admin Panel</a></li>
+                            <li><a href="#/charts" data-ng-controller="profileController" data-ng-hide="!isAdmin">Charts</a></li>
 
                         </ul>
                     </li><!--Profil View,Edit i Delete-->
