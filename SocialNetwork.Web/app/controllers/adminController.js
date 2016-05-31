@@ -62,6 +62,8 @@ function MainCtrl ($http, RowEditor,$scope,$q) {
           });
     }
     vm.reloadGrid = reloadGrid;
+
+    RowEditor.registerObserverCallback(reloadGrid);
 }
 
 RowEditor.$inject = ['$rootScope', '$modal','userService'];
@@ -86,7 +88,7 @@ function RowEditor($rootScope, $modal,userService) {
         $modal.open({
             //svaki red zatvoriti unutar ' ' i dodati plus na kraj
             template: modaltemp,
-            controller: ['$modalInstance', 'PersonSchema', 'grid', 'row','$http', RowEditCtrl],
+            controller: ['$modalInstance', 'PersonSchema', 'grid', 'row','$http','RowEditor', RowEditCtrl],
             controllerAs: 'vm',
             resolve: {
                 grid: function () { return grid; },
@@ -94,11 +96,30 @@ function RowEditor($rootScope, $modal,userService) {
             }
         });
     }
+
+    // U slucaju izmjene otherUser ovo se koristi
+    var observerCallbacks = [];
+
+    //register an observer
+    var _registerObserverCallback = function (callback) {
+        observerCallbacks.push(callback);
+    };
+
+    //call this when you know 'foo' has been changed
+    var _notifyObservers = function () {
+        angular.forEach(observerCallbacks, function (callback) {
+            callback();
+        });
+    };
+
+
+    service.registerObserverCallback = _registerObserverCallback;
+    service.notifyObservers = _notifyObservers;
   
     return service;
 }
 
-function RowEditCtrl($modalInstance, PersonSchema, grid, row, $http) {
+function RowEditCtrl($modalInstance, PersonSchema, grid, row, $http,RowEditor) {
     var vm = this;
   
     vm.schema = PersonSchema;
@@ -125,6 +146,7 @@ function RowEditCtrl($modalInstance, PersonSchema, grid, row, $http) {
         row.entity = angular.extend(row.entity, vm.entity);
         //alert(JSON.stringify(row.entity));
         $http.put(serviceBase + 'api/Profile/EditUser/', row.entity).then(function (response) {
+            RowEditor.notifyObservers();
             $modalInstance.close(row.entity);
         },
         function (response) {
@@ -145,6 +167,7 @@ function RowEditCtrl($modalInstance, PersonSchema, grid, row, $http) {
         row.entity = angular.extend(row.entity, vm.entity);
         //alert(JSON.stringify(row.entity));
         $http.delete(serviceBase + 'api/Profile/DeleteUser/' + row.entity.id).then(function (response) {
+            RowEditor.notifyObservers();
             $modalInstance.close(row.entity);
         },
         function (response) {
