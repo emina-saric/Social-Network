@@ -17,8 +17,21 @@ app.factory('chartService', ['$http', '$q', 'localStorageService', 'ngAuthSettin
         });
     };
 
+    var _GetBannedUsersStats= function () {
+        return $http.get(serviceBase + 'api/Profile/GetBannedUsersStats/').then(function (response) {
+            return response;
+        });
+    };
+    var _GetPhoneNumbersStats = function () {
+        return $http.get(serviceBase + 'api/Profile/GetPhoneNumbersCount/').then(function (response) {
+            return response;
+        });
+    };
+
     authServiceFactory.GetUserConfirmedStats = _GetUserConfirmedStats;
     authServiceFactory.GetUserProfileImageStats = _GetUserProfileImageStats;
+    authServiceFactory.GetBannedUsersStats = _GetBannedUsersStats;
+    authServiceFactory.GetPhoneNumbersStats = _GetPhoneNumbersStats;
    /* authServiceFactory.deleteCurrentUser = _deleteCurrentUser;
     authServiceFactory.editCurrentUser = _editCurrentUser;
     authServiceFactory.changePassword = _changePassword;*/

@@ -22,3 +22,19 @@
         </div>
     </div>
 </div>
+<div class="col-lg-6 col-sm-12" id="doughnut-chart" ng-controller="chartController">
+    <div class="panel panel-default">
+        <div class="panel-heading">Banned Users. Total Users : {{BannedUsersStats.total}}</div>
+        <div class="panel-body">
+            <canvas id="doughnut" class="chart chart-doughnut chart-xs" data="BannedUsersStats.data" labels="BannedUsersStats.labels"></canvas>
+        </div>
+    </div>
+</div>
+<div class="col-lg-6 col-sm-12" id="doughnut-chart" ng-controller="chartController">
+    <div class="panel panel-default">
+        <div class="panel-heading">Phones Entered. Total Users : {{PhoneNumbersStats.total}}</div>
+        <div class="panel-body">
+            <canvas id="doughnut" class="chart chart-doughnut chart-xs" data="PhoneNumbersStats.data" labels="PhoneNumbersStats.labels"></canvas>
+        </div>
+    </div>
+</div>

@@ -20,7 +20,16 @@ app.controller('chartController', ['$scope', '$timeout','chartService', function
         data: [300, 500],
         total: 0
     };
-
+    $scope.BannedUsersStats = {
+        labels: ["Banned", "Active"],
+        data: [300, 500],
+        total: 0
+    };
+    $scope.PhoneNumbersStats = {
+        labels: ["Phone Exists", "Nothing"],
+        data: [300, 500],
+        total: 0
+    };
     //GetUserConfirmedStats
 
     $scope.GetUserConfirmedStats = function () {
@@ -40,7 +49,23 @@ app.controller('chartController', ['$scope', '$timeout','chartService', function
             $scope.UserImageChangeStats.total = total;
         });
     };
+    //GetBannedUsersStats
+    $scope.GetBannedUsersStats = function () {
+        chartService.GetBannedUsersStats().then(function (response) {
+            $scope.BannedUsersStats.data = [response.data['confirmed'], response.data['notConfirmed']];
+            $scope.BannedUsersStats.total = response.data['total'];
+        });
+    };
+    //GetPhoneNumbersCountStats
+    $scope.GetPhoneNumbersStats = function () {
+        chartService.GetPhoneNumbersStats().then(function (response) {
+            $scope.PhoneNumbersStats.data = [response.data['confirmed'], response.data['notConfirmed']];
+            $scope.PhoneNumbersStats.total = response.data['total'];
+        });
+    };
+
     $scope.GetUserConfirmedStats();
     $scope.GetUserProfileImageStats();
-
+    $scope.GetBannedUsersStats();
+    $scope.GetPhoneNumbersStats();
 }]);

@@ -92,8 +92,40 @@ namespace Social_Network.Controllers
             };
             return Ok(x);
         }
+        [HttpGet]
+        [Route("GetBannedUsersStats")]
+        public async Task<IHttpActionResult> GetBannedUsersStats()
+        {
 
+            var total = await db.Users.CountAsync();
+            var confirmed = await db.Users.Where(u => u.LockoutEnabled == true).CountAsync();
+            var notConfirmed = total - confirmed;
 
+            UserConfirmationViewModel x = new UserConfirmationViewModel()
+            {
+                Total = total,
+                Confirmed = confirmed,
+                NotConfirmed = notConfirmed
+            };
+            return Ok(x);
+        }
+        [HttpGet]
+        [Route("GetPhoneNumbersCount")]
+        public async Task<IHttpActionResult> GetPhoneNumbersCount()
+        {
+
+            var total = await db.Users.CountAsync();
+            var confirmed = await db.Users.Where(u => u.PhoneNumber != null).CountAsync();
+            var notConfirmed = total - confirmed;
+
+            UserConfirmationViewModel x = new UserConfirmationViewModel()
+            {
+                Total = total,
+                Confirmed = confirmed,
+                NotConfirmed = notConfirmed
+            };
+            return Ok(x);
+        }
 
 
         [HttpDelete]
