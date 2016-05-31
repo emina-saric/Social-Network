@@ -1,4 +1,4 @@
-﻿var app = angular.module("AngularApp", ['ngRoute', 'LocalStorageModule', 'chieffancypants.loadingBar', 'pascalprecht.translate', 'AxelSoft', 'ngFileUpload', 'ngImgCrop', 'ui.grid', 'ui.grid.edit', 'ui.bootstrap', 'schemaForm', 'chart.js', 'angularUtils.directives.dirPagination']);
+﻿var app = angular.module("AngularApp", ['ngRoute', 'LocalStorageModule', 'chieffancypants.loadingBar', 'pascalprecht.translate', 'AxelSoft', 'ngFileUpload', 'ngImgCrop', 'ui.grid', 'ui.grid.edit', 'ui.bootstrap', 'schemaForm', 'chart.js', 'angularUtils.directives.dirPagination','xeditable']);
 
 
 app.config(function (paginationTemplateProvider) {
@@ -134,7 +134,11 @@ app.run(function ($rootScope, $location) {
         }
     })
 });
-       
+
+app.run(function(editableOptions) {
+  editableOptions.theme = 'bs2';
+});
+
 app.config(['$httpProvider', function ($httpProvider) {
     $httpProvider.defaults.useXDomain = true;
     delete $httpProvider.defaults.headers.common['X-Requested-With'];

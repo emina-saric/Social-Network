@@ -21,6 +21,10 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
     var objave = new Array();
     $scope.objave = new Array();
 
+  
+    $scope.isNew = false;
+  
+
     $scope.currentUser = {
         userName: "",
         userId: "",
@@ -272,6 +276,15 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
             $scope.messageEdit = ""; $scope.postDelete="";
         }, 3000);
     }
+
+    $scope.updateObjava = function (objava) {
+        alert(JSON.stringify(objava)); 
+        objaveService.UpdateObjava(objava).then(function (response) {
+            $scope.DeletedSuccessfully = true;
+            $scope.postDelete = "Updated successfully!"
+            skloniPoruku();
+        });
+    };
 
     /*
     authService.confirmEmail(String($routeParams.userId),String($routeParams.code)).then(function (response) {
