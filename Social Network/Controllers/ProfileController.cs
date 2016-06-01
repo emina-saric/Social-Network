@@ -131,9 +131,9 @@ namespace Social_Network.Controllers
         {
             UserConfirmationViewModel x = new UserConfirmationViewModel()
             {
-                Total = 164,
-                Confirmed = 58,
-                NotConfirmed = 32
+                Total = db.Komentar.Count(),
+                Confirmed = db.Komentar.Count(),
+                NotConfirmed = 0
             };
             return Ok(x);
         }
