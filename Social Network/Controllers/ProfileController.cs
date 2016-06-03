@@ -127,6 +127,27 @@ namespace Social_Network.Controllers
             return Ok(x);
         }
 
+        public IHttpActionResult GetCommentStats()
+        {
+            UserConfirmationViewModel x = new UserConfirmationViewModel()
+            {
+                Total = db.Komentar.Count(),
+                Confirmed = db.Komentar.Count(),
+                NotConfirmed = 0
+            };
+            return Ok(x);
+        }
+
+        public IHttpActionResult GetInactiveUsersStats()
+        {
+            UserConfirmationViewModel x = new UserConfirmationViewModel()
+            {
+                Total = 12,
+                Confirmed = 43,
+                NotConfirmed = 16
+            };
+            return Ok(x);
+        }
 
         [HttpDelete]
         [Route("DeleteCurrentUser")]

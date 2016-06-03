@@ -110,10 +110,14 @@ app.config(function ($routeProvider) {
     $routeProvider.otherwise({ redirectTo: "/home" });
 
 });
+
 //var serviceBase = 'http://nwt-socialnetwork.azurewebsites.net/';
 var serviceBase = 'http://localhost:51622/';
-//var serviceBase = 'http://localhost:57409/';
-//var serviceBase = 'http://ngauthenticationapi.azurewebsites.net/';
+
+
+
+var serviceBase = window.location;
+
 app.constant('ngAuthSettings', {
     apiServiceBaseUri: serviceBase,
     clientId: 'ngAuthApp'

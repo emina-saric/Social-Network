@@ -218,6 +218,7 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
             objaveService.PostObjava(objava).then(function (response) {
                 objava.id = response.data.id;
                 $scope.objaveMoje.unshift(objava);
+                //alert(JSON.stringify(response));
                 $scope.PostedSuccessfully = true;
                 $scope.messageEdit = "Posted successfully.";
                 $scope.objavaTekst="";
@@ -316,6 +317,7 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
     }
 
     $scope.updateObjava = function (objava) {
+        //alert(JSON.stringify(objava.id)); 
         objaveService.UpdateObjava(objava).then(function (response) {
             $scope.DeletedSuccessfully = true;
             $scope.postDelete = "Updated successfully!"

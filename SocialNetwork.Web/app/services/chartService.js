@@ -27,11 +27,23 @@ app.factory('chartService', ['$http', '$q', 'localStorageService', 'ngAuthSettin
             return response;
         });
     };
+    var _GetCommentStats = function () {
+        return $http.get(serviceBase + 'api/Profile/GetCommentStats/').then(function (response) {
+            return response;
+        });
+    };
+    var _GetInactiveUsersStats = function () {
+        return $http.get(serviceBase + 'api/Profile/GetInactiveUsersStats/').then(function (response) {
+            return response;
+        });
+    };
 
     authServiceFactory.GetUserConfirmedStats = _GetUserConfirmedStats;
     authServiceFactory.GetUserProfileImageStats = _GetUserProfileImageStats;
     authServiceFactory.GetBannedUsersStats = _GetBannedUsersStats;
     authServiceFactory.GetPhoneNumbersStats = _GetPhoneNumbersStats;
+    authServiceFactory.GetCommentStats = _GetCommentStats;
+    authServiceFactory.GetInactiveUsersStats = _GetInactiveUsersStats;
    /* authServiceFactory.deleteCurrentUser = _deleteCurrentUser;
     authServiceFactory.editCurrentUser = _editCurrentUser;
     authServiceFactory.changePassword = _changePassword;*/
