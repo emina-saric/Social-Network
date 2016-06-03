@@ -19,3 +19,27 @@
             </div>
         </div>
     </div>
+<br >
+<br>
+<br>
+<div class="container" data-ng-controller="profileController">
+    <div class="row">
+
+        <div ng-repeat="objava in objave" class="col-sm-12">
+
+            <div style="border:1px;box-shadow:-1px 1px 4px rgb(128, 128, 128);padding:2px">
+
+                <span class="label label-info">{{ objava.userName }}</span>
+                <div class="panel-body">
+                    {{objava.tekst}}<br>
+
+
+                </div>
+                <div class="label label-primary">{{ objava.datumObjave| date:'dd/MM/yyyy hh:mm:ss' }}</div>
+
+            </div>
+            <br>
+        </div>
+
+    </div>
+</div>

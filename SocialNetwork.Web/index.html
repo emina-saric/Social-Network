@@ -28,179 +28,180 @@
 <body class="homepage">
     <!--New-->
 
-
-    <div data-ng-controller="indexController">
-        <div id="sidebar" class="navbar navbar-inverse hide-sidebar" role="banner" style="width:200px;margin-right:-150px">
-            <div class="collapse navbar-collapse navbar-left">
-                <ul class="nav navbar-link">
-                    <li data-ng-hide="!authentication.isAuth">
-                        <img data-ng-controller="profileController" ng-show="currentUser.profileImage" ng-src="{{currentUser.profileImage || '//:0'}}" alt="headshot" class="img-circle" style="width:150px" />
-                        {{'welcomeIndex'|translate}} {{authentication.userName}}
-                    </li>
-                    <!--Ovdje Idu Stranice-->
-                    <li data-ng-hide="!authentication.isAuth" class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{'profileIndex'|translate}}<b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#/profile">{{'profileMyProfileIndex'|translate}}</a></li>
-                            <li><a href="#/profile/edit">{{'profileEditProfileIndex'|translate}}</a></li>
-                            <li><a href="#/profile/changepassword">{{'profileChangePasswordIndex'|translate}}</a></li>
-                            <li><a href="#/profile/changeimage">{{'profileChangeImageIndex'|translate}}</a></li>
-                            <li><a href="#/profile/friends">{{'friends' | translate}}</a></li>
-                            <li><a href="#/profile/delete">{{'profileDeleteProfileIndex'|translate}}</a></li>
-                            <li><a href="#/admin/profili" data-ng-controller="profileController" data-ng-hide="!isAdmin">Admin Panel</a></li>
-                            <li><a href="#/charts" data-ng-controller="profileController" data-ng-hide="!isAdmin">{{'charts'|translate}}</a></li>
-
-                        </ul>
-                    </li><!--Profil View,Edit i Delete-->
-                    <li data-ng-hide="!authentication.isAuth"><a href="" onclick="sideBarKill(true);" data-ng-click="logOut()">{{'logoutIndex'|translate}}</a></li>
-                    <!--
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <i class="fa fa-angle-down"></i></a>
+    <div id="container">
+        <div data-ng-controller="indexController" style="height:100%;margin-bottom:-60px;padding-bottom:60px">
+            <div id="sidebar" class="navbar navbar-inverse hide-sidebar" role="banner" style="width:200px;margin-right:-150px">
+                <div class="collapse navbar-collapse navbar-left">
+                    <ul class="nav navbar-link">
+                        <li data-ng-hide="!authentication.isAuth">
+                            <img data-ng-controller="profileController" ng-show="currentUser.profileImage" ng-src="{{currentUser.profileImage || '//:0'}}" alt="headshot" class="img-circle" style="width:150px" />
+                            {{'welcomeIndex'|translate}} {{authentication.userName}}
+                        </li>
+                        <!--Ovdje Idu Stranice-->
+                        <li data-ng-hide="!authentication.isAuth" class="dropdown">
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown">{{'profileIndex'|translate}}<b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="blog-item.html">Blog Single</a></li>
-                                <li><a href="pricing.html">Pricing</a></li>
-                                <li><a href="404.html">404</a></li>
-                                <li><a href="shortcodes.html">Shortcodes</a></li>
+                                <li><a href="#/profile">{{'profileMyProfileIndex'|translate}}</a></li>
+                                <li><a href="#/profile/edit">{{'profileEditProfileIndex'|translate}}</a></li>
+                                <li><a href="#/profile/changepassword">{{'profileChangePasswordIndex'|translate}}</a></li>
+                                <li><a href="#/profile/changeimage">{{'profileChangeImageIndex'|translate}}</a></li>
+                                <li><a href="#/profile/friends">{{'friends' | translate}}</a></li>
+                                <li><a href="#/profile/delete">{{'profileDeleteProfileIndex'|translate}}</a></li>
+                                <li><a href="#/admin/profili" data-ng-controller="profileController" data-ng-hide="!isAdmin">Admin Panel</a></li>
+                                <li><a href="#/charts" data-ng-controller="profileController" data-ng-hide="!isAdmin">{{'charts'|translate}}</a></li>
+
                             </ul>
-                        </li>
-                    -->
-                </ul>
-            </div>
-
-        </div><!--Sidebar-->
-
-
-
-        <div id="wrapper" class="hide-sidebar">
-            <nav class="navbar navbar-inverse">
-                <div class="container-fluid">
-                    <ul class="nav navbar-left" data-ng-hide="!authentication.isAuth">
-                        <li>
-                            <button id="sidebarToggle" class="btn btn-info">
-                                <i class="fa fa-angle-right"></i>
-                            </button>
-                        </li>
+                        </li><!--Profil View,Edit i Delete-->
+                        <li data-ng-hide="!authentication.isAuth"><a href="" onclick="sideBarKill(true);" data-ng-click="logOut()">{{'logoutIndex'|translate}}</a></li>
+                        <!--
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <i class="fa fa-angle-down"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="blog-item.html">Blog Single</a></li>
+                                    <li><a href="pricing.html">Pricing</a></li>
+                                    <li><a href="404.html">404</a></li>
+                                    <li><a href="shortcodes.html">Shortcodes</a></li>
+                                </ul>
+                            </li>
+                        -->
                     </ul>
-                    <a href="#/profile" class="navbar-brand" id="titleSocialNetwork1" data-ng-hide="!authentication.isAuth">Social Network</a>
-                    <a href="index.html" class="navbar-brand" id="titleSocialNetwork2" data-ng-hide="authentication.isAuth">Social Network</a>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <div ng-controller="translationsController">
-                                <a class="btn btn-link" style="color:#ffffff;" ng-click="changeLanguage()">{{language}}</a>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="container-fluid" ng-controller="searchController"  data-ng-hide="!authentication.isAuth">
+                </div>
 
-                                <!--<p>Selected person: {{ person | json }}</p>-->
-                                <div custom-select="t as t.FirstName for t in people | filter: { FirstName: $searchTerm }" ng-model="person" data-ng-click="goToProfile()">
-                                    <div class="pull-left" style="width: 40px">
-                                        <!-- <img ng-src="{{ t.picture }}" style="width: 30px" />-->
-                                    </div>
-                                    <div class="pull-left">
-                                        <strong>{{ t.FirstName+' '+t.LastName }}</strong><br />
-                                        <span>{{ t.UserName }}</span>
-                                    </div>
-                                    <div class="clearfix"></div>
+            </div><!--Sidebar-->
 
+
+
+            <div id="wrapper" class="hide-sidebar" style="height:auto">
+                <nav class="navbar navbar-inverse" style="position:fixed;width:100%;z-index: 1010">
+                    <div class="container-fluid">
+                        <ul class="nav navbar-left" data-ng-hide="!authentication.isAuth">
+                            <li>
+                                <button id="sidebarToggle" class="btn btn-info">
+                                    <i class="fa fa-angle-right"></i>
+                                </button>
+                            </li>
+                        </ul>
+                        <a href="#/home" class="navbar-brand" id="titleSocialNetwork1">Social Network</a>
+
+                        <ul class="nav navbar-nav navbar-right" style="padding-top:7px;position:fixed;right:7px;z-index: 1010">
+                            <li>
+                                <div ng-controller="translationsController">
+                                    <a class="btn btn-link" style="color:#ffffff;" ng-click="changeLanguage()">{{language}}</a>
                                 </div>
-                            </div>
-                        </li>
-                        <li><!--Do Not Remove--></li>
-                    </ul>
-                </div>
-            </nav><!--Top-->
+                            </li>
+                            <li>
+                                <div class="container-fluid" ng-controller="searchController" data-ng-hide="!authentication.isAuth">
 
-            <div id="main" class="main">
-                <div class="container-fluid">
-                    <div data-ng-view="">
+                                    <!--<p>Selected person: {{ person | json }}</p>-->
+                                    <div custom-select="t as t.FirstName for t in people | filter: { FirstName: $searchTerm }" ng-model="person" data-ng-click="goToProfile()">
+                                        <div class="pull-left" style="width: 40px">
+                                            <!-- <img ng-src="{{ t.picture }}" style="width: 30px" />-->
+                                        </div>
+                                        <div class="pull-left">
+                                            <strong>{{ t.FirstName+' '+t.LastName }}</strong><br />
+                                            <span>{{ t.UserName }}</span>
+                                        </div>
+                                        <div class="clearfix"></div>
 
+                                    </div>
+                                </div>
+                            </li>
+                            <li><!--Do Not Remove--></li>
+                        </ul>
                     </div>
-                </div>
-            </div><!--/#main-->
-        </div>
+                </nav><!--Top-->
 
+                <div id="main" class="main" style="padding-top:50px">
+                    <div class="container-fluid">
+                        <div data-ng-view="">
 
-        <footer id="footer" class="midnight-blue">
-            <div class="container-fluid">
-                <div class="navbar navbar-inverse navbar-fixed-bottom">
-                    <h4 class="text-info text-center">&copy; 2016 NWT Social Network @Nadrealisti</h4>
-                </div>
+                        </div>
+                    </div>
+                </div><!--/#main-->
             </div>
-        </footer><!--/#footer-->
-
-    </div>
-    <!--End-->
 
 
-    <script src="/Scripts/jquery-2.2.3.min.js"></script>
-    <script src="/Scripts/bootstrap.min.js"></script>
 
 
-    <script src="/Scripts/wow.min.js"></script>
-
-    <!-- 3rd party libraries -->
-    <script src="app/js/site.js"></script>
-
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
-    <script src="AdminPanel/bower_components/Chart.js/Chart.min.js"></script>
-    <script src="Scripts/angular-chart.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.min.js"></script>
-    <script src="Scripts/angular-translate.min.js"></script>
-    <script src="Scripts/angular-translate-loader-url.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-sanitize.js"></script>
-    <script src="Scripts/angular-local-storage.min.js"></script>
-    <script src="Scripts/ng-file-upload-shim.min.js"></script>
-    <script src="Scripts/ng-file-upload.min.js"></script>
-    <script src="app/js/ng-img-crop.js"></script>
-    <script src="app/js/customSelect.js"></script>
-    <script src="Scripts/dirPagination.js"></script>
+        </div>
+</div>
+        <div id="footer1">
 
 
-    <script src="https://cdn.rawgit.com/mike-marcacci/objectpath/v1.1.0/lib/ObjectPath.js"></script>
-    <script src="https://cdn.rawgit.com/geraintluff/tv4/v1.1.9/tv4.min.js"></script>
-    <script src="https://cdn.rawgit.com/Textalk/angular-schema-form/0.8.0/dist/schema-form.js"></script>
-    <script src="https://cdn.rawgit.com/Textalk/angular-schema-form/0.8.0/dist/bootstrap-decorator.js"></script>
+            <h4 class="text-info text-center">&copy; 2016 NWT Social Network @Nadrealisti</h4>
 
-    <script data-require="ui-grid@3.0.0RC20" data-semver="3.0.0RC20" src="http://cdn.rawgit.com/angular-ui/ui-grid.info/gh-pages/release/3.0.0-rc.20/ui-grid.js"></script>
-    <script data-require="ui-bootstrap@*" data-semver="0.12.1" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.1.js"></script>
-    <script data-require="jquery@2.1.3" data-semver="2.1.3" src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
-    <script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/angular-loading-bar/0.9.0/loading-bar.min.js'></script>
-    <script src="http://vitalets.github.io/angular-xeditable/dist/js/xeditable.js"></script>
-    <!-- Load app main script -->
-    <script src="app/app.js?v=2"></script>
-    <!-- Load services -->
-    <script src="app/services/authInterceptorService.js?v=2"></script>
-    <script src="app/services/authService.js?v=2"></script>
-    <script src="app/services/tokensManagerService.js?v=2"></script>
-    <script src="app/services/userService.js"></script>
-    <script src="app/services/searchService.js"></script>
-    <script src="app/services/objaveService.js"></script>
-    <script src="app/services/chartService.js"></script>
-    <script src="app/services/accessService.js"></script>
-    <!-- Load controllers -->
-    <script src="app/controllers/indexController.js?v=2"></script>
-    <script src="app/controllers/homeController.js?v=2"></script>
-    <script src="app/controllers/loginController.js?v=2"></script>
-    <script src="app/controllers/signupController.js?v=2"></script>
-    <script src="app/controllers/refreshController.js?v=2"></script>
-    <script src="app/controllers/tokensManagerController.js?v=2"></script>
-    <script src="app/controllers/associateController.js?v=2"></script>
-    <script src="app/controllers/confirmEmailController.js"></script>
-    <script src="app/controllers/forgotPasswordController.js"></script>
-    <script src="app/controllers/profileController.js"></script>
-    <script src="app/controllers/resetPasswordController.js"></script>
-    <script src="app/controllers/translationsController.js"></script>
-    <script src="app/controllers/searchController.js"></script>
-    <script src="app/controllers/profileOtherController.js"></script>
-    <script src="app/controllers/friendsController.js"></script>
-    <script src="app/controllers/chartController.js"></script>
-    <script src="app/js/customSelect.js"></script>
-    <script src="app/controllers/adminController.js"></script>
+        </div><!--/#footer-->
+        <!--End-->
 
-    <!--<a href="app/views/profile.html">app/views/profile.html</a>-->
-    <!-- Load custom filters -->
-    <!-- Load custom directives -->
+
+        <script src="/Scripts/jquery-2.2.3.min.js"></script>
+        <script src="/Scripts/bootstrap.min.js"></script>
+
+
+        <script src="/Scripts/wow.min.js"></script>
+
+        <!-- 3rd party libraries -->
+        <script src="app/js/site.js"></script>
+
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+        <script src="AdminPanel/bower_components/Chart.js/Chart.min.js"></script>
+        <script src="Scripts/angular-chart.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.min.js"></script>
+        <script src="Scripts/angular-translate.min.js"></script>
+        <script src="Scripts/angular-translate-loader-url.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-sanitize.js"></script>
+        <script src="Scripts/angular-local-storage.min.js"></script>
+        <script src="Scripts/ng-file-upload-shim.min.js"></script>
+        <script src="Scripts/ng-file-upload.min.js"></script>
+        <script src="app/js/ng-img-crop.js"></script>
+        <script src="app/js/customSelect.js"></script>
+        <script src="Scripts/dirPagination.js"></script>
+
+
+        <script src="https://cdn.rawgit.com/mike-marcacci/objectpath/v1.1.0/lib/ObjectPath.js"></script>
+        <script src="https://cdn.rawgit.com/geraintluff/tv4/v1.1.9/tv4.min.js"></script>
+        <script src="https://cdn.rawgit.com/Textalk/angular-schema-form/0.8.0/dist/schema-form.js"></script>
+        <script src="https://cdn.rawgit.com/Textalk/angular-schema-form/0.8.0/dist/bootstrap-decorator.js"></script>
+
+        <script data-require="ui-grid@3.0.0RC20" data-semver="3.0.0RC20" src="http://cdn.rawgit.com/angular-ui/ui-grid.info/gh-pages/release/3.0.0-rc.20/ui-grid.js"></script>
+        <script data-require="ui-bootstrap@*" data-semver="0.12.1" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.1.js"></script>
+        <script data-require="jquery@2.1.3" data-semver="2.1.3" src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+        <script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/angular-loading-bar/0.9.0/loading-bar.min.js'></script>
+        <script src="http://vitalets.github.io/angular-xeditable/dist/js/xeditable.js"></script>
+        <!-- Load app main script -->
+        <script src="app/app.js?v=2"></script>
+        <!-- Load services -->
+        <script src="app/services/authInterceptorService.js?v=2"></script>
+        <script src="app/services/authService.js?v=2"></script>
+        <script src="app/services/tokensManagerService.js?v=2"></script>
+        <script src="app/services/userService.js"></script>
+        <script src="app/services/searchService.js"></script>
+        <script src="app/services/objaveService.js"></script>
+        <script src="app/services/chartService.js"></script>
+        <script src="app/services/accessService.js"></script>
+        <!-- Load controllers -->
+        <script src="app/controllers/indexController.js?v=2"></script>
+        <script src="app/controllers/homeController.js?v=2"></script>
+        <script src="app/controllers/loginController.js?v=2"></script>
+        <script src="app/controllers/signupController.js?v=2"></script>
+        <script src="app/controllers/refreshController.js?v=2"></script>
+        <script src="app/controllers/tokensManagerController.js?v=2"></script>
+        <script src="app/controllers/associateController.js?v=2"></script>
+        <script src="app/controllers/confirmEmailController.js"></script>
+        <script src="app/controllers/forgotPasswordController.js"></script>
+        <script src="app/controllers/profileController.js"></script>
+        <script src="app/controllers/resetPasswordController.js"></script>
+        <script src="app/controllers/translationsController.js"></script>
+        <script src="app/controllers/searchController.js"></script>
+        <script src="app/controllers/profileOtherController.js"></script>
+        <script src="app/controllers/friendsController.js"></script>
+        <script src="app/controllers/chartController.js"></script>
+        <script src="app/js/customSelect.js"></script>
+        <script src="app/controllers/adminController.js"></script>
+
+        <!--<a href="app/views/profile.html">app/views/profile.html</a>-->
+        <!-- Load custom filters -->
+        <!-- Load custom directives -->
 
 </body>
 </html>

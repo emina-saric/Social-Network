@@ -1,5 +1,5 @@
 ﻿'use strict';
-app.controller('profileOtherController', ['$scope', '$location', '$timeout', 'authService', 'userService', '$routeParams', 'searchService', '$http', function ($scope, $location, $timeout, authService, userService, $routeParams, searchService, $http) {
+app.controller('profileOtherController', ['$scope', '$location', '$timeout', 'authService', 'userService', '$routeParams', 'searchService', '$http','$sce', function ($scope, $location, $timeout, authService, userService, $routeParams, searchService, $http,$sce) {
 
     //alert(searchService.otherUser.userName);  
     $scope.otherUser = {
@@ -11,7 +11,8 @@ app.controller('profileOtherController', ['$scope', '$location', '$timeout', 'au
         fullName: "",
         currentPassword: "",
         newPassword: "",
-        confirmNewPassword: ""
+        confirmNewPassword: "",
+        profileImage: $sce.trustAsResourceUrl('/app/images/Default.png')
     };
     $scope.isFriend = false;
 
@@ -24,6 +25,7 @@ app.controller('profileOtherController', ['$scope', '$location', '$timeout', 'au
             $scope.otherUser.firstName = response.data['firstName'];
             $scope.otherUser.lastName = response.data['lastName'];
             $scope.otherUser.fullName = response.data['fullName'];
+            $scope.otherUser.profileImage = $sce.trustAsResourceUrl('/app/images/' + response.data['profileImage']);
             $scope.checkFriend();
         });
     };

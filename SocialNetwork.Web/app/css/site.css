@@ -1,7 +1,11 @@
 ﻿/*site.css*/
-body
-{
-    padding-bottom: 55px;
+
+html {
+    height:100%;
+}
+body {
+ height:100%;
+
 }
 #sidebar {
 	//background: #2a2c36;
@@ -41,19 +45,32 @@ body
 	}
 
 #main {
-    // Temp change, maybe
-    //background-color: #eee;
+    
+   
 	padding: 4px;
 	margin: 0;
+    height:100%;
 }
 
-#footer {
+#footer1 {
 	width: 100%;
 	background-color: #222;
 	color: #eee;
 	padding: 8px 5px;
-	position: fixed;
-	bottom: 0;
+    bottom:0;
+
+    position:relative;
+   
+
+   height:60px;   /* Height of the footer */
+  
+  
+   
+}
+#container {
+   min-height:100%;
+   position:relative;
+   
 }
 
 .profile-picture {

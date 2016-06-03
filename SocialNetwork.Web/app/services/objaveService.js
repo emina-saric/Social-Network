@@ -11,6 +11,12 @@ app.factory('objaveService', ['$http', '$q', 'localStorageService', 'ngAuthSetti
         });
 
     };
+    var _GetObjaveMoje = function () {
+        return $http.get(serviceBase + 'api/Objave/GetObjaveMoje/').then(function (response) {
+            return response;
+        });
+
+    };
     var _PostObjava = function (objava) {
         return $http.post(serviceBase+'api/Objave/CreateObjava',objava).then(function (response) {
             
@@ -34,6 +40,7 @@ app.factory('objaveService', ['$http', '$q', 'localStorageService', 'ngAuthSetti
 
     };
     authServiceFactory.GetObjave = _GetObjave;
+    authServiceFactory.GetObjaveMoje = _GetObjaveMoje;
     authServiceFactory.PostObjava = _PostObjava;
     authServiceFactory.DeleteObjava = _DeleteObjava;
     authServiceFactory.UpdateObjava = _UpdateObjava;

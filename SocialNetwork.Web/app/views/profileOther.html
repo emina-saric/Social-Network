@@ -1,4 +1,5 @@
 ﻿<div class="text-center">
+    <img src="{{otherUser.profileImage}}" class="img-thumbnail" style="width:20%" alt="Profile picture" />
     <h2>{{otherUser.fullName}}</h2>
     <p data-ng-hide="!isFriend">{{otherUser.eMail}}</p>
     <button type="button" class="btn btn-primary" data-ng-click="addFriend()" data-ng-hide="isFriend">Dodaj kao prijatelja</button>
