@@ -119,7 +119,7 @@ app.config(function ($routeProvider) {
 //var serviceBase = 'http://nwt-socialnetwork.azurewebsites.net/index.html/';
 //console.log(serviceBase);
 
-var serviceBase = window.location.origin + "/#/";
+var serviceBase = window.location.origin + "/";
 
 app.constant('ngAuthSettings', {
     apiServiceBaseUri: serviceBase,
