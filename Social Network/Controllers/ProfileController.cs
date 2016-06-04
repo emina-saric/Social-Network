@@ -142,9 +142,9 @@ namespace Social_Network.Controllers
         {
             UserConfirmationViewModel x = new UserConfirmationViewModel()
             {
-                Total = 12,
-                Confirmed = 43,
-                NotConfirmed = 16
+                Total = db.Objava.Count(),
+                Confirmed = db.Objava.Count(),
+                NotConfirmed = 0
             };
             return Ok(x);
         }
