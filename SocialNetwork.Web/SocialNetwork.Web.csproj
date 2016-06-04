@@ -41,6 +41,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <IncludeIisSettings>false</IncludeIisSettings>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -421,6 +422,15 @@
     <Content Include="app\css\ng-img-crop.css" />
     <Content Include="app\css\site.css" />
     <Content Include="app\images\Default.png" />
+    <Content Include="app\images\Image-2016-05-18_11-19-29-AMmegan-fox-02.jpg" />
+    <Content Include="app\images\Image-2016-05-18_11-23-49-AMnormal_jenniferlawrenceorg002.jpg" />
+    <Content Include="app\images\Image-2016-05-18_11-27-35-AMmegan-fox-02.jpg" />
+    <Content Include="app\images\Image-2016-05-18_12-17-34-PMnormal_jenniferlawrenceorg002.jpg" />
+    <Content Include="app\images\Image-2016-05-18_12-23-11-PMnormal_jenniferlawrenceorg002.jpg" />
+    <Content Include="app\images\Image-2016-05-18_12-47-46-prije podneMy Snapshot.jpg" />
+    <Content Include="app\images\Image-2016-05-29_05-47-17-PMNGA1.jpeg" />
+    <Content Include="app\images\Image-2016-05-30_03-09-48-PMNGA2.png" />
+    <Content Include="app\images\undefined.png" />
     <Content Include="app\js\customSelect.js" />
     <Content Include="app\js\ng-img-crop.js" />
     <Content Include="app\js\site.js" />
@@ -603,7 +613,7 @@
     <Content Include="Content\Template\style\tab2.png" />
     <Content Include="Content\Template\style\team-member.jpg" />
     <Content Include="Content\Template\style\testimonials1.png" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\bootswatch\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="index.html" />
     <Content Include="packages.config">
       <SubType>Designer</SubType>
@@ -658,10 +668,10 @@
     <Content Include="Content\Template\style\404.xcf" />
     <Content Include="Content\Template\images\404.xcf" />
     <Content Include="Content\bootswatch\cosmo\Thumbs.db" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootswatch\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\bootswatch\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\bootswatch\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\bootswatch\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
@@ -1776,13 +1786,13 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>51622</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:51622/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>True</UseCustomServer>
+          <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>http://nwt-socialnetwork.azurewebsites.net/</CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>

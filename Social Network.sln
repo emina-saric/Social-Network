@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Social Network", "Social Network\Social Network.csproj", "{8396EE50-D06E-42F9-B079-6FEC8706E87C}"
 EndProject
@@ -15,10 +15,12 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{8396EE50-D06E-42F9-B079-6FEC8706E87C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8396EE50-D06E-42F9-B079-6FEC8706E87C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8396EE50-D06E-42F9-B079-6FEC8706E87C}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{8396EE50-D06E-42F9-B079-6FEC8706E87C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8396EE50-D06E-42F9-B079-6FEC8706E87C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{68790A3F-DCEB-4865-85FB-9371B1DD14CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{68790A3F-DCEB-4865-85FB-9371B1DD14CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68790A3F-DCEB-4865-85FB-9371B1DD14CD}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{68790A3F-DCEB-4865-85FB-9371B1DD14CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68790A3F-DCEB-4865-85FB-9371B1DD14CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
