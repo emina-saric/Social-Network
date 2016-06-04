@@ -1,4 +1,5 @@
 ﻿<div class="text-center">
+    <img src="{{currentUser.profileImage}}" class="img-thumbnail" style="width:20%" alt="Profile picture" />
     <h2>{{currentUser.fullName}}</h2>
     {{'userEmailProfile'|translate}} {{currentUser.eMail}}
 </div>
@@ -23,7 +24,7 @@
 <div class="container">
     <div class="row" style="width:80%;margin:0 auto">
               <!-- Begin page content --> 
-                 <div ng-repeat="objava in objave" class="col-sm-12">
+                 <div ng-repeat="objava in objaveMoje" class="col-sm-12">
                      <div style="border:1px;box-shadow:-1px 1px 4px rgb(128, 128, 128);padding:2px">
                          <form name="myform" editable-form shown="isNew" onhide="isNew=false">
                              <div class="dropdown" style="float:right;box-shadow:-1px 1px 1px rgb(128, 128, 128)">

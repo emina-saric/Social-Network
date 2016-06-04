@@ -26,9 +26,26 @@ namespace Social_Network.Controllers
         // GET: Objave
         [HttpGet]
         [Route("GetObjave")]
-        public async Task<IHttpActionResult> GetObjave()
+        public  IHttpActionResult GetObjave()
         {
-            var objave = await db.Objava.ToListAsync();
+            var y = HttpContext.Current.User.Identity.GetUserId();
+            var prijatelji = db.Prijatelj.Where(x => x.Osoba2 == y).ToList();
+            // var objave = await db.Objava.ToListAsync();
+            var objave =  db.Objava.Where(x => x.ProfilId == y).ToList();
+            foreach (Prijatelj p in prijatelji)
+            {
+                objave.AddRange(db.Objava.Where(x => x.ProfilId == p.Osoba1).ToList());
+            }
+            objave = objave.OrderBy(u => u.datumObjave).ToList();
+            return Ok(objave);
+        }
+        // GET: ObjaveMoje
+        [HttpGet]
+        [Route("GetObjaveMoje")]
+        public IHttpActionResult GetObjaveMoje()
+        {
+            var id = HttpContext.Current.User.Identity.GetUserId();
+            var objave = db.Objava.Where(u => u.ProfilId == id).OrderBy(u => u.datumObjave).ToList();
             return Ok(objave);
         }
 
@@ -58,8 +75,9 @@ namespace Social_Network.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Objava.Add(objava);
+                var id=db.Objava.Add(objava);
                 await db.SaveChangesAsync();
+                
                 return Ok(objava);
             }
 

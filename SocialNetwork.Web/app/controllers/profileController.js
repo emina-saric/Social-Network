@@ -20,6 +20,8 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
    
     var objave = new Array();
     $scope.objave = new Array();
+    var objaveMoje = new Array();
+    $scope.objaveMoje = new Array();
 
   
     $scope.isNew = false;
@@ -211,9 +213,12 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
             objava.userName = $scope.currentUser.userName;
             objava.tekst = $scope.objavaTekst;
 
-            $scope.objave.unshift(objava);
-
+           // $scope.objaveMoje.unshift(objava);
+          
             objaveService.PostObjava(objava).then(function (response) {
+                objava.id = response.data.id;
+                $scope.objaveMoje.unshift(objava);
+                //alert(JSON.stringify(response));
                 $scope.PostedSuccessfully = true;
                 $scope.messageEdit = "Posted successfully.";
                 $scope.objavaTekst="";
@@ -225,45 +230,79 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
    };
    
     $scope.GetObjave = function () {
-       objaveService.GetObjave().then(function (response) {
-           objave = response.data;
-           for (var i = 0; i < objave.length; i++) {
-               var objava = {
-                   id:"",
-                   tekst: "",
-                   urlSlike: "",
-                   datumObjave: "",
-                   pozGlasovi: "",
-                   negGlasovi: "",
-                   oznake: "",
-                   profilId: "",
-                   userName: ""
-               };
+        objaveService.GetObjave().then(function (response) {
+            objave = response.data;
+            for (var i = 0; i < objave.length; i++) {
+                var objava = {
+                    id: "",
+                    tekst: "",
+                    urlSlike: "",
+                    datumObjave: "",
+                    pozGlasovi: "",
+                    negGlasovi: "",
+                    oznake: "",
+                    profilId: "",
+                    userName: ""
+                };
 
-               objava.id = objave[i].id;
-               objava.tekst = objave[i].tekst;
-               objava.urlSlike = objave[i].urlSlike;
-               objava.datumObjave = objave[i].datumObjave;
-               objava.pozGlasovi = objave[i].pozGlasovi;
-               objava.negGlasovi = objave[i].negGlasovi;
-               objava.oznake = objave[i].oznake;
-               objava.profilId = objave[i].profilId;
-               objava.userName = objave[i].userName;
+                objava.id = objave[i].id;
+                objava.tekst = objave[i].tekst;
+                objava.urlSlike = objave[i].urlSlike;
+                objava.datumObjave = objave[i].datumObjave;
+                objava.pozGlasovi = objave[i].pozGlasovi;
+                objava.negGlasovi = objave[i].negGlasovi;
+                objava.oznake = objave[i].oznake;
+                objava.profilId = objave[i].profilId;
+                objava.userName = objave[i].userName;
 
-               $scope.objave.unshift(objava);
-              // alert(JSON.stringify(objava));
+                $scope.objave.unshift(objava);
+                // alert(JSON.stringify(objava));
+
+            }
+        });
+    };
+       $scope.GetObjaveMoje = function () {
+           objaveService.GetObjaveMoje().then(function (response) {
+               //alert(JSON.stringify(objaveMoje));
+               objaveMoje = response.data;
+               for (var i = 0; i < objaveMoje.length; i++) {
+                   var objava = {
+                       id:"",
+                       tekst: "",
+                       urlSlike: "",
+                       datumObjave: "",
+                       pozGlasovi: "",
+                       negGlasovi: "",
+                       oznake: "",
+                       profilId: "",
+                       userName: ""
+                   };
+                  // alert(objaveMoje[i].Id);
+                   objava.id = objaveMoje[i].id;
+                   objava.tekst = objaveMoje[i].tekst;
+                   objava.urlSlike = objaveMoje[i].urlSlike;
+                   objava.datumObjave = objaveMoje[i].datumObjave;
+                   objava.pozGlasovi = objaveMoje[i].pozGlasovi;
+                   objava.negGlasovi = objaveMoje[i].negGlasovi;
+                   objava.oznake = objaveMoje[i].oznake;
+                   objava.profilId = objaveMoje[i].profilId;
+                   objava.userName = objaveMoje[i].userName;
+
+                   $scope.objaveMoje.unshift(objava);
+                   // alert(JSON.stringify(objava));
          
-           }
-       });
+               }
+           });
        
       
    };
-    $scope.GetObjave();
+       $scope.GetObjave();
+       $scope.GetObjaveMoje();
    
     $scope.remove = function (objava) {
        // alert(JSON.stringify(objava));
-        var index = $scope.objave.indexOf(objava)
-        $scope.objave.splice(index, 1);
+        var index = $scope.objaveMoje.indexOf(objava)
+        $scope.objaveMoje.splice(index, 1);
         objaveService.DeleteObjava(objava.id).then(function (response) {
             $scope.DeletedSuccessfully = true;
             $scope.postDelete = "Deleted successfully!"
@@ -278,7 +317,7 @@ app.controller('profileController', ['$scope', '$location', '$timeout', 'authSer
     }
 
     $scope.updateObjava = function (objava) {
-        alert(JSON.stringify(objava)); 
+        //alert(JSON.stringify(objava.id)); 
         objaveService.UpdateObjava(objava).then(function (response) {
             $scope.DeletedSuccessfully = true;
             $scope.postDelete = "Updated successfully!"
