@@ -80,7 +80,7 @@ namespace Social_Network
                 TokenEndpointPath = new PathString("/oauth/token"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromDays(1),
                 Provider = new CustomOAuthProvider(),
-                AccessTokenFormat = new CustomJwtFormat("http://nwt-socialnetwork.azurewebsites.net")
+                AccessTokenFormat = new CustomJwtFormat("http://localhost:57409")
 
             };
 
@@ -122,7 +122,7 @@ namespace Social_Network
                 TokenEndpointPath = new PathString("/oauth/token"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromDays(1),
                 Provider = new CustomOAuthProvider(),
-                AccessTokenFormat = new CustomJwtFormat("http://nwt-socialnetwork.azurewebsites.net")
+                AccessTokenFormat = new CustomJwtFormat("http://localhost:57409")
             };
 
             // OAuth 2.0 Bearer Access Token Generation
@@ -132,7 +132,7 @@ namespace Social_Network
         private void ConfigureOAuthTokenConsumption(IAppBuilder app)
         {
 
-            var issuer = "http://nwt-socialnetwork.azurewebsites.net";
+            var issuer = "http://localhost:57409";
             string audienceId = "414e1927a3884f68abc79f7283837fd1";
             byte[] audienceSecret = TextEncodings.Base64Url.Decode("qMCdFDQuF23RV1Y-1Gq9L3cF3VmuFwVbam4fMTdAfpo");
 

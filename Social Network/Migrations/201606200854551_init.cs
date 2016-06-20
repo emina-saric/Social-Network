@@ -8,7 +8,7 @@ namespace Social_Network.Migrations
         public override void Up()
         {
             CreateTable(
-                "dbo.Albums",
+                "dbo.Album",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -16,12 +16,12 @@ namespace Social_Network.Migrations
                         Datum = c.DateTime(nullable: false),
                         Privatni = c.Boolean(nullable: false),
                         AlbumCol = c.String(),
-                        ProfilId = c.Int(nullable: false),
+                        ProfilId = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.Clients",
+                "dbo.Client",
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
@@ -35,22 +35,41 @@ namespace Social_Network.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.Komentars",
+                "dbo.Komentar",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        ObjavaId = c.Int(nullable: false),
-                        tekst = c.String(nullable: false, maxLength: 100),
+                        napisao = c.String(),
+                        tekst = c.String(),
                         datum = c.DateTime(nullable: false),
+                        ObjavaId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Objava", t => t.ObjavaId, cascadeDelete: true)
+                .Index(t => t.ObjavaId);
+            
+            CreateTable(
+                "dbo.Objava",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        tekst = c.String(nullable: false, maxLength: 500),
+                        urlSlike = c.String(),
+                        datumObjave = c.DateTime(nullable: false),
+                        pozGlasovi = c.Int(nullable: false),
+                        negGlasovi = c.Int(nullable: false),
+                        oznake = c.String(),
+                        ProfilId = c.String(maxLength: 128),
+                        userName = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.Notifikacijas",
+                "dbo.Notifikacija",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        ProfilId = c.Int(nullable: false),
+                        ProfilId = c.String(maxLength: 128),
                         poruka = c.String(),
                         vrijeme = c.DateTime(nullable: false),
                         urlObjave = c.String(),
@@ -58,55 +77,40 @@ namespace Social_Network.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.Objavas",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        tekst = c.String(nullable: false, maxLength: 100),
-                        urlSlike = c.String(),
-                        datumObjave = c.DateTime(nullable: false),
-                        pozGlasovi = c.Int(nullable: false),
-                        negGlasovi = c.Int(nullable: false),
-                        oznake = c.String(),
-                        ProfilId = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id);
-            
-            CreateTable(
-                "dbo.Porukas",
+                "dbo.Poruka",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
                         RazgovorId = c.Int(nullable: false),
                         tekst = c.String(nullable: false, maxLength: 100),
                         vrijeme = c.DateTime(nullable: false),
-                        napisao = c.Int(nullable: false),
+                        napisao = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.Prijateljs",
+                "dbo.Prijatelj",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Osoba1 = c.Int(nullable: false),
-                        Osoba2 = c.Int(nullable: false),
+                        Osoba1 = c.String(maxLength: 128),
+                        Osoba2 = c.String(maxLength: 128),
                         prijateljiOd = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.Razgovors",
+                "dbo.Razgovor",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        ucesnik1 = c.Int(nullable: false),
-                        ucesnik2 = c.Int(nullable: false),
+                        ucesnik1 = c.String(maxLength: 128),
+                        ucesnik2 = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.RefreshTokens",
+                "dbo.RefreshToken",
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
@@ -142,7 +146,7 @@ namespace Social_Network.Migrations
                 .Index(t => t.RoleId);
             
             CreateTable(
-                "dbo.Slikas",
+                "dbo.Slika",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -160,6 +164,7 @@ namespace Social_Network.Migrations
                         Id = c.String(nullable: false, maxLength: 128),
                         FirstName = c.String(nullable: false, maxLength: 100),
                         LastName = c.String(nullable: false, maxLength: 100),
+                        ProfileImage = c.String(),
                         Email = c.String(maxLength: 256),
                         EmailConfirmed = c.Boolean(nullable: false),
                         PasswordHash = c.String(),
@@ -208,27 +213,29 @@ namespace Social_Network.Migrations
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropForeignKey("dbo.Komentar", "ObjavaId", "dbo.Objava");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropIndex("dbo.Komentar", new[] { "ObjavaId" });
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
-            DropTable("dbo.Slikas");
+            DropTable("dbo.Slika");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
-            DropTable("dbo.RefreshTokens");
-            DropTable("dbo.Razgovors");
-            DropTable("dbo.Prijateljs");
-            DropTable("dbo.Porukas");
-            DropTable("dbo.Objavas");
-            DropTable("dbo.Notifikacijas");
-            DropTable("dbo.Komentars");
-            DropTable("dbo.Clients");
-            DropTable("dbo.Albums");
+            DropTable("dbo.RefreshToken");
+            DropTable("dbo.Razgovor");
+            DropTable("dbo.Prijatelj");
+            DropTable("dbo.Poruka");
+            DropTable("dbo.Notifikacija");
+            DropTable("dbo.Objava");
+            DropTable("dbo.Komentar");
+            DropTable("dbo.Client");
+            DropTable("dbo.Album");
         }
     }
 }

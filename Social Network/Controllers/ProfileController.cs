@@ -6,6 +6,7 @@ using Social_Network.Models;
 using Social_Network.Providers;
 using System;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -17,7 +18,7 @@ using System.Web.Http;
 
 namespace Social_Network.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [RoutePrefix("api/Profile")]
     public class ProfileController : BaseApiController
     {
@@ -168,20 +169,25 @@ namespace Social_Network.Controllers
         }
 
         [HttpDelete]
+        [Authorize(Roles = "Admin")]
         [Route("DeleteUser/{id}")]
         public async Task<IHttpActionResult> DeleteUser(string id)
         {
             var user = await db.Users.Where(u => u.Id == id).FirstOrDefaultAsync();
-
-            if (user == null)
+            var roles = await this.AppUserManager.GetRolesAsync(id);
+            if (!roles.Contains("SuperAdmin"))
             {
-                return NotFound();
+                if (user == null)
+                {
+                    return NotFound();
+                }
+
+                db.Users.Remove(user);
+                db.SaveChanges();
+
+                return Ok(user);
             }
-
-            db.Users.Remove(user);
-            db.SaveChanges();
-
-            return Ok(user);
+            return BadRequest("User is SuperAdmin");
         }
 
         [HttpPut]
@@ -217,29 +223,33 @@ namespace Social_Network.Controllers
 
         [HttpPut]
         [Route("EditUser")]
+        [Authorize(Roles = "Admin")]
         public async Task<IHttpActionResult> EditUser(ApplicationUser userModel)
         {
             ApplicationUser user = await this.AppUserManager.FindByIdAsync(userModel.Id);
+            var roles = await this.AppUserManager.GetRolesAsync(userModel.Id);
+            if (!roles.Contains("SuperAdmin")) {
+                user.FirstName = userModel.FirstName;
+                user.LastName = userModel.LastName;
+                user.Email = userModel.Email;
+                user.EmailConfirmed = userModel.EmailConfirmed;
+                user.PhoneNumber = userModel.PhoneNumber;
+                user.LockoutEnabled = userModel.LockoutEnabled;
+                user.LockoutEndDateUtc = userModel.LockoutEndDateUtc;
+                user.AccessFailedCount = userModel.AccessFailedCount;
+                user.UserName = userModel.UserName;
+                user.ProfileImage = userModel.ProfileImage;
 
-            user.FirstName = userModel.FirstName;
-            user.LastName = userModel.LastName;
-            user.Email = userModel.Email;
-            user.EmailConfirmed = userModel.EmailConfirmed;
-            user.PhoneNumber = userModel.PhoneNumber;
-            user.LockoutEnabled = userModel.LockoutEnabled;
-            user.LockoutEndDateUtc = userModel.LockoutEndDateUtc;
-            user.AccessFailedCount = userModel.AccessFailedCount;
-            user.UserName = userModel.UserName;
-            user.ProfileImage = userModel.ProfileImage;
+                IdentityResult editUserResult = await this.AppUserManager.UpdateAsync(user);
 
-            IdentityResult editUserResult = await this.AppUserManager.UpdateAsync(user);
+                if (!editUserResult.Succeeded)
+                {
+                    return GetErrorResult(editUserResult);
+                }
 
-            if (!editUserResult.Succeeded)
-            {
-                return GetErrorResult(editUserResult);
+                return Ok();
             }
-
-            return Ok();
+            return BadRequest("User is SuperAdmin");
         }
 
 

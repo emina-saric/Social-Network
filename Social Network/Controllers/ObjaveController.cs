@@ -11,7 +11,7 @@ using System.Web.Http;
 
 namespace Social_Network.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [RoutePrefix("api/Objave")]
     public class ObjaveController : BaseApiController
     {

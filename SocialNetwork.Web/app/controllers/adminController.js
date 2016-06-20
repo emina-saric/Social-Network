@@ -158,7 +158,7 @@ function RowEditCtrl($modalInstance, PersonSchema, grid, row, $http,RowEditor) {
                     }
                 }
             }
-            alert("Failed to change user due to: " + errors.join(' '));
+            alert("Failed to change user due to: " + response.data.message);
         });
     }
 
@@ -179,7 +179,7 @@ function RowEditCtrl($modalInstance, PersonSchema, grid, row, $http,RowEditor) {
                     }
                 }
             }
-            alert("Failed to delete user due to: " + errors.join(' '));
+            alert("Failed to delete user due to: " + response.data.message);
         });
     }
 }

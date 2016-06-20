@@ -40,7 +40,8 @@ namespace Social_Network.Migrations
                 Email = "superadminuser@gmail.com",
                 EmailConfirmed = true,
                 FirstName = "SuperAdmin",
-                LastName = "User"
+                LastName = "User",
+                ProfileImage = "Default.png"
             };
             var admin = new ApplicationUser()
             {
@@ -48,7 +49,8 @@ namespace Social_Network.Migrations
                 Email = "adminuser@gmail.com",
                 EmailConfirmed = true,
                 FirstName = "Admin",
-                LastName = "User"
+                LastName = "User",
+                ProfileImage = "Default.png"
             };
 
             manager.Create(superAdmin, "SuperAdminUser123");
@@ -63,8 +65,8 @@ namespace Social_Network.Migrations
             var superAdminUser = manager.FindByName("SuperAdminUser");
             var adminUser = manager.FindByName("AdminUser");
 
-            manager.AddToRoles(superAdminUser.Id, new string[] { "SuperAdmin", "Admin"});
-            manager.AddToRoles(adminUser.Id, new string[] { "Admin"});
+            manager.AddToRoles(superAdminUser.Id, new string[] { "SuperAdmin", "Admin" });
+            manager.AddToRoles(adminUser.Id, new string[] { "Admin" });
 
 
 

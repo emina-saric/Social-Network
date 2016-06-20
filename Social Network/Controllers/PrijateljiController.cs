@@ -11,6 +11,7 @@ using System.Collections.Generic;
 namespace Social_Network.Controllers
 {
     [RoutePrefix("api/Prijatelji")]
+    [Authorize]
     public class PrijateljiController : BaseApiController
     {
         private Social_NetworkContext db = new Social_NetworkContext();
