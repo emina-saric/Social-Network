@@ -1,6 +1,6 @@
 Konfiguracija projekta na Localhostu:
 
-1. Pokrenuti projekat, staviti SocialNetwork.Web kao startup ako veæ nije
+1. Pokrenuti projekat (URL: http://localhost:51622, ako se automatski ne otvori ukucati ruèno u browser), staviti SocialNetwork.Web kao startup ako veæ nije
 2. Build projekat i Update-Database
 3. Pokrenuti Aplikaciju
 

@@ -238,14 +238,14 @@ app.config(function ($translateProvider) {
         friends: 'Prijatelji',
         search: 'Pretraga',
         profileChangeImageIndex: "Izmijeni profilnu sliku",
-        adminAddUser: "Dodaj novog Korisnika",
-        charts: 'Čartovi',
-        deleteX: "Izbrisi",
+        adminAddUser: "Dodaj novog korisnika",
+        charts: 'Grafici',
+        deleteX: "Izbriši",
         saveX: "Spasi",
-        cancelX: "Izadji",
-        imageChange: "Kropuj i uploaduj sliku.",
+        cancelX: "Izađi",
+        imageChange: "Izreži i uploaduj sliku.",
         selectPic: "Izaberi sliku.",
-        uploadSuc: "Upload Uspjesan",
+        uploadSuc: "Upload uspješan",
         yourFriends: "Korisnici sa kojima ste prijatelj"
     });
     $translateProvider.preferredLanguage('ba');
