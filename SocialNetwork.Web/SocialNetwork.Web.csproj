@@ -422,15 +422,6 @@
     <Content Include="app\css\ng-img-crop.css" />
     <Content Include="app\css\site.css" />
     <Content Include="app\images\Default.png" />
-    <Content Include="app\images\Image-2016-05-18_11-19-29-AMmegan-fox-02.jpg" />
-    <Content Include="app\images\Image-2016-05-18_11-23-49-AMnormal_jenniferlawrenceorg002.jpg" />
-    <Content Include="app\images\Image-2016-05-18_11-27-35-AMmegan-fox-02.jpg" />
-    <Content Include="app\images\Image-2016-05-18_12-17-34-PMnormal_jenniferlawrenceorg002.jpg" />
-    <Content Include="app\images\Image-2016-05-18_12-23-11-PMnormal_jenniferlawrenceorg002.jpg" />
-    <Content Include="app\images\Image-2016-05-18_12-47-46-prije podneMy Snapshot.jpg" />
-    <Content Include="app\images\Image-2016-05-29_05-47-17-PMNGA1.jpeg" />
-    <Content Include="app\images\Image-2016-05-30_03-09-48-PMNGA2.png" />
-    <Content Include="app\images\undefined.png" />
     <Content Include="app\js\customSelect.js" />
     <Content Include="app\js\ng-img-crop.js" />
     <Content Include="app\js\site.js" />
